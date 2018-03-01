@@ -1,0 +1,23 @@
+  <title><%= page.title %> - 인터파크 도서</title>
+  <meta charset="<%= page.charset || 'utf-8' %>">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="shortcut icon" href="//sslbimage.interpark.com/interpark.ico" />
+  <% if (page.pageId === 'order' || page.pageId === 'orderPop') { %>
+    <link rel="stylesheet" href="/styles/common/common_ssl.css">
+    <link rel="stylesheet" href="/styles/common/header_main_ssl.css">
+    <link rel="stylesheet" href="/styles/common/quickMenu_ssl.css">
+    <link rel="stylesheet" href="/styles/common/footer_ssl.css">
+  <% } else { %>
+    <link rel="stylesheet" href="/styles/common/common.css">
+    <link rel="stylesheet" href="/styles/common/header_main.css">
+    <link rel="stylesheet" href="/styles/common/quickMenu.css">
+    <link rel="stylesheet" href="/styles/common/footer.css">
+  <% } %>
+  <% if (typeof page.styles !== 'undefined' && page.styles instanceof Array) { %>
+    <% page.styles.forEach(function(cssPath) { %>
+      <link rel="stylesheet" href="<%= cssPath %>">
+    <% }) %>
+  <% } %>
+  <script src="/scripts/jquery-1.7.2.min.js"></script>
+  <script src="/scripts/common/common.js"></script>
+  <script src="/scripts/plugins/bxslider/jquery.bxslider.js"></script>

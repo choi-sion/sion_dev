@@ -1,0 +1,506 @@
+//$imgPath: "./images";
+$imgPath: "http://bimage.interpark.com/renewPark/reBookpark" !default;
+
+#footerWrap {
+    clear: both;
+    width: 100%;
+    font-size: 11px;
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+    background: url("#{$imgPath}/footer/bg_footerWrap.gif") no-repeat left top;
+
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .footerA {
+        width: 960px;
+        font-size: 11px;
+        clear: both;
+        margin: 0 auto;
+        text-align: left;
+        padding: 14px 0 30px 0;
+        background: url("#{$imgPath}/footer/bg_footerLine.gif") repeat-x left top;
+    }
+
+    .footerB {
+        width: 100%;
+        font-size: 11px;
+        clear: both;
+        margin: 0 auto;
+        text-align: left;
+        padding: 14px 0 30px 0;
+        background: url("#{$imgPath}/footer/bg_footerLine.gif") repeat-x left top;
+    }
+
+    .selBox {
+        float: left;
+        position: relative;
+        z-index: 1;
+
+        .tit {
+            display: block;
+            width: 119px;
+            height: 14px;
+            padding-left: 5px;
+            font-size: 11px;
+            padding: 3px 0 1px 5px;
+            color: #636363;
+            border: 1px solid #ddd;
+            background: #fff url("#{$imgPath}/footer/selectArrow.png") no-repeat right 6px;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        .on {
+            .tit {
+                background-position: right -14px;
+            }
+        }
+
+        ul {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 112px;
+            padding: 5px 5px 2px 7px;
+            margin-top: -1px;
+            border: 1px solid #ddd;
+            background: #fff;
+
+            li {
+                padding-bottom: 4px;
+                line-height: 12px;
+                font-size:  11px;
+
+                a {
+                    font-size:  11px;
+                    color: #999;
+
+                    &:hover {
+                        color: #777;
+                    }
+                }
+            }
+        }
+    }
+
+    .foot-menu {
+        width: 940px;
+        margin: 0 auto;
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    }
+
+    ul.linkMenu {
+        float: left;
+        margin: 3px 0 0 5px;
+        padding-bottom: 15px;
+        font-size: 11px;
+
+        li {
+            display: inline;
+            padding: 0 6px 0 9px;
+            font-size: 11px;
+            letter-spacing: -1px;
+            background: url("#{$imgPath}/header/gnb/gate_bar01.gif") no-repeat left 1px;
+
+            &:first-child {
+                background:  none;
+                font-weight:  bold;
+            }
+
+            &.none {
+                background:  none;
+                font-weight:  bold;
+            }
+        }
+    }
+
+    .com_info {
+        width: 940px;
+        margin: 0 auto;
+        line-height: 17px;
+        font-size: 11px;
+
+        &:after {
+            content: "";
+            display: block;
+            clear:  both;
+        }
+
+        p {
+            color: #858586;
+            font-size: 11px;
+
+            &.title {
+                font-weight: bold;
+                padding-bottom: 5px;
+                line-height: 17px;
+            }
+        }
+
+        .cinfo01 {
+            float: left;
+            width: 335px;
+            height: 85px;
+            padding-bottom: 3px;
+            border-right: 1px solid #e7e7e7;
+
+            address {
+                font-style: normal;
+                display: inline;
+                color: #858586;
+                font-size: 11px;
+                letter-spacing:  -1px;
+            }
+
+            p img {
+                margin-top: 2px;
+            }
+
+            .name {
+                clear: both;
+                display: block;
+                margin-bottom: 3px;
+                font-size: 11px;
+                letter-spacing: -1px;
+                color: #676767;
+            }
+        }
+
+        .cinfo02 {
+            float: left;
+            width: 270px;
+            height: 85px;
+            margin-left: 15px;
+            border-right: 1px solid #e7e7e7;
+            letter-spacing:  -1px;
+
+            p img {
+                vertical-align: -4px;
+                margin-left: 5px;
+            }
+        }
+
+        .cinfo03 {
+            float: left;
+            width: 300px;
+            height: 85px;
+            margin-left: 15px;
+            letter-spacing:  -1px;
+
+            p img {
+                vertical-align: -2px;
+                margin-left: 5px;
+            }
+        }
+    }
+
+    .txt_info {
+        width: 940px;
+        margin: 10px auto 0 auto;
+
+        &:after {
+            content: "";
+            display: block;
+            clear:  both;
+        }
+
+        .Famway {
+            padding: 0;
+            clear: both;
+            color: #f08888;
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing:  -1px;
+        }
+
+        .Copyright {
+            margin-top: 3px;
+            clear: both;
+            color: #858586;
+            font-size: 11px;
+            letter-spacing:  -1px;
+        }
+
+        .nowYouto {
+            padding-top: 5px;
+            border-top: 1px dotted #ccc;
+            font-size: 11px;
+            margin-top: 10px;
+            clear: both;
+            letter-spacing:  -1px;
+
+            span {
+                font-weight:  bold;
+            }
+        }
+    }
+
+    .footerM {
+        width: 100%;
+        font-size: 11px;
+        clear: both;
+        margin: 0 auto;
+        text-align: left;
+        padding: 14px 0 30px 0;
+        border-top: 1px solid #999;
+        font-family: "Malgun Gothic", "맑은 고딕", "Nanum Gothic", "Dotum", sans-serif;
+
+        .selBox {
+            float: left;
+            position: relative;
+            z-index: 1;
+            margin-top:  2px;
+
+            .tit {
+                display: block;
+                width: 119px;
+                height: 14px;
+                padding-left: 5px;
+                font-size: 11px;
+                padding: 1px 0 3px 5px;
+                color: #636363;
+                border: 1px solid #ddd;
+                background: #fff url("#{$imgPath}/footer/selectArrow.png") no-repeat right 6px;
+
+                &:hover {
+                    color: #000;
+                }
+            }
+
+            .on {
+                .tit {
+                    background-position: right -14px;
+                }
+            }
+
+            ul {
+                position: absolute;
+                top: 20px;
+                left: 0;
+                width: 112px;
+                padding: 3px 5px 2px 7px;
+                margin-top: -1px;
+                border: 1px solid #ddd;
+                background: #fff;
+
+                li {
+                    padding-bottom: 4px;
+                    line-height: 12px;
+                    font-size:  11px;
+
+                    a {
+                        font-size:  11px;
+                        color: #999;
+
+                        &:hover {
+                            color: #777;
+                        }
+                    }
+                }
+            }
+        }
+
+        .foot-menu {
+            width: 980px;
+            margin: 0 auto;
+
+            &:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            ul.linkMenu {
+                float: left;
+                margin: 3px 0 0 5px;
+                padding-bottom: 15px;
+                font-size: 11px;
+
+                li {
+                    display: inline;
+                    padding: 0 6px 0 9px;
+                    font-size: 12px;
+                    letter-spacing: -1px;
+                    background: url("#{$imgPath}/header/gnb/gate_bar01.gif") no-repeat left 5px;
+                    color: #b8b8b8;
+
+                    a {
+                        color: #b8b8b8;
+                    }
+
+                    &:first-child {
+                        background: none;
+                        font-weight: normal;
+                        color:  #2a2a2a;
+
+                        a {
+                            color: #2a2a2a;
+                        }
+                    }
+
+                    &.none {
+                        background: none;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        .com_info {
+            width: 980px;
+            margin: 0 auto;
+            line-height: 16px;
+            font-size:  11px;
+
+            &:after {
+                content: "";
+                display: block;
+                clear:  both;
+            }
+
+            .cinfo01 {
+                float: left;
+                width: 335px;
+                height:  85px;
+                padding-bottom: 3px;
+                border-right: 1px solid #e7e7e7;
+                letter-spacing:  -1px;
+            }
+
+            .cinfo02 {
+                float: left;
+                width: 255px;
+                height:  85px;
+                margin-left: 15px;
+                border-right: 1px solid #e7e7e7;
+                letter-spacing:  -1px;
+            }
+
+            .cinfo03 {
+                float: left;
+                width: 355px;
+                height:  85px;
+                margin-left: 15px;
+                letter-spacing:  -1px;
+            }
+
+            dl {
+
+                dt {
+                    height: 18px;
+
+                    &.name {
+                        clear: both;
+                        display: block;
+                        margin-bottom: 4px;
+                        font-size: 12px;
+                        letter-spacing: -1px;
+                        color: #2a2a2a;
+                        font-weight:  normal;
+                    }
+
+                    &.title {
+                        font-weight: normal;
+                        padding-bottom: 5px;
+                        line-height: 17px;
+                        font-size:  12px;
+                    }
+
+                    .bt_qna {
+                        display: inline-block;
+                        width: 60px;
+                        height: 15px;
+                        background:  url("#{$imgPath}/footer/btn_main_qnaClick.gif") no-repeat left center;
+                        vertical-align:  middle;
+                        margin-left: 5px;
+                    }
+                }
+
+                dd {
+                    color:  #acacac;
+
+                    address {
+                        font-style: normal;
+                        display: inline;
+                        color: #b8b8b8;
+                        font-size: 11px;
+                        letter-spacing:  -1px;
+                    }
+
+                    &.dot {
+                        padding: 0 0 0 5px;
+                        background: url("#{$imgPath}/footer/bullet_mainDot.gif") no-repeat left center;
+
+                        a {
+                            color:  #b8b8b8;
+                        }
+                    }
+
+                    .bt_serviceOk {
+                        display: inline-block;
+                        width: 102px;
+                        height: 15px;
+                        background:  url("#{$imgPath}/footer/btn_main_bottomService.gif") no-repeat left center;
+                        vertical-align:  middle;
+                        margin: 5px 0 0 0;
+                        text-indent:  -9999px;
+                    }
+                }
+            }
+        }
+
+        .txt_info {
+            width: 980px;
+            margin: 10px auto 0 auto;
+
+            &:after {
+                content: "";
+                display: block;
+                clear:  both;
+            }
+
+            .Famway {
+                padding: 0;
+                clear: both;
+                color: #666;
+                font-weight: bold;
+                letter-spacing:  -1px;
+                font-size:  11px;
+            }
+
+            .Copyright {
+                margin-top: 3px;
+                clear: both;
+                color: #b8b8b8;
+                font-size: 11px;
+                letter-spacing:  -1px;
+            }
+
+            .nowYouto {
+                padding-top: 5px;
+                border-top: 1px dotted #ccc;
+                font-size: 11px;
+                margin-top: 10px;
+                clear: both;
+                letter-spacing:  -1px;
+
+                span {
+                    font-weight:  bold;
+                }
+            }
+        }
+    }
+}
+

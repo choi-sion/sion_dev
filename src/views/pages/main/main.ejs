@@ -1,0 +1,1390 @@
+---
+title: 도서메인(ver.201610)
+pageId: main
+charset: euc-kr
+styles:
+  - /styles/pages/main/main_ui.css
+scripts:
+  - /scripts/common/mainLeft.js
+  - /scripts/pages/main/main_ui.js
+data:
+  - /data/texts/pages/main/book.json
+  - /data/texts/pages/main/banner.json
+  - /data/texts/pages/main/main.json
+indexGroup: main
+state:
+  default: 도서메인
+  rightLogin: 도서메인(우측개인화 로그인전)
+  rightWeekBan: 도서메인(우측개인화-주말특가배너영역)
+  allElement: 모든영역노출
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <%- include('/layouts/head'); %>
+</head>
+
+<body id="<%= page.pageId %>">
+
+  <% if(state === 'allElement') { %>
+    <%- include('/layouts/topBanner'); %>
+  <% } %>
+
+  <%- include('/layouts/header'); %>
+
+  <% if(state === 'allElement') { %>
+    <%- include('/layouts/mainLeft'); %>
+  <% } %>
+
+  <!-- ## Container S ## -->
+  <div id="container">
+    <div id="mainContent">
+      <!-- Renewal Version :: Start -->
+      <!-- 탑 배너 영역 -->
+      <div class="topBannerWrap">
+        <!-- 탑 메인 배너 -->
+        <div class="topMainBanners">
+          <!-- 배너 목록 -->
+          <div class="topMainBannerList">
+            <!-- 맵링크 타입 -->
+            <div class="topMainBanner current" style="background-color: #a1dcf9">
+              <div class="topMainBannerInner">
+                <img src="/data/images/pages/main/bnr_topMainBanner1.jpg" alt="세상을 토닥토닥, 혜민스님의 이야기" usemap="#topbannerType1"/>
+                <map name="topbannerType1" id="topbannerType1">
+                  <area shape="rect" coords="320,35,471,259" href="#" target="_blank" alt="자세히보기" />
+                  <area shape="rect" coords="3,237,291,259" href="#" target="_blank" alt="바로가기" />
+                </map>
+              </div>
+            </div>
+            <!-- // 맵링크 타입 -->
+            <!-- 개별 링크 타입 :: .bookList 추가 -->
+            <div class="topMainBanner" style="background-color: #e2e3e5">
+              <div class="topMainBannerInner">
+                <div class="bookList">
+                  <% data.book.topMain.bookList.forEach(function(b){ %>
+                    <div class="book">
+                      <a href="#">
+                        <div class="bookCover <% if (b.setType) { %>setStyle<% } %>">
+                          <img src="<%= b.image %>" alt="<%= b.subject %>">
+                          <i></i>
+                        </div>
+                        <div class="bookMeta">
+                          <strong class="title"><%= b.subject %></strong>
+                          <p class="desc"><%= b.desc %></p>
+                        </div>
+                      </a>
+                    </div>
+                  <% }); %>
+                </div>
+              </div>
+            </div>
+            <!-- // 개별 링크 타입 -->
+            <!-- 이미지 배너 링크 타입 :: .bannerList 추가 -->
+            <div class="topMainBanner" style="background-color: #ece5e1">
+              <div class="topMainBannerInner">
+                <div class="bannerList">
+                  <%
+                    data.book.topMain.bannerList.forEach(function(b, i){
+                      if (i < 3) {
+                  %>
+                    <div class="banner">
+                      <a href="#"><img src="<%= b.image %>" alt="<%= b.subject %>"></a>
+                    </div>
+                  <% } }); %>
+                </div>
+              </div>
+            </div>
+            <!-- // 이미지 배너 링크 타입 -->
+            <!-- 전체 링크 타입 -->
+            <div class="topMainBanner" style="background-color: #f2f4e8">
+              <div class="topMainBannerInner">
+                <a href="#"><img src="/data/images/pages/main/bnr_topMainBanner4.jpg" alt="이슈&amp;스토리 인터파크 독자들이 가장 만나고 싶은 작가는?"></a>
+              </div>
+            </div>
+            <!-- // 전체 링크 타입 -->
+            <!-- 이미지 배너 링크 타입 :: .bannerList 추가 -->
+            <div class="topMainBanner" style="background-color: #f0faff">
+              <div class="topMainBannerInner">
+                <div class="bannerList">
+                  <%
+                    data.book.topMain.bannerList.forEach(function(b, i){
+                      if (i > 2 && i < 6) {
+                  %>
+                    <div class="banner">
+                      <a href="#"><img src="<%= b.image %>" alt="<%= b.subject %>"></a>
+                    </div>
+                  <% } }); %>
+                </div>
+              </div>
+            </div>
+            <!-- // 이미지 배너 링크 타입 -->
+          </div>
+          <!-- // 배너 목록 -->
+          <!-- 배너 탭 -->
+          <div class="topBannerTabs">
+            <div class="topBannerTabInner">
+              <div class="topMainBannerTab current">
+                <a href="#" data-target-group="topMainBannerList" data-target-content="topMainBanner">
+                  <span>광고/운영 영역</span>
+                </a>
+                <em class="icon hot">HOT</em>
+              </div>
+              <div class="topMainBannerTab">
+                <a href="#" data-target-group="topMainBannerList" data-target-content="topMainBanner">
+                  <span>화제의 책</span>
+                </a>
+              </div>
+              <div class="topMainBannerTab">
+                <a href="#" data-target-group="topMainBannerList" data-target-content="topMainBanner">
+                  <span>이 달의 이벤트</span>
+                </a>
+                <em class="icon new">NEW</em>
+              </div>
+              <div class="topMainBannerTab">
+                <a href="#" data-target-group="topMainBannerList" data-target-content="topMainBanner">
+                  <span>[이슈&amp;스토리]<br>저성장 시대가 왔다</span>
+                </a>
+              </div>
+              <div class="topMainBannerTab">
+                <a href="#" data-target-group="topMainBannerList" data-target-content="topMainBanner">
+                  <span>[KAO.S]<br>과학,지식,나눔</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- 배너 탭 -->
+        </div>
+        <!-- // 탑 메인 배너 -->
+
+        <!-- 탑 우측 배너 -->
+        <div class="topSideBanner">
+          <div class="topSideSlider">
+            <ul class="sliderWrap">
+              <% data.book.topSide.forEach(function(b, i) { %>
+                <li class="slider <%= b.type %>Type">
+                  <a href="#">
+                    <% if (b.type === 'banner') { %>
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.text %>">
+                    <% } else { %>
+                      <strong class="title"><%= b.text %></strong>
+                      <p class="desc"><%- b.subText %></p>
+                      <div class="bookCover<% if (b.setType) { %> setStyle<% } %>">
+                        <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.text %>">
+                        <i></i>
+                      </div>
+                    <% } %>
+                  </a>
+                </li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+        <!-- // 탑 우측 배너 -->
+      </div>
+      <!-- // 탑 배너 영역 -->
+
+      <!-- 제휴 텍스트 링크 영역 -->
+      <div class="textADSection">
+        <a href="#" target="_blank">
+          <span style="color:#444;">LG U+ 멤버십 포인트 사용하면,</span> <span style="color:#a5037d">최대 8천원 할인!</span>
+        </a>
+      </div>
+      <!-- // 제휴 텍스트 링크 영역 -->
+
+      <!-- 에디터 추천 / 인터파크 추천 영역 -->
+      <div class="specialRecommends">
+        <!-- 에디터 추천 -->
+        <div class="editorRecommends">
+          <h2>에디터 추천</h2>
+          <ul class="editorRecommendSlider">
+            <% data.book.editorRecommend.forEach(function(b){ %>
+              <li class="editorRecommendSlide">
+                <div class="editorRecommendContents">
+                  <% b.forEach(function(c, i){ %>
+                    <div class="editorRecommendContent <% if (i === 0) { %>current<% } %>">
+                      <a href="#">
+                        <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= c.content %>" alt="<%= c.subject %>">
+                      </a>
+                    </div>
+                  <% }); %>
+                </div>
+                <div class="editorRecommendTabs">
+                  <ul>
+                    <% b.forEach(function(c, i){ %>
+                      <li <% if (c === 0) { %>class="current"<% } %>>
+                        <a href="#" <% if (c.setType) { %>class="setStyle"<% } %>>
+                          <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= c.image %>" alt="<%= c.subject %>">
+                          <i></i>
+                        </a>
+                      </li>
+                    <% }); %>
+                  </ul>
+                </div>
+              </li>
+            <% }); %>
+          </ul>
+          <div class="identity"><img src="http://bimage.interpark.com/UI/pc/main/2016/common/img_AD.png" alt="AD"></div>
+        </div>
+        <!-- // 에디터 추천 -->
+
+        <!-- 인터파크 추천 -->
+        <div class="interparkRecommends">
+          <h2>인터파크 추천</h2>
+          <ul>
+            <% data.book.interparkRecommend.forEach(function(b){ %>
+              <li>
+                <a href="#">
+                  <div class="bookCover <% if (b.setType) { %>setStyle<% } %>">
+                    <img src="<%= b.image %>" alt="<%= b.subject %>">
+                    <i></i>
+                  </div>
+                  <strong class="title"><%= b.subject %></strong>
+                  <p class="desc"><%= b.desc %></p>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+          <div class="viewMore">
+            <a href="#">더보기</a>
+          </div>
+        </div>
+        <!-- // 인터파크 추천 -->
+      </div>
+      <!-- // 에디터 추천작 // 인터파크 추천 영역 -->
+
+      <div class="pointBookSsendeal">
+        <!-- 전략도서 영역 -->
+        <div class="pointBookSection">
+          <div class="pointBookList">
+            <h2>
+              <a href="#">주목! <span>이달 이 책</span></a>
+            </h2>
+            <ul class="sliderWrap">
+              <% data.book.pointBook.forEach(function(p){ %>
+                <li class="slider">
+                  <div class="accodionWrap">
+                    <% p.forEach(function(b, i){ %>
+                      <div class="accodion no<%= i + 1 %> <% if(i === 0){ %>current<% } %>">
+                        <a href="#" <% if (i ===0) { %>style="width: 405px"<% } %>>
+                          <div class="bookCover <% if (b.setType){ %>setStyle<% } %>">
+                            <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image%>" alt="<%= b.subject %>">
+                            <i></i>
+                          </div>
+                          <div class="bookMeta">
+                            <div class="starRateWrap">
+                              <span class="starRate">
+                                <span class="starRateValue" style="width: <%= b.rate * 10 %>%"><%= b.rate %></span>
+                              </span>
+                              <em class="starValue"><%= b.rate %></em>
+                            </div>
+                            <strong class="title"><%= b.subject %></strong>
+                            <div class="priceWrap">
+                              <span class="originalPrice"><%= $.withCommas(b.price.origin) %></span>
+                              <span class="salePrice">
+                                <span class="price">
+                                  <em><%= $.withCommas(b.price.sale) %></em>원
+                                </span>
+                                <span class="benefits">
+                                  <em>+<%= $.withCommas(b.benefit) %></em>P
+                                </span>
+                              </span>
+                            </div>
+                            <div class="descWrap">
+                              <div class="desc">
+                                <p><%= b.desc %></p>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    <% }); %>
+                  </div>
+                </li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+        <!-- // 전략도서 영역 -->
+
+        <!-- 쎈딜 영역 -->
+        <div class="ssendealSection">
+          <div class="ssendealList">
+            <h2>
+              <a href="#">싸다 못해 쎄다! <span>쎈DEAL BOOK</span></a>
+            </h2>
+            <ul>
+              <%
+                data.book.ssendeal.forEach(function(s, i) {
+                  var ssendealClass = s.special ? 'specialDiscount' : 'discount';
+              %>
+                <li class="<%= ssendealClass %>">
+                  <a href="#">
+                    <div class="bookCover<% if (s.setType) { %> setStyle<% } %>">
+                      <span class="imageWrap">
+                        <img src="<%= s.image %>" alt="<%= s.subject %>">
+                      </span>
+                      <i></i>
+                      <span class="discountDetail">
+                        <% if (s.special) { %>
+                          <span class="title">특가할인</span>
+                        <% } %>
+                        <em class="percent"><%= s.discount %>%</em>
+                      </span>
+                    </div>
+                    <div class="bookMeta">
+                      <strong class="title"><%= s.subject %></strong>
+                      <div class="priceWrap">
+                        <span class="originalPrice">
+                          <em><%= $.withCommas(s.price.origin) %></em>
+                        </span>
+                        <span class="salePrice">
+                          <em><%= $.withCommas(s.price.sale) %></em>원
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+        <!-- // 쎈딜 영역 -->
+      </div>
+
+      <!-- 분야별 신간 도서 -->
+      <div class="newBookSection">
+        <div class="newBookHeader">
+          <h2>분야별 <em>신간추천</em></h2>
+          <div class="newBookCategories">
+            <% data.book.newbook.forEach(function(c, i){ %>
+              <div class="category ">
+                <a href="#newBook<%= i + 1%>"><span><%= c.category %></span></a>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="newBookList">
+          <% data.book.newbook.forEach(function(b, i){ %>
+            <div id="newBook<%= i + 1 %>" class="newBookContents">
+              <% if (b.category === 'eBook') { %>
+                <div class="bigRecommends">
+                  <a href="#">
+                    <div class="bookCover <% if (b.big.setType) { %>setStyle<% } %>">
+                      <img src="<%= b.big.image %>" alt="<%= b.big.subject %>">
+                      <i></i>
+                      <span class="coming">
+                        <span class="free">이주의<br>무료책</span>
+                      </span>
+                    </div>
+                    <div class="bookMeta">
+                      <strong class="title"><span class="eBookColor">[eBook]</span> <%= b.big.subject %></strong>
+                      <p class="desc"><%= b.big.desc %></p>
+                      <div class="priceWrap">
+                        <span class="price">
+                          <em><%= b.big.price %></em>
+                        </span>
+                        <% if (b.big.benefit) { %>
+                          <span class="benefits">
+                            <em>+<%= $.withCommas(b.big.benefit) %></em>P
+                          </span>
+                        <% } %>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              <% } %>
+              <ul class="sliders">
+                <% b.contents.forEach(function(c) { %>
+                  <li class="slider">
+                    <% if (b.category !== 'eBook') { %>
+                      <div class="bigRecommends">
+                        <a href="#">
+                          <div class="bookCover <% if (c.big.setType) { %>setStyle<% } %>">
+                            <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= c.big.image %>" alt="<%= c.big.subject %>">
+                            <i></i>
+                            <% if (c.big.coming) { %>
+                              <span class="coming">
+                                <span class="title">출간예정</span>
+                                <em class="date"><%= c.big.coming %></em>
+                              </span>
+                            <% } %>
+                          </div>
+                          <div class="bookMeta">
+                            <strong class="title"><%= c.big.subject %></strong>
+                            <p class="desc"><%= c.big.desc %></p>
+                            <div class="priceWrap">
+                              <span class="price">
+                                <em><%= $.withCommas(c.big.price) %></em>원
+                              </span>
+                              <% if (c.big.benefit) { %>
+                                <span class="benefits">
+                                  <em>+<%= $.withCommas(c.big.benefit) %></em>P
+                                </span>
+                              <% } %>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    <% } %>
+
+                    <div class="newBookList">
+                      <ul>
+                        <% c.list.forEach(function(l) { %>
+                          <li>
+                            <a href="#">
+                              <div class="bookCover <% if (l.setType) { %>setStyle<% } %>">
+                                <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= l.image %>" alt="<%= l.subject %>">
+                                <i></i>
+                              </div>
+                              <div class="bookMeta">
+                                <strong class="title">
+                                  <% if (b.category === 'eBook') { %>
+                                    <span class="eBookColor">[eBook]</span>
+                                  <% } %>
+                                  <%= l.subject %>
+                                </strong>
+                                <div class="priceWrap">
+                                  <span class="price">
+                                    <em><%= $.withCommas(l.price) %></em>원
+                                  </span>
+                                  <% if (l.benefit) { %>
+                                    <span class="benefits">
+                                      <em>+<%= $.withCommas(l.benefit) %></em>P
+                                    </span>
+                                  <% } %>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        <% }); %>
+                      </ul>
+                    </div>
+                  </li>
+                <% }); %>
+              </ul>
+
+              <div class="bannerWrap">
+                <% b.banner.forEach(function(n) { %>
+                  <div class="banner">
+                    <a href="#">
+                      <img src="<%= n.image %>" alt="<%= n.alt %>">
+                    </a>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+      <!-- // 분야별 신간 도서 -->
+
+      <!-- 베스트셀러 / 특가할인 섹션 -->
+      <div class="bestSection">
+        <div class="leftSection">
+          <!-- 베스트셀러 -->
+          <div class="bestSeller">
+            <div class="bestSellerHeader">
+              <h2>베스트셀러</h2>
+              <div class="selectStyle">
+                <a href="#" class="selected" rel="0">
+                  <span class="optionName">종합</span>
+                  <i></i>
+                </a>
+                <div class="select">
+                  <ul>
+                    <% data.book.bestSeller.category.forEach(function(c, i){ %>
+                      <li><a href="#" rel="<%= i %>"><%= c %></a></li>
+                    <% }); %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="bestSellerContents">
+              <div class="bestSellerTabs">
+                <ul>
+                  <li class="realtime current">
+                    <a href="#" data-target-group="bestSellerContents" data-target-content="bestSellerRank">실시간</a>
+                  </li>
+                  <li class="week">
+                    <a href="#" data-target-group="bestSellerContents" data-target-content="bestSellerRank">주간</a>
+                  </li>
+                </ul>
+              </div>
+
+              <% data.book.bestSeller.ranking.forEach(function(t, i){ %>
+                <div class="bestSellerRank <% if (i === 0) { %>current<% } %>">
+                  <ol>
+                    <% t.forEach(function(r, j){ %>
+                      <li class="rankNo<%= j + 1 %>">
+                        <a href="#">
+                          <span class="no"><%= j + 1 %></span>
+                          <% if(j === 0) { %>
+                            <span class="bookCover <% if(r.setType){ %>setStyle<% } %>">
+                              <img src="<%= r.image %>" alt="<%= r.subject %>">
+                              <i></i>
+                            </span>
+                          <% } %>
+                          <strong class="title"><%= r.subject%></strong>
+                          <%
+                            if(j !== 0) {
+                             var breadthClass;
+                             var breadthText;
+
+                             if (r.breadth > 0) {
+                              breadthClass = 'up';
+                              breadthText = '상승';
+                             } else if (r.breadth < 0 ) {
+                              breadthClass = 'down';
+                              breadthText = '하강';
+                             } else if (r.breadth === 0) {
+                              breadthClass = 'stay';
+                              breadthText = '유지';
+                             } else {
+                              breadthClass = 'new';
+                              breadthText = 'new';
+                             }
+                          %>
+                            <span class="breadth <%= breadthClass %>"><em><%= breadthText %></em></span>
+                          <% } %>
+                        </a>
+                      </li>
+                    <% }); %>
+                  </ol>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+          <!-- // 베스트셀러 -->
+        </div>
+
+        <div class="centerSection">
+          <!-- 특가할인 -->
+          <div class="specialDiscountWrap">
+            <h2>특가할인</h2>
+            <div class="slidersWrap">
+              <ul class="sliders">
+                <% data.book.specialDiscount.forEach(function(s, i){ %>
+                  <li class="specialDiscount">
+                    <a href="#">
+                      <div class="bookCover <% if(s.setType){ %>setStyle<% } %>">
+                        <span class="imageWrap">
+                          <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= s.image %>" alt="<%= s.subject %>">
+                        </span>
+                        <i></i>
+                        <span class="discountDetail">
+                          <span class="title">특가할인</span>
+                          <em class="percent"><%= s.percent %>%</em>
+                        </span>
+                      </div>
+                      <div class="bookMeta">
+                        <strong class="title"><%= s.subject %></strong>
+                        <div class="priceWrap">
+                          <span class="price">
+                            <dfn>정가</dfn>
+                            <span>
+                              <em><%= $.withCommas(s.price.price) %></em>원
+                            </span>
+                          </span>
+                          <% if (s.price.reprice) { %>
+                            <span class="rePrice">
+                              <dfn>재정가</dfn>
+                              <span>
+                                <em><%= $.withCommas(s.price.reprice) %></em>원
+                              </span>
+                            </span>
+                          <% } %>
+                        </div>
+                        <div class="salePrice">
+                          <dfn>판매가</dfn>
+                          <span>
+                            <em><%= $.withCommas(s.price.sale) %></em>원
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+          </div>
+          <!-- // 특가할인 -->
+
+          <!-- 단독혜택 -->
+          <div class="eventBooks">
+            <h2>단독혜택</h2>
+            <div class="slidersWrap">
+              <ul class="sliders">
+                <% data.book.eventBook.forEach(function(b){ %>
+                  <li class="eventBook">
+                    <a href="#">
+                      <div class="bookCover <% if (b.setType){ %>setStyle<% } %>">
+                        <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                        <i></i>
+                      </div>
+                      <div class="bookMeta">
+                        <strong class="title"><%= b.subject %></strong>
+                        <div class="conditions"><%- $.nl2br(b.condition) %></div>
+                        <div class="gifts">
+                          <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.gift %>" alt="I-Point 1000P">
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+          </div>
+          <!-- // 이주의 이벤트 도서 -->
+        </div>
+
+        <div class="rightSection">
+          <!-- Pick! 사은품 / 굿즈# -->
+          <div class="giftWrap">
+            <h2><em>Pick!</em> 사은품 / 굿즈#</h2>
+            <div class="accodionWrap">
+              <% data.book.gift.forEach(function(g, i){ %>
+                <div class="accodion <% if(i === 0) { %>current<% } %>">
+                  <a href="#" class="title">
+                    <span><%= g.title %></span>
+                    <i></i>
+                  </a>
+                  <div class="accodionContent" <% if(i === 0) { %>style="height: 280px;"<% } %>>
+                    <a href="#">
+                      <img src="<%= g.image %>" alt="<%= g.title %>">
+                    </a>
+                  </div>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+          <!-- // Pick! 사은품 / 기프트 -->
+        </div>
+      </div>
+      <!-- // 베스트셀러 / 특가할인 섹션 -->
+
+      <!-- 추천도서 -->
+      <div class="recommendGroupSection">
+        <% data.book.recommendGroup.forEach(function(r, i){ %>
+          <div class="recommendGroup <%= r.class %>">
+            <h2>
+              <%- r.name %>
+            </h2>
+            <div class="recommendGroupWrap">
+              <div class="recommendBooks">
+                <ul>
+                  <% r.list.forEach(function(b){ %>
+                  <li>
+                    <a href="#">
+                      <div class="bookCover <% if (b.setType){ %>setStyle<% } %>">
+                        <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                        <i></i>
+                      </div>
+                      <div class="bookMeta">
+                        <strong class="title"><%= b.subject %></strong>
+                        <p class="desc"><%= b.desc %></p>
+                      </div>
+                    </a>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+              <div class="bannerArea">
+                <ul>
+                  <%
+                    var randomNumber = [];
+
+                    for(var a = 0, aLength = 5; a < aLength; a++) {
+                      var randomNo = Math.floor(Math.random() * data.banner.length);
+
+                      if (randomNumber.indexOf(randomNo) === -1) {
+                        randomNumber.push(randomNo);
+                      }
+                    }
+
+                    data.banner.forEach(function(b, j) {
+                      randomNumber.forEach(function(k) {
+                        if (j === k) {
+                  %>
+                    <li>
+                      <a href="#">
+                        <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                      </a>
+                    </li>
+                  <% } }); }); %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+
+      <!-- 중고도서, 북아울렛 -->
+      <div class="usedBookSection">
+        <!-- 중고도서 -->
+        <div class="usedBook">
+          <h2><span>HOT!</span> 중고도서</h2>
+          <div class="usedBookWrap">
+            <div class="usedBookContents">
+              <div class="highPrice">
+                <a href="#">
+                  <!-- 패키지 일 경우 bookCover 옆에 setStyle 클래스 추가 -->
+                  <div class="bookCover">
+                    <img src="http://bimage.interpark.com/goods_image/1/2/5/7/254691257g.jpg" alt="사라진 벌들의 경고 Bee Time">
+                    <i></i>
+                  </div>
+                  <div class="bookMeta">
+                    <strong class="title">사라진 벌들의 경고 Bee Time</strong>
+                    <div class="priceWrap">
+                      <span class="price">
+                        <dfn>정가</dfn>
+                        <span>
+                          <em>18,000</em>원
+                        </span>
+                      </span>
+                      <span class="salePrice">
+                        <dfn>매입예상가</dfn>
+                        <span>
+                          <em>14,400</em>원
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                <div class="highPriceButtons">
+                  <div class="addWishList">
+                    <a href="#">
+                      <i class="top"></i>
+                      <span><em>신청희망<br>리스트</em><br>담기</span>
+                      <i class="bottom"></i>
+                    </a>
+                  </div>
+                  <div class="highPriceButton">
+                    <a href="javascript:;">
+                      <span>
+                        고가
+                        <br/>
+                        매입
+                      </span>
+                      <i></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="usedBookList">
+                <ul>
+                  <% data.book.usedBook.forEach(function(b, i){ %>
+                    <li>
+                      <a href="#">
+                        <div class="bookCover <% if (b.setType) { %>setStyle<% } %>">
+                          <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                          <i></i>
+                          <span class="newBookReady">
+                            <span class="title">새책대비</span>
+                            <em class="date"><%= b.percent %>%</em>
+                          </span>
+                        </div>
+                        <div class="bookMeta">
+                          <strong class="title"><%= b.subject %></strong>
+                          <div class="priceWrap">
+                            <span class="price">
+                              <span class="del">
+                                <em><%= $.withCommas(b.price.origin) %></em>원
+                              </span>
+                            </span>
+                            <span class="salePrice">
+                              <span>
+                                <em><%= $.withCommas(b.price.sale) %></em>원
+                              </span>
+                            </span>
+                            <% if (b.benefit) { %>
+                              <span class="benefits">
+                                <span>
+                                  <em>+<%= b.benefit %></em>P
+                                </span>
+                              </span>
+                            <% } %>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+            <div class="bannerArea">
+              <ul>
+                <%
+                  var randomNumber = [];
+
+                  for(var a = 0, aLength = 5; a < aLength; a++) {
+                    var randomNo = Math.floor(Math.random() * data.banner.length);
+
+                    if (randomNumber.indexOf(randomNo) === -1) {
+                      randomNumber.push(randomNo);
+                    }
+                  }
+
+                  data.banner.forEach(function(b, j) {
+                    randomNumber.forEach(function(k) {
+                      if (j === k) {
+                %>
+                  <li>
+                    <a href="#">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                    </a>
+                  </li>
+                <% } }); }); %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- // 중고도서 -->
+
+        <!-- 유아동전집 -->
+        <div class="bookOutlet">
+          <h2>인기 <span>유아동전집</span></h2>
+          <div class="bookOutletWrap">
+            <div class="bannerArea">
+              <ul>
+                <%
+                  var randomNumber = [];
+
+                  for(var a = 0, aLength = 5; a < aLength; a++) {
+                    var randomNo = Math.floor(Math.random() * data.banner.length);
+
+                    if (randomNumber.indexOf(randomNo) === -1) {
+                      randomNumber.push(randomNo);
+                    }
+                  }
+
+                  data.banner.forEach(function(b, j) {
+                    randomNumber.forEach(function(k) {
+                      if (j === k) {
+                %>
+                  <li>
+                    <a href="#">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                    </a>
+                  </li>
+                <% } }); }); %>
+              </ul>
+            </div>
+            <div class="bookOutletContents">
+              <div class="bookOutletList">
+                <ul>
+                  <% data.book.bookOutlet.forEach(function(b, i){ %>
+                    <li>
+                      <a href="#">
+                        <div class="bookCover">
+                          <img src="<%= b.image %>" alt="<%= b.subject %>">
+                        </div>
+                        <div class="bookMeta">
+                          <strong class="title"><%= b.subject %></strong>
+                          <div class="priceWrap">
+                            <span class="price">
+                              <dfn>정가</dfn>
+                              <span>
+                                <em><%= $.withCommas(b.price) %></em>원
+                              </span>
+                            </span>
+                            <span class="benefits">
+                              <dfn>혜택</dfn>
+                              <span>
+                                <em>+<%= $.withCommas(b.benefit) %></em>P
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- // 유아동전집 -->
+      </div>
+      <!-- // 중고도서, 북아울렛 -->
+
+      <!-- ebook / 음반/DVD -->
+      <div class="eMediaWrap">
+        <!-- ebook -->
+        <div class="ebook">
+          <h2>eBook</h2>
+          <div class="ebookContents">
+            <div class="biscuitWrap">
+              <ul>
+                <% data.book.ebook.forEach(function(e, i){ %>
+                  <li>
+                    <a href="#">
+                      <div class="bookCover">
+                        <span class="imageWrap">
+                          <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= e.image %>" alt="<%= e.subject%>">
+                        </span>
+                        <% if (e.value === '10years') { %>
+                          <div class="value1">10년<br/>소장</div>
+                        <% } else if (e.value === 'free') { %>
+                          <div class="value2">이주의<br>무료책</div>
+                        <% } %>
+                      </div>
+                      <div class="bookMeta">
+                        <strong class="title"><%= e.subject %></strong>
+                        <span class="author"><span>이기호</span>저 / <span>박선경</span> 그림</span>
+                        <div class="priceWrap">
+                          <span class="price">
+                            <em><%= $.withCommas(e.price) %></em>원
+                          </span>
+                          <span class="benefits">
+                            (종이책대비 <%= e.percent %>%↓ + <%= e.benefit %>P적립)
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="bannerArea">
+              <ul>
+                <%
+                  var randomNumber = [];
+
+                  for(var a = 0, aLength = 5; a < aLength; a++) {
+                    var randomNo = Math.floor(Math.random() * data.banner.length);
+
+                    if (randomNumber.indexOf(randomNo) === -1) {
+                      randomNumber.push(randomNo);
+                    }
+                  }
+
+                  data.banner.forEach(function(b, j) {
+                    randomNumber.forEach(function(k) {
+                      if (j === k) {
+                %>
+                  <li>
+                    <a href="#">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                    </a>
+                  </li>
+                <% } }); }); %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- // ebook -->
+
+        <!-- 음반 / DVD -->
+        <div class="musicDVD">
+          <h2>음반/DVD</h2>
+          <div class="musicDVDContents">
+            <div class="musicDVDWrap">
+              <ul>
+                <% data.book.music.forEach(function(m, i){ %>
+                  <li>
+                    <a href="#">
+                      <div class="musicDVDCover <% if (m.dvd) { %>dvd<% } %>">
+                        <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= m.image %>" alt="<%= m.subject %>">
+                        <i></i>
+                      </div>
+                      <div class="metaData">
+                        <strong class="title"><%= m.subject %></strong>
+                        <div class="priceWrap">
+                          <span class="originalPrice">
+                            <em><%= $.withCommas(m.price.origin) %></em>
+                          </span>
+                          <span class="price">
+                            <em><%= $.withCommas(m.price.sale) %></em>원
+                          </span>
+                          <span class="benefits">
+                            <em>+<%= $.withCommas(m.benefit) %></em>P
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="bannerArea">
+              <ul>
+                <%
+                  var randomNumber = [];
+
+                  for(var a = 0, aLength = 5; a < aLength; a++) {
+                    var randomNo = Math.floor(Math.random() * data.banner.length);
+
+                    if (randomNumber.indexOf(randomNo) === -1) {
+                      randomNumber.push(randomNo);
+                    }
+                  }
+
+                  data.banner.forEach(function(b, j) {
+                    randomNumber.forEach(function(k) {
+                      if (j === k) {
+                %>
+                  <li>
+                    <a href="#">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                    </a>
+                  </li>
+                <% } }); }); %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- // 음반 / DVD -->
+      </div>
+      <!-- // ebook / 음반/DVD -->
+
+      <!-- 서프라이즈 굿즈# -->
+      <div class="goodsShopWrap">
+        <h2>서프라이즈 굿즈#</h2>
+        <div class="goodsShopRank">
+          <ul>
+            <% data.book.goods.forEach(function(g, i){ %>
+              <li class="rankNo<%= i + 1 %>">
+                <a href="#">
+                  <div class="goodsItem">
+                    <div class="goodsItemImage">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= g.image %>" alt="">
+                      <span class="circle"></span>
+                    </div>
+                    <div class="goodsItemMeta">
+                      <div class="productName">
+                        <strong class="brandName"><%= g.brand %></strong>
+                        <span class="itemName"><%= g.subject %></span>
+                      </div>
+                      <div class="itemPrice">
+                        <span>
+                          <em><%= $.withCommas(g.price.origin) %></em>원
+                        </span>
+                      </div>
+                      <div class="salePrice">
+                        <span class="price">
+                          <em><%= $.withCommas(g.price.sale) %></em>원
+                        </span>
+                        <span class="benefits">
+                          <em>+<%= $.withCommas(g.benefit) %></em>gift
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+        <div class="viewMore">
+          <a href="#">더보기</a>
+        </div>
+      </div>
+      <!-- // 서프라이즈 굿즈# -->
+
+      <!-- 북스토리 -->
+      <div class="bookStorySection">
+        <div class="bookStory">
+          <div class="bookStoryLeft">
+            <div class="bookDB">
+              <h2><img src="http://bimage.interpark.com/UI/pc/main/2016/common/h2_bookdb.png" alt="INTERPARK BOOK DB"></h2>
+              <div class="linkBookDB">
+                <ul>
+                  <li>
+                    <a href="#">이슈&amp;스토리</a>
+                  </li>
+                  <li>
+                    <a href="#">작가인터뷰</a>
+                  </li>
+                  <li>
+                    <a href="#">칼럼</a>
+                  </li>
+                  <li>
+                    <a href="#">명가의 서가</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="bookStoryContents">
+              <div class="bookStoryTab">
+                <ul>
+                  <% data.book.bookStory.forEach(function(s, i){ %>
+                    <li <% if (i === 0){ %>class="current"<% } %>>
+                      <a href="#" data-target-group="bookStoryContentWrap" data-target-content="bookStoryContent">
+                        <%= s.tab %>
+                        <i></i>
+                      </a>
+                    </li>
+                  <% }); %>
+                </ul>
+              </div>
+              <div class="bookStoryContentWrap">
+                <% data.book.bookStory.forEach(function(s, i){ %>
+                  <div class="bookStoryContent <% if (i === 0) { %>current<% } %>">
+                    <div class="textContent">
+                      <a href="#">
+                        <span class="title">
+                          <strong><%= s.title %></strong>
+                        </span>
+                        <p class="desc"><%= s.desc %></p>
+                      </a>
+                    </div>
+                    <div class="relatedBooks">
+                      <ul>
+                        <% s.list.forEach(function(b, i){ %>
+                          <li>
+                            <a href="#">
+                              <div class="bookCover <% if (b.setType) { %>setStyle<% } %>">
+                                <img src="<%= b.image %>" alt="<%= b.subject %>">
+                                <i></i>
+                              </div>
+                            </a>
+                          </li>
+                        <% }); %>
+                      </ul>
+                    </div>
+                  </div>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+          <div class="bookStoryRight">
+            <div class="bookStorySlider">
+              <ul>
+                <% data.book.bookStoryBanner.forEach(function(b, i){ %>
+                  <li>
+                    <a href="#">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                    </a>
+                  </li>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="bookStoryDisplays">
+              <% data.book.bookStoryDisplay.forEach(function(b) { %>
+                <div class="bookStoryDisplay">
+                  <a href="#">
+                    <img src="<%= b.image %>" alt="<%= b.subject %>">
+                    <div class="titleWrap">
+                      <strong class="title">
+                        <%= b.subject %>
+                      </strong>
+                    </div>
+                  </a>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // 북스토리 -->
+
+      <!-- 추천리뷰 -->
+      <div class="recommendReviewSection">
+        <div class="recommendReviews">
+          <h2>
+            <span>추천 리뷰</span>
+          </h2>
+          <div class="reviewList">
+            <ul>
+              <% data.book.recommendReview.forEach(function(b, i){ %>
+                <li>
+                  <a href="#">
+                    <div class="bookMeta">
+                      <strong class="title"><%= b.subject %></strong>
+                      <div class="starRateWrap">
+                        <span class="starRate">
+                          <span class="starRateValue" style="width: <%= b.rate * 10 %>%"><%= b.rate %></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="reviewMeta">
+                      <strong class="title"><%= b.title %></strong>
+                      <span class="reviewer">
+                        <dfn>작성자</dfn>
+                        <span><%= b.reviewer %></span>
+                      </span>
+                      <p class="desc"><%= b.desc %></p>
+                    </div>
+                    <div class="bookCover <% if (b.setType) { %>setStyle<% } %>">
+                      <img class="lazy" src="http://bimage.interpark.com/UI/pc/main/2016/common/blank.gif" data-src="<%= b.image %>" alt="<%= b.subject %>">
+                      <i></i>
+                    </div>
+                  </a>
+                </li>
+              <% }); %>
+            </ul>
+          </div>
+          <div class="viewMore">
+            <a href="#">더보기</a>
+          </div>
+        </div>
+      </div>
+      <!-- // 추천리뷰 -->
+
+      <!-- 서비스&혜택 -->
+      <div class="serviceBenefits">
+        <div class="serviceBenefitHeader">
+          <h2>서비스&amp;혜택</h2>
+          <div class="noticeList">
+            <h3>공지사항</h3>
+            <ul>
+              <li>
+                <a href="#">
+                  당일배송 확대 지역 및 주문 마감시간 변경 지역 안내입니다.
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="serviceBenefitContents">
+          <div class="col frugalPurchase">
+            <h3>알뜰구매 혜택</h3>
+            <ul>
+              <li>
+                <a href="#">NEW 우리V카드 10% 청구할인</a>
+              </li>
+              <li>
+                <a href="#">하나 북&amp;카드 최대 30% 청구할인</a>
+              </li>
+              <li>
+                <a href="#">인터파크 현대카드M 7%청구할인</a>
+              </li>
+              <li>
+                <a href="#">북피니언 롯데카드 최대 30% 청구할인</a>
+              </li>
+              <li>
+                <a href="#">인터파크 롯데포인트플러스 10%할인</a>
+              </li>
+              <li>
+                <a href="#">하나 이니포인트 카드 7% 적립</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col coreServices">
+            <h3>핵심서비스</h3>
+            <ul>
+              <li>
+                <a href="http://book.interpark.com/event/EventPremiumNewApplicant.do?_method=UProjectEventMain&bid1=16_main&bid2=bottom&bid3=service&bid4=01" target="_blank">중고 고가매입 서비스</a>
+              </li>
+              <li>
+                <a href="http://bookdb.co.kr/bdb/Main.do?_method=initial&bid1=16_main&bid2=bottom&bid3=service&bid4=02" target="_blank">북디비</a>
+              </li>
+              <li>
+                <a href="http://book.interpark.com/display/BtbFrontMain.do?_method=listBtbFrontMain&onlyCategory=Y&bid1=16_main&bid2=bottom&bid3=service&bid4=03" target="_blank">B2B 대량주문</a>
+              </li>
+              <li>
+                <a href="http://global.interpark.com/bookPark/html/book.html?&bid1=16_main&bid2=bottom&bid3=service&bid4=04" target="_blank">인터파크 Global</a>
+              </li>
+              <li>
+                <a href="http://book.interpark.com/order/bizdisreg.do&bid1=16_main&bid2=bottom&bid3=service&bid4=05" target="_blank">
+                  <em>사업자회원 특별할인<span class="new">new</span></em>
+                </a>
+              </li>
+              <li>
+                <a href="http://book.interpark.com/event/Event2016.do?_method=BookStoreInfoEventMain&bid1=16_main&bid2=bottom&bid3=service&bid4=06" target="_blank">도서 모바일 App</a>
+              </li>
+              <li>
+                <a href="http://book.interpark.com/bookPark/sitemap/CateIncludeAll.jsp?fn=2009/service/sub05_4.html&bid1=16_main&bid2=bottom&bid3=service&bid4=07" target="_blank">ebook 모바일 App</a>
+              </li>
+            </ul>
+            <ul>
+              <li class="mobile">
+                <a href="http://bookpark.ikaos.org/&bid1=16_main&bid2=bottom&bid3=service&bid4=bn" target="_blank">
+                  <img src="http://bimage.interpark.com/UI/pc/main/2017/common/img_bookPark.gif" alt="북파크">
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col assuredDelivery">
+            <h3>안심배송서비스</h3>
+            <ul>
+              <li>
+                <a href="#">당일/하루 배송 보장</a>
+              </li>
+              <li>
+                <a href="#">부분배송 서비스</a>
+              </li>
+              <li>
+                <a href="#">미주현지 직접배송</a>
+              </li>
+              <li>
+                <a href="#">해외주문배송 서비스</a>
+              </li>
+              <li>
+                <a href="#">모든책배송 보장</a>
+              </li>
+              <li>
+                <a href="#">편의점픽업 서비스</a>
+              </li>
+              <li>
+                <a href="#">안심번호 서비스</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col csCenter">
+            <h3>고객센터</h3>
+            <dl class="csNumber">
+              <dt>일반문의</dt>
+              <dd>1577 - 2555</dd>
+              <dt>중고판매 문의</dt>
+              <dd>1577 - 2556</dd>
+              <dt>eBook 문의</dt>
+              <dd>1588 - 2547</dd>
+            </dl>
+            <p class="csCenterTime">
+              월~금 (09:00~18:00), 토요일 (09:00~13:00)<br>
+              일요일, 공휴일 휴무
+            </p>
+            <div class="buttonsWrap">
+              <ul>
+                <li>
+                  <a href="#">
+                    <span>
+                      1:1 문의하기
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>
+                      배송
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <span>
+                      주문/결제
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- // 서비스&혜택 -->
+
+      <!-- 사업자회원 할인 배너 -->
+      <div class="businessBannerWrap">
+        <a href="http://book.interpark.com/order/bizdisreg.do&bid1=16_main&bid2=bottom&bid3=bn_line&bid4=01" target="_blank">도서를 더 저렴하게 구매하는 방법! 법인사업자라면 누구나 <strong>'사업자회원 특별할인!'</strong></a>
+      </div>
+      <!-- // 사업자회원 할인 배너 -->
+      <!-- Renewal Version :: End -->
+    </div>
+  </div>
+  <!--// ## Container S ## -->
+
+  <%- include('/layouts/mainRight'); %>
+
+  <%- include('/layouts/footer'); %>
+
+  <%- include('/layouts/scripts'); %>
+
+</body>
+</html>

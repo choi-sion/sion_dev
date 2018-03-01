@@ -1,0 +1,367 @@
+<div id="header">
+  <!-- # GateWay S # -->
+  <div id="gateGnb">
+    <div id="gateCon">
+      <div class="gateLeft">
+        <ul>
+          <li><a href="http://www.interpark.com?mbn=tour&amp;mln=int" title="클릭 시 인터파크 메인 페이지로 이동합니다." class="bt_gateMenu1"></a></li>
+          <li><a href="http://www.interpark.com?mbn=tour&amp;mln=int" title="클릭 시 인터파크 쇼핑 메인 페이지로 이동합니다." class="bt_gateMenu2">쇼핑</a></li>
+          <li class="selected"><a href="http://shopping.interpark.com?mbn=tour&amp;mln=shopping" title="클릭 시 인터파크 도서바로가기 메인 페이지로 이동합니다." class="bt_gateMenu3">도서바로가기</a></li>
+          <li><a href="http://fashion.interpark.com?mbn=tour&amp;mln=imarket" title="클릭 시 인터파크 티켓 메인 페이지로 이동합니다." class="bt_gateMenu4">티켓</a></li>
+          <li><a href="http://ticket.interpark.com?mbn=tour&amp;mln=ticket" title="클릭 시 인터파크 투어 메인 페이지로 이동합니다." class="bt_gateMenu5">투어</a></li>
+          <li><a href="http://tour.interpark.com?mbn=tour&amp;mln=tour" title="클릭 시 인터파크 아이마켓 메인 페이지로 이동합니다." class="bt_gateMenu6">아이마켓</a></li>
+        </ul>
+      </div>
+
+      <div class="gateRight">
+        <ul>
+          <li class="autoLogin" onclick="javascript:autolv()">
+            <a href="#">임지선님<img  id="autolvimg" src="<%- page.imgHeader %>/gnb/gnb_loginAuto_on.gif" class="on" alt="자동로그인 중입니다."/></a>
+            <!-- Layer S -->
+            <div id="autolv" class="layer_autoLogin2" style="display:none ;">
+              <div class="connect_box">
+                <div class="closeW"><a href="javascript:autolv()" onclick="javascript:autolv()"><img src="<%- page.imgHeader %>/bt_x.gif" alt="close" class="close_x"/></a></div>
+
+                <div class="txt1">로그인되어 있습니다.</div>
+
+                <div class="txt2">개인정보 보호를 위해<br/> 공용기기에서는<br/> 잊지말고 로그아웃 해주세요.</div>
+                <a href="#"  onblur="javascript:autolv()"><img src="<%- page.imgHeader %>/gnb/bt_logout.gif" alt="로그아웃" class="logout"/></a>
+              </div>
+            </div>
+            <!-- Layer E -->
+
+            <!-- Layer S ++ 다시한번 로그인 해주세요 시..
+            <div id="autolv" class="layer_autoLogin" style="display:none ;">
+              <div class="connect_box">
+                <div class="closeW"><a href="javascript:autolv()" onclick="javascript:autolv()"><img src="http://bimage.interpark.com/renewPark/welcome/bns/bt_x.gif" alt="close" class="close_x"/></a></div>
+
+                <div class="txt1">로그인상태를 유지하고 있습니다.</div>
+
+                <div class="txt2">개인정보 보호를 위해 공용기에서는 <br/>
+                        서비스 이용 종료시 로그아웃 해주시길 바라며, <br/>
+                        보안이 필요한 서비스 이용시  <br/>
+                        다시 한번 로그인 해주시기 바랍니다.</div>
+                <div class="cBtn"><a href="#"><img src="<%- page.imgHeader %>/gnb/bt_relogin.gif" alt="재로그인" class="btnLeft"/></a><a href="#"  onblur="javascript:autolv()"><img src="<%- page.imgHeader %>/gnb/bt_logout.gif" alt="로그아웃" class="btnAlone"/></a></div>
+              </div>
+            </div>
+             Layer E -->
+          </li>
+          <!--<li><a href="#">로그인</a></li>
+          <li><a href="#">회원가입</a></li>-->
+          <li><a href="#">북카트</a></li>
+          <li class="mypg" onmouseover="showMlv('mlv');" onmouseout="hideMlv('mlv');">
+            <a class="off" id="mlv_arrow" href="#" onfocus="showMlv('mlv');">마이페이지</a>
+            <div class="mypgsub" id="mlv" style="display:none ;" onmouseover="showMlv('mlv');" onmouseout="hideMlv('mlv');">
+              <div class="mlv_Ly">
+                <dl>
+                  <dt class="blind">마이페이지 레이어</dt>
+                  <dd><a href="#">마이북</a></dd>
+                  <dd><a href="#">주문배송조회</a></dd>
+                  <dd><a href="#">I-포인트적립</a></dd>
+                  <dd><a href="#">나의하트내역</a></dd>
+                  <dd><a href="#">나의할인쿠폰</a></dd>
+                  <dd><a href="#"  onblur="hideMlv('mlv');">회원수정</a></dd>
+                </dl>
+              </div>
+            </div>
+          </li>
+          <li class="mybp" onmouseover="showMlv('mbp');" onmouseout="hideMlv('mbp');">
+            <a class="off" id="mbp_arrow" href="#" onfocus="showMlv('mbp');">북피니언</a>
+            <div class="mybpsub" id="mbp" style="display:none ;" onmouseover="showMlv('mbp');" onmouseout="hideMlv('mbp');">
+              <div class="mbp_Ly">
+                <dl>
+                  <dt class="blind">북피니언 레이어</dt>
+                  <dd><a href="#">마이북피니언</a></dd>
+                  <dd><a href="#" onblur="hideMlv('mbp');">북피니언광장</a></dd>
+                </dl>
+              </div>
+            </div>
+          </li>
+          <li><a href="#">고객센터</a></li>
+          <li><a href="#">모바일APP</a></li>
+          <li><a href="#" title="클릭 시 스마트콘 서비스로 이동합니다.">스마트콘</a> <img src="<%- page.imgHeader %>/gnb/smartCon-on.gif" alt=""></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- # GNB S # -->
+  <div class="gnbArea">
+    <!-- # Floating Banner #-->
+    <% if (state === 'floating') { %>
+    <div id="float_banner">
+      <img src="<%- page.imgPath %>/floating.png" alt="floating banner" usemap="#float_banner">
+      <map name="float_banner">
+        <area shape="circle" coords="68,66,64" href="#" alt="floating banner">
+        <area shape="rect" coords="114,114,130,129" href="#" class="hide" alt="close">
+      </map>
+    </div>
+    <% } %>
+
+    <!-- # Search S # -->
+    <div id="searchWrap">
+      <div class="searchArea">
+        <h1>
+          <a href="#" class="interpark" title="interpark">interpark</a>
+          <a href="http://css.bookpark.com/" class="book" title="도서">도서</a>
+          <a href="#" class="nhn" style="display:none;"><img src="<%- page.imgHeader %>/lgnb/ogo_NHN.gif" alt=""></a>
+          <a href="#" class="aside"></a>
+        </h1>
+
+        <div class="gnbSearch" id="SearchGNBFrom">
+          <div class="searchBox">
+            <fieldset>
+              <legend>검색</legend>
+              <span class="select">통합검색</span>
+                <ul>
+                  <li>통합검색</li>
+                  <li>도서</li>
+                  <li>주문원서</li>
+                  <li>음반</li>
+                  <li>DVD</li>
+                  <li>헌책방</li>
+                  <li>테마/리뷰</li>
+                </ul>
+              <label for="bsearch" class="blind">도서 자동검색</label>
+                <input type="text" name="bsearch" id="bsearch" value="북DB 오픈!!"/>
+                <span class="arrow"><img src="http://bimage.interpark.com/renewPark/common/welcome/btn_search_down.gif" alt="자동완성"/></span>
+            </fieldset>
+
+              <div id="auto" style="display:none;">
+                <div class="select">
+                  <ul>
+                    <li class="on"><a href="#">[작가] <span>공지영</span></a></li>
+                    <li><a href="#">도가니 <span>공지영</span></a></li>
+                    <li><a href="#">네가 어떤 삶을 살든 나는 너를 응원할 것이다.. <span>공지영</span></a></li>
+                    <li><a href="#">맨발로 글목을 돌다 <span>공지영</span></a></li>
+                    <li><a href="#">즐거운 나의 집 <span>공지영</span></a></li>
+
+                  </ul>
+                  <ul class="pub">
+                    <li>[작가] <a href="#">그렉 <span>브레</span>이든</a></li>
+                    <li>[작가] <a href="#">그렉 <span>브레</span>이든</a></li>
+                    <li>[출판사] <a href="#"><span>브레</span>드샵</a></li>
+                    <li>[출판사] <a href="#"><span>브레</span>드샵</a></li>
+                    <li>[출판사] <a href="#"><span>브레</span>드샵</a></li>
+                  </ul>
+                </div>
+                <div class="book">
+                  <h3><a href="#">Dawn Park1(트와일라잇 <span>공지영</span>이야기)</a></h3>
+                  <h4>스테프니 메이어 l 북폴리오 l 2011.10.31</h4>
+                  <dl>
+                    <dt><a href="#"><img src="<%- page.imgPath %>/test1.gif" alt=""></a></dt>
+                    <dd>
+                      <p class="num">
+                        <span>
+                          <img src="<%- page.imgPath %>/star_1.gif" alt=""/>
+                          <img src="<%- page.imgPath %>/star_1.gif" alt=""/>
+                          <img src="<%- page.imgPath %>/star_1.gif" alt=""/>
+                          <img src="<%- page.imgPath %>/star_2.gif" alt=""/>
+                          <img src="<%- page.imgPath %>/star_3.gif" alt=""/>
+                        </span>
+                      </p>
+                      <!-- 20130430 수정 -->
+                      <p class="priceNew">
+                        200,000원<span>(</span>10%<span>적립)</span>
+                      </p>
+                      <!-- //20130430 수정 -->
+                    </dd>
+                  </dl>
+                  <p class="btn">
+                    <a href="#"><img src="<%- page.imgPath %>/btn_a_detail.gif" alt=""/></a>
+                    <a href="#"><img src="<%- page.imgPath %>/btn_a_bookcart.gif" alt=""/></a>
+                  </p>
+                </div>
+                <div class="his">
+                  <h3><a href="#"><b>[작가]</b> 그렉 브레이든</a></h3>
+                  <ul>
+                    <li><a href="#">도가니</a></li>
+                    <li><a href="#">네가 어떤 삶을 살든 나는 너를 응원할 것이다..</a></li>
+                    <li><a href="#">맨발로 글목을 돌다</a></li>
+                    <li><a href="#">즐거운 나의 집</a></li>
+                    <li><a href="#">지리산 행복학교 공지영의</a></li>
+                    <li><a href="#">더 이상 아름다운 방황은 없다</a></li>
+                    <li><a href="#">빗방울처럼 나는 혼자였다</a></li>
+                    <li><a href="#">사랑 후에 오는 것들 공지영</a></li>
+                    <li><a href="#">공지영의 수도원 기행</a></li>
+                  </ul>
+                </div>
+                <div class="option">
+                  <a href="#"><img src="<%- page.imgPath %>/btn_a_stop.gif" alt=""></a>
+                  <a class="slideToggle" href="#auto"><img src="<%- page.imgPath %>/btn_a_close.gif" alt="검색창 닫기"/></a>
+                </div>
+              </div>
+          <!--// ## Layer Search 자동완성 레이어 ## -->
+          </div>
+
+          <div class="srBtn"><a href="#"><img src="<%- page.imgHeader %>/gnb/btn_gnb_search.gif" alt="검색"/></a></div>
+
+        </div>
+
+        <div class="hotClick">
+          <div class="hcTit"><img alt="핫클릭" src="<%- page.imgHeader %>/gnb/title_hotclick.gif"/></div>
+          <ul class="keyword">
+            <li><a href="#">황석영</a></li>
+            <li><a href="#">강남몽</a></li>
+            <li><a href="#">이효리</a></li>
+            <li><a href="#">금융위기</a></li>
+            <li><a href="#">파페포포</a></li>
+            <li><a href="#">황석영</a></li>
+            <li><a href="#">강남몽</a></li>
+            <li><a href="#">이효리</a></li>
+            <li><a href="#">금융위기</a></li>
+            <li><a href="#">파페포포</a></li>
+            <li><a href="#">황석영</a></li>
+            <li><a href="#">강남몽</a></li>
+            <li><a href="#">이효리</a></li>
+            <li><a href="#">금융위기</a></li>
+            <li><a href="#">파페포포</a></li>
+            <li><a href="#">황석영</a></li>
+            <li><a href="#">강남몽</a></li>
+            <li><a href="#">이효리</a></li>
+            <li><a href="#">금융위기</a></li>
+            <li><a href="#">파페포포</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--// # Search E # -->
+
+    <!-- # GNB S # -->
+    <div id="gnbWrap">
+      <ul>
+        <li class="cate"><a href="#category" class="slideToggle"><img src="<%- page.imgHeader %>/searchGnb/sgnb_select.png" class="icate" alt="도서카테고리 전체보기"/></a>
+          <!-- category Layer -->
+        <div id="category">
+          <dl>
+            <dt><a href="#">국내도서</a></dt>
+            <dd><a href="#">소설</a></dd>
+            <dd><a href="#">시·에세이</a></dd>
+            <dd><a href="#">사회과학</a></dd>
+            <dd><a href="#">역사와 문화</a></dd>
+            <dd><a href="#">예술·대중문화</a></dd>
+            <dd><a href="#">유아</a></dd>
+            <dd><a href="#">아동</a></dd>
+            <dd><a href="#">초등학습</a></dd>
+            <dd><a href="#">중고등학습</a></dd>
+            <dd><a href="#">전공·대학교재</a></dd>
+            <dd><a href="#">여행</a></dd>
+            <dd><a href="#">취미·레저</a></dd>
+            <dd><a href="#">만화</a></dd>
+          </dl>
+          <dl>
+            <dd>&nbsp;</dd>
+            <dd><a href="#">경제경영</a></dd>
+            <dd><a href="#">자기계발</a></dd>
+            <dd><a href="#">인문</a></dd>
+            <dd><a href="#">자연과 과학</a></dd>
+            <dd><a href="#">종교·역학</a></dd>
+            <dd><a href="#">가정과 생활</a></dd>
+            <dd><a href="#">청소년</a></dd>
+            <dd><a href="#">국어·외국어·사전</a></dd>
+            <dd><a href="#">자격서·수험서</a></dd>
+            <dd><a href="#">컴퓨터·인터넷</a></dd>
+            <dd><a href="#">건강·뷰티</a></dd>
+            <dd><a href="#">잡지</a></dd>
+          </dl>
+          <dl class="line">
+            <dt><a href="#">외국도서</a></dt>
+            <dd><a href="#">어린이 </a></dd>
+            <dd><a href="#">문학</a></dd>
+            <dd><a href="#">ELT·사전</a></dd>
+            <dd><a href="#">일본도서</a></dd>
+            <dd><a href="#">경영·인문</a></dd>
+            <dd><a href="#">실용·예술</a></dd>
+            <dd><a href="#">대학·전문서적</a></dd>
+            <dd><a href="#">컴퓨터</a></dd>
+            <dd><a href="#">해외잡지</a></dd>
+            <dd><a href="#">해외주문원서</a></dd>
+            <dd><a href="#">중국도서</a></dd>
+            <dd><a href="#">프랑스도서 </a></dd>
+            <dd><a href="#">LEXILE ®</a></dd>
+          </dl>
+          <dl class="line">
+            <dt><a href="#">비스킷 eBook</a></dt>
+            <dd><a href="#">소설</a></dd>
+            <dd><a href="#">시·에세이</a></dd>
+            <dd><a href="#">경제경영</a></dd>
+            <dd><a href="#">인문·역사 </a></dd>
+            <dd><a href="#">예술·종교</a></dd>
+            <dd><a href="#">초중고학습서</a></dd>
+            <dd><a href="#">어학서·수험서</a></dd>
+            <dd><a href="#">만화</a></dd>
+            <dd><a href="#">어린이</a></dd>
+            <dd><a href="#">성인</a></dd>
+            <dd><a href="#">잡지</a></dd>
+          </dl>
+          <dl>
+            <dd>&nbsp;</dd>
+            <dd><a href="#">장르소설</a></dd>
+            <dd><a href="#">자기계발</a></dd>
+            <dd><a href="#">자연·사회과학</a></dd>
+            <dd><a href="#">가정·취미·건강</a></dd>
+            <dd><a href="#">대학교재</a></dd>
+            <dd><a href="#">외국도서</a></dd>
+            <dd><a href="#">대여만화</a></dd>
+            <dd><a href="#">청소년</a></dd>
+            <dd><a href="#">북씨</a></dd>
+            <dd><a href="#">biscuit단말기 </a></dd>
+          </dl>
+          <dl class="line">
+            <dt><a href="#">음반·DVD</a></dt>
+            <dd><a href="#">가요</a></dd>
+            <dd><a href="#">팝</a></dd>
+            <dd><a href="#">락</a></dd>
+            <dd><a href="#">클래식</a></dd>
+            <dd><a href="#">유아·아동·태교</a></dd>
+            <dd><a href="#">국악</a></dd>
+            <dd><a href="#">수입음반</a></dd>
+            <dd><a href="#">아티스트관련상품</a></dd>
+            <dd><a href="#">뮤직 DVD</a></dd>
+            <dd><a href="#">EBS 교육용</a></dd>
+          </dl>
+          <dl>
+            <dd>&nbsp;</dd>
+            <dd><a href="#">O.S.T</a></dd>
+            <dd><a href="#">일본음악</a></dd>
+            <dd><a href="#">재즈</a></dd>
+            <dd><a href="#">뉴에이지</a></dd>
+            <dd><a href="#">종교</a></dd>
+            <dd><a href="#">월드뮤직</a></dd>
+            <dd><a href="#">뮤직 DVD</a></dd>
+            <dd><a href="#">해외구매</a></dd>
+            <dd><a href="#">유아동/교육DVD</a></dd>
+            <dd><a href="#">DVD</a></dd>
+          </dl>
+          <div class="cb"></div>
+          <dl>
+            <dt><a href="#">헌책방</a></dt>
+            <dd><a href="#">브랜드전집</a></dd>
+            <dd><a href="#">소설</a></dd>
+          </dl>
+          <dl>
+            <dd><a href="#">유아</a></dd>
+            <dd><a href="#">자기계발</a></dd>
+          </dl>
+          <dl class="line">
+            <dt><a href="#">북아울렛</a></dt>
+          </dl>
+
+          <dl class="line">
+            <dt><a href="#">아트갤러리</a></dt>
+          </dl>
+          <span class="close"><a href="#category" class="slideToggle"><img src="<%- page.imgPath %>/btn_close_cate.gif" alt=""></a></span>
+        </div>
+      <!--//Category Layer -->
+        </li>
+        <li><a href="#"><img src="<%- page.imgHeader %>/searchGnb/sgnb1.png" alt="통합검색"/></a></li>
+        <li><a href="#"><img src="<%- page.imgHeader %>/searchGnb/sgnb2.png" alt="쇼핑"/></a></li>
+        <li><a href="#"><img src="<%- page.imgHeader %>/searchGnb/sgnb3.png" alt="마트"/></a></li>
+        <li><a href="#"><img src="<%- page.imgHeader %>/searchGnb/sgnb4.png" alt="도서/음반"/></a></li>
+        <li><a href="#"><img src="<%- page.imgHeader %>/searchGnb/sgnb5.png" alt="공연/영화"/></a></li>
+        <li><a href="#"><img src="<%- page.imgHeader %>/searchGnb/sgnb6.png" alt="여행/항공/호텔"/></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

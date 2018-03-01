@@ -1,0 +1,822 @@
+
+<div id="bookPark">
+
+  <div id="header">
+    <!-- # GateWay S # -->
+    <div id="gateGnb">
+      <div id="gateCon">
+        <div class="gateLeft">
+          <ul>
+            <li><a href="http://www.interpark.com?mbn=tour&amp;mln=int" title="클릭 시 인터파크 메인 페이지로 이동합니다." class="bt_gateMenu1"></a></li>
+            <li><a href="http://www.interpark.com?mbn=tour&amp;mln=int" title="클릭 시 인터파크 쇼핑 메인 페이지로 이동합니다." class="bt_gateMenu2">쇼핑</a></li>
+            <li class="selected"><a href="http://shopping.interpark.com?mbn=tour&amp;mln=shopping" title="클릭 시 인터파크 도서바로가기 메인 페이지로 이동합니다." class="bt_gateMenu3">도서바로가기</a></li>
+            <li><a href="http://fashion.interpark.com?mbn=tour&amp;mln=imarket" title="클릭 시 인터파크 티켓 메인 페이지로 이동합니다." class="bt_gateMenu4">티켓</a></li>
+            <li><a href="http://ticket.interpark.com?mbn=tour&amp;mln=ticket" title="클릭 시 인터파크 투어 메인 페이지로 이동합니다." class="bt_gateMenu5">투어</a></li>
+            <li><a href="http://tour.interpark.com?mbn=tour&amp;mln=tour" title="클릭 시 인터파크 아이마켓 메인 페이지로 이동합니다." class="bt_gateMenu6">아이마켓</a></li>
+          </ul>
+        </div>
+
+        <!--<div class="gateCenter">
+          <p><a href="#" target="_blank"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/morningBanner.jpg" alt="MORNING COFFEE"/></a></p>
+        </div>-->
+
+        <div class="gateRight">
+          <ul>
+            <li class="autoLogin" onclick="javascript:autolv()">
+              <a href="#">임지선님<img  id="autolvimg" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb_loginAuto_on.gif" class="on" alt="자동로그인 중입니다."/></a>
+              <!-- Layer S -->
+              <div id="autolv" class="layer_autoLogin2" style="display:none ;">
+                <div class="connect_box">
+                  <div class="closeW"><a href="javascript:autolv()" onclick="javascript:autolv()"><img src="http://bimage.interpark.com/renewPark/welcome/bns/bt_x.gif" alt="close" class="close_x"/></a></div>
+
+                  <div class="txt1">로그인되어 있습니다.</div>
+
+                  <div class="txt2">개인정보 보호를 위해<br/> 공용기기에서는<br/> 잊지말고 로그아웃 해주세요.</div>
+                  <a href="#"  onblur="javascript:autolv()"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/bt_logout.gif" alt="로그아웃" class="logout"/></a>
+                </div>
+              </div>
+              <!-- Layer E -->
+
+              <!-- Layer S ++ 다시한번 로그인 해주세요 시..
+              <div id="autolv" class="layer_autoLogin" style="display:none ;">
+                <div class="connect_box">
+                  <div class="closeW"><a href="javascript:autolv()" onclick="javascript:autolv()"><img src="http://bimage.interpark.com/renewPark/welcome/bns/bt_x.gif" alt="close" class="close_x"/></a></div>
+
+                  <div class="txt1">로그인상태를 유지하고 있습니다.</div>
+
+                  <div class="txt2">개인정보 보호를 위해 공용기에서는 <br/>
+                          서비스 이용 종료시 로그아웃 해주시길 바라며, <br/>
+                          보안이 필요한 서비스 이용시  <br/>
+                          다시 한번 로그인 해주시기 바랍니다.</div>
+                  <div class="cBtn"><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/bt_relogin.gif" alt="재로그인" class="btnLeft"/></a><a href="#"  onblur="javascript:autolv()"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/bt_logout.gif" alt="로그아웃" class="btnAlone"/></a></div>
+                </div>
+              </div>
+               Layer E -->
+            </li>
+            <!--<li><a href="#">로그인</a></li>
+            <li><a href="#">회원가입</a></li>-->
+            <li><a href="#">북카트</a></li>
+            <li class="mypg" onmouseover="showMlv('mlv');" onmouseout="hideMlv('mlv');">
+              <a class="off" id="mlv_arrow" href="#" onfocus="showMlv('mlv');">마이페이지</a>
+              <div class="mypgsub" id="mlv" style="display:none ;" onmouseover="showMlv('mlv');" onmouseout="hideMlv('mlv');">
+                <div class="mlv_Ly">
+                  <dl>
+                    <dt class="blind">마이페이지 레이어</dt>
+                    <dd><a href="#">마이북</a></dd>
+                    <dd><a href="#">주문배송조회</a></dd>
+                    <dd><a href="#">I-포인트적립</a></dd>
+                    <dd><a href="#">나의하트내역</a></dd>
+                    <dd><a href="#">나의할인쿠폰</a></dd>
+                    <dd><a href="#"  onblur="hideMlv('mlv');">회원수정</a></dd>
+                  </dl>
+                </div>
+              </div>
+            </li>
+            <li class="mybp" onmouseover="showMlv('mbp');" onmouseout="hideMlv('mbp');">
+              <a class="off" id="mbp_arrow" href="#" onfocus="showMlv('mbp');">북피니언</a>
+              <div class="mybpsub" id="mbp" style="display:none ;" onmouseover="showMlv('mbp');" onmouseout="hideMlv('mbp');">
+                <div class="mbp_Ly">
+                  <dl>
+                    <dt class="blind">북피니언 레이어</dt>
+                    <dd><a href="#">마이북피니언</a></dd>
+                    <dd><a href="#" onblur="hideMlv('mbp');">북피니언광장</a></dd>
+                  </dl>
+                </div>
+              </div>
+            </li>
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">모바일APP</a></li>
+            <li><a href="#" title="클릭 시 스마트콘 서비스로 이동합니다.">스마트콘</a> <img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/smartCon-on.gif" alt=""></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--// # GateWay E # -->
+
+    <div class="gnbArea">
+      <!-- # Search S # -->
+      <div id="searchWrap">
+        <div class="searchArea">
+          <h1>
+            <a href="#" class="interpark" title="interpark">interpark</a>
+            <a href="http://dev.bookpark.com/" class="book" title="도서">도서</a>
+            <a href="#" class="nhn" style="display:none;"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/logo_NHN.gif" alt=""></a>
+            <a href="#" class="aside"></a>
+          </h1>
+
+          <div class="gnbSearch" id="SearchGNBFrom">
+            <div class="searchBox">
+              <label for="bsearch" class="blind">도서 자동검색</label>
+              <input type="text" name="bsearch" id="bsearch" value="북DB 오픈!!" />
+              <a href="/search/search_main.html"><img class="inputBtn" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_search_down.gif" alt="자동완성"/></a>
+            </div>
+
+            <div class="srBtn"><a  href="javascript:;"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_gnb_search.gif" alt="검색"/></a></div>
+          </div>
+
+          <div class="hotClick">
+            <div class="hcTit"><img alt="핫클릭" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/title_hotclick.gif"/></div>
+            <ul class="keyword">
+              <li><a href="#">황석영</a></li>
+              <li><a href="#">강남몽</a></li>
+              <li><a href="#">이효리</a></li>
+              <li><a href="#">금융위기</a></li>
+              <li><a href="#">파페포포</a></li>
+              <li><a href="#">황석영</a></li>
+              <li><a href="#">강남몽</a></li>
+              <li><a href="#">이효리</a></li>
+              <li><a href="#">금융위기</a></li>
+              <li><a href="#">파페포포</a></li>
+              <li><a href="#">황석영</a></li>
+              <li><a href="#">강남몽</a></li>
+              <li><a href="#">이효리</a></li>
+              <li><a href="#">금융위기</a></li>
+              <li><a href="#">파페포포</a></li>
+              <li><a href="#">황석영</a></li>
+              <li><a href="#">강남몽</a></li>
+              <li><a href="#">이효리</a></li>
+              <li><a href="#">금융위기</a></li>
+              <li><a href="#">파페포포</a></li>
+            </ul>
+          </div>
+
+          <div class="gnbRight_Ban">
+            <div class="rightBan"><a href="http://dev.bookpark.com/LuckyBag/luckybag.html"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan1.gif" alt=""/></a></div>
+          </div>
+        </div>
+      </div>
+      <!--// # Search E # -->
+
+      <!-- ## Layer Search 20160113 자동완성 레이어 ## -->
+      <div id="auto" style="display:none;">
+        <div class="select">
+          <ul>
+            <li class="on"><a href="#">[작가] <span>공지영</span></a></li>
+            <li><a href="#">도가니 <span>공지영</span></a></li>
+            <li><a href="#">네가 어떤 삶을 살든 나는 너를 응원할 것이다.. <span>공지영</span></a></li>
+            <li><a href="#">맨발로 글목을 돌다 <span>공지영</span></a></li>
+            <li><a href="#">즐거운 나의 집 <span>공지영</span></a></li>
+
+          </ul>
+          <ul class="pub">
+            <li>[작가] <a href="#">그렉 <span>브레</span>이든</a></li>
+            <li>[작가] <a href="#">그렉 <span>브레</span>이든</a></li>
+            <li>[출판사] <a href="#"><span>브레</span>드샵</a></li>
+            <li>[출판사] <a href="#"><span>브레</span>드샵</a></li>
+            <li>[출판사] <a href="#"><span>브레</span>드샵</a></li>
+          </ul>
+        </div>
+        <div class="book">
+          <h2><a href="#">Dawn Park1(트와일라잇 <span>공지영</span>이야기)</a></h2>
+          <div class="info">스테프니 메이어 l 북폴리오 l 2011.10.31</div>
+          <dl>
+            <dt><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_autoPic.gif" alt=""></a></dt>
+            <dd>
+              <p class="num">
+                <span>
+                  <img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/star_1.gif" alt="">
+                  <img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/star_1.gif" alt="">
+                  <img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/star_1.gif" alt="">
+                  <img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/star_2.gif" alt="">
+                  <img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/star_3.gif" alt="">
+                </span>
+              </p>
+              <p class="priceNew">
+                200,000원<span>(</span>10%<span>적립)</span>
+              </p>
+            </dd>
+          </dl>
+          <p class="btn">
+            <a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_auto_detail.gif" alt=""></a>
+            <a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_auto_bookcart.gif" alt=""></a>
+          </p>
+        </div>
+        <div class="his">
+          <h3><a href="#"><b>[작가]</b> 그렉 브레이든</a></h3>
+          <ul>
+            <li><a href="#">도가니</a></li>
+            <li><a href="#">네가 어떤 삶을 살든 나는 너를 응원할 것이다..</a></li>
+            <li><a href="#">맨발로 글목을 돌다</a></li>
+            <li><a href="#">즐거운 나의 집</a></li>
+            <li><a href="#">지리산 행복학교 공지영의</a></li>
+            <li><a href="#">더 이상 아름다운 방황은 없다</a></li>
+            <li><a href="#">빗방울처럼 나는 혼자였다</a></li>
+            <li><a href="#">사랑 후에 오는 것들 공지영</a></li>
+            <li><a href="#">공지영의 수도원 기행</a></li>
+          </ul>
+        </div>
+        <div class="option">
+          <a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_auto_stop.gif" alt="검색기능 끄기"/></a>
+          <a class="slideToggle" href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_auto_close.gif" alt="검색창 닫기"/></a>
+        </div>
+      </div>
+      <!--// ## Layer Search 20160113 자동완성 레이어 ## -->
+
+      <!-- # GNB S # -->
+      <div id="gnbWrap">
+        <ul class="gnb_left">
+          <li onmouseover="showGLayer('cateSub1');" onmouseout="hideGLayer('cateSub1');">
+            <a href="http://dev.bookpark.com/last_inc/last_inc_book.html" onfocus="showGLayer('cateSub1');"><img onmouseover="gnbBtn(1)" onmouseout="gnbBtn(1)" id="btn_gnb1"  src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/20150708/gnb1_off.gif" alt="국내도서"/></a>
+            <span class="icoG_L01"></span>
+            <!-- 레이어 영역 S -->
+            <div class="lay_gnb" id="cateSub1" style="display:none;">
+              <div class="tt">
+                <span class="arrow"></span>
+                <span class="allview"><a href="javascript:ly_all(1)"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_ly_allView.gif" alt="전체보기"/></a></span>
+                <a href="#"><img class="tit" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/cateSub01_title.gif" alt="인터파크 국내도서"/></a>
+              </div>
+
+                <div  class="bb">
+                      <div id="ly_all_1" class="ly_all" style="display:;">
+                  <ul>
+                    <li><a href="#">가정과 생활</a></li>
+                    <li><a href="#">중고로만나는신간</a></li>
+                    <li><a href="#">만화</a></li>
+                    <li><a href="#">사회과학</a></li>
+                    <li><a href="#">소설</a></li>
+                    <li><a href="#">비소설/문학론</a></li>
+                    <li><a href="#">역사와 문화</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">자기계발</a></li>
+                    <li><a href="#">잡지</a></li>
+                    <li><a href="#">종교/역학</a></li>
+                    <li><a href="#">청소년</a></li>
+                    <li><a href="#">취미/레저</a></li>
+                    <li><a href="#">건강/뷰티</a></li>
+                    <li><a href="#">국어와 외국어</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">아동</a></li>
+                    <li><a href="#">여행</a></li>
+                    <li><a href="#">예술/대중문화</a></li>
+                    <li><a href="#">자격서/수험서</a></li>
+                    <li><a href="#">자연과 과학</a></li>
+                    <li><a href="#">전공/대학교재</a></li>
+                    <li><a href="#">중고등학습서</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">가정과 생활</a></li>
+                    <li><a href="#">경제경영</a></li>
+                    <li><a href="#">만화/라이트노벨</a></li>
+                    <li><a href="#">사회과학</a></li>
+                    <li><a href="#">소설</a></li>
+                  </ul>
+                </div>
+                <div class="ly_bb">
+                  <ul>
+                    <li><a href="#">새로나온책</a></li>
+                    <li><a href="#">예약판매</a></li>
+                    <li><a href="#">베스트셀러</a></li>
+                    <li><a href="#">스테디셀러</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">펼쳐보기</a></li>
+                    <li><a href="#">세일&amp;쿠폰</a></li>
+                    <!-- <li><a href="#">이벤트</a></li> -->
+                    <li><a href="#">북앤기프트</a></li>
+                    <!-- 20150629 추가 -->
+                    <li><a href="#">우리학교 참고서</a> <img src="http://bimage.interpark.com/renewPark/reBookpark/common/comm/ico_new.gif" alt="NEW" /></li>
+                    <!-- 20150629 추가 -->
+                  </ul>
+                  <p class="banner"><a href="#" onblur="hideGLayer('cateSub1'); "><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan.gif" alt=""/></a></p>
+                </div>
+                </div>
+              </div>
+            <!-- 레이어 영역 E -->
+          </li>
+          <li onmouseover="showGLayer('cateSub2');" onmouseout="hideGLayer('cateSub2');">
+            <a href="#" onfocus="showGLayer('cateSub2');"><img onmouseover="gnbBtn(2)" onmouseout="gnbBtn(2)" id="btn_gnb2" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/20150708/gnb2_off.gif" alt="외국도서"/></a>
+            <span class="icoG_L02">
+              <a href="#" onclick="window.open('http://book.interpark.com/coupon/CouponFntMgt.do?_method=popup&sc.couponNo=46V702ZGI4&FromLogin=Y', 'xshield', 'width=578,height=468,scrollbars=no');return false;" class="ico_coupon">10%할인쿠폰</a><!-- 20151015 추가 -->
+            </span>
+            <!-- 레이어 영역 S -->
+             <div class="lay_gnb" id="cateSub2" style="display:none;">
+               <div class="tt">
+                               <span class="arrow"></span>
+                                 <span class="allview"><a href="javascript:ly_all(2)"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_ly_allView.gif" alt="전체보기"/></a></span>
+                                 <a href="#"><img class="tit" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/cateSub02_title.gif" alt="인터파크 외국도서"/></a>
+                              </div>
+                <div  class="bb">
+                      <div id="ly_all_2" class="ly_all" style="display:;">
+                  <ul>
+                    <li><a href="#">어린이</a></li>
+                    <li><a href="#">문학</a></li>
+                    <li><a href="#">ELT&middot;사전</a></li>
+                    <li><a href="#">일본도서</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">경제&middot;인문</a></li>
+                    <li><a href="#">실용&middot;예술</a></li>
+                    <li><a href="#">대학&middot;전문서적</a></li>
+                    <li><a href="#">컴퓨터</a></li>
+                  </ul>
+                   <ul>
+                    <li><a href="#">해외잡지</a></li>
+                    <li><a href="#">해외주문원서</a></li>
+                    <!-- 20140922 추가 S -->
+                    <li><a href="#">학습교구&middot;게임</a> <img src="http://bimage.interpark.com/renewPark/reBookpark/common/comm/ico_new.gif" alt="NEW"/></li>
+                    <!--// 20140922 추가 E -->
+                  </ul>
+                   <ul>
+                    <li><a href="#">LEXILE ®</a></li>
+                  </ul>
+                                  </div>
+
+                 <div class="ly_bb">
+                                      <ul>
+                                          <li><a href="#">새로나온책</a></li>
+                                          <li><a href="#">예약판매</a></li>
+                                          <li><a href="#">베스트셀러</a></li>
+                                          <li><a href="#">스테디셀러</a></li>
+                                      </ul>
+                                      <ul>
+                                          <li><a href="#">이벤트</a></li>
+                                          <li><a href="#">원서vs번역서</a></li>
+                                      </ul>
+                                      <p class="banner"><a href="#" onblur="hideGLayer('cateSub2');"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan.gif" alt=""/></a></p>
+                 </div>
+                </div>
+              </div>
+            <!-- 레이어 영역 E -->
+          </li>
+          <li onmouseover="showGLayer('cateSub3');" onmouseout="hideGLayer('cateSub3');">
+            <a href="/1st_cate/eBook_main.html" onfocus="showGLayer('cateSub3');"><img onmouseover="gnbBtn(3)" onmouseout="gnbBtn(3)" id="btn_gnb3"  src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/20150708/gnb3_off.gif" alt="eBook"/></a>
+            <a href="#" style="cursor:pointer;"><span class="icoG_L03"></span></a>
+            <!-- 레이어 영역 S -->
+
+            <div class="lay_gnb" id="cateSub3" style="display:none;">
+              <div class="tt">
+                                 <span class="arrow"></span>
+                                   <span class="allview"><a href="javascript:ly_all(3)"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_ly_allView.gif" alt="전체보기"/></a></span>
+                                   <a href="#"><img class="tit" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/cateSub03_title.gif" alt="인터파크 eBook"/></a>
+              </div>
+
+              <div  class="bb">
+                <div id="ly_all_3" class="ly_all" style="display:;">
+                   <ul>
+                                         <li><a href="#">소설</a></li>
+                                         <li><a href="#">장르소설</a></li>
+                                         <li><a href="#">시&middot;에세이</a></li>
+                                         <li><a href="#">경제경영</a></li>
+                                         <li><a href="#">자기계발</a></li>
+                  </ul>
+                  <ul>
+                                         <li><a href="#">인문&middot;역사</a></li>
+                                         <li><a href="#">예술&middot;종교</a></li>
+                                         <li><a href="#">자연&middot;사회과학</a></li>
+                                         <li><a href="#">가정&middot;취미&middot;건강</a></li>
+                                         <li><a href="#">초중고학습서</a></li>
+                  </ul>
+                  <ul>
+                                         <li><a href="#">어학서&middot;수험서</a></li>
+                                         <li><a href="#">대학교재</a></li>
+                                         <li><a href="#">외국도서</a></li>
+                                         <li><a href="#">만화</a></li>
+                                         <li><a href="#">어린이&middot;청소년</a></li>
+                  </ul>
+                  <ul>
+                                         <li><a href="#">잡지</a></li>
+                                         <li><a href="#">성인</a></li>
+                                         <li><a href="#">북씨</a></li>
+                  </ul>
+                 </div>
+
+                                 <div class="ly_bb">
+                                       <ul>
+                                         <li><a href="#">새로나온eBook</a></li>
+                                         <li><a href="#">베스트셀러</a></li>
+                                         <li><a href="#">이벤트</a></li>
+                                         <li><a href="#">비스킷탭</a><span class="icon_saleMark"></span></li>
+                  </ul>
+                  <ul>
+                                         <li><a href="#"><b>대여eBook</b></a></li>
+                                         <li><a href="#"><b>Lite eBook</b></a></li>
+                                         <li><a href="#">무료 eBook</a></li>
+                                         <li><a href="#">eBook&amp;테마</a></li>
+                  </ul>
+                  <p class="banner"><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan.gif" alt=""/></a></p>
+                </div>
+
+                <div class="ly_cc">
+                  <ul><li class="on"><a href="#">비스킷 초이스</a></li></ul>
+                  <ul><li><a href="#">비스킷 어플</a></li></ul>
+                  <ul><li><a href="#">비스킷 PC뷰어</a></li></ul>
+                  <ul><li><a onblur="hideGLayer('cateSub3');" href="#">비스킷 매니저</a></li></ul>
+                </div>
+                </div>
+              </div>
+            <!-- 레이어 영역 E -->
+          </li>
+          <li onmouseover="showGLayer('cateSub4');" onmouseout="hideGLayer('cateSub4');">
+            <a href="http://dev.bookpark.com/1st_cate/used_main.html" onfocus="showGLayer('cateSub4');"><img onmouseover="gnbBtn(4)" onmouseout="gnbBtn(4)" id="btn_gnb4"  src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/20150708/gnb4_off.gif" alt="중고책"/></a>
+            <span class="icoG_L04"></span>
+            <!-- 레이어 영역 S -->
+              <div class="lay_gnb" id="cateSub4" style="display:none;">
+                <div class="tt">
+                  <span class="arrow"></span>
+                  <span class="allview"><a href="javascript:ly_all(4)"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_ly_allView.gif" alt="전체보기"/></a></span>
+                  <a href="#"><img class="tit" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/cateSub04_title.gif" alt="인터파크 중고책"/></a>
+                                 <!-- -->
+                               </div>
+
+                  <div  class="bb">
+                        <div id="ly_all_4" class="ly_all" style="display:;">
+                    <ul>
+                      <li><a href="#">가정과 생활</a></li>
+                      <li><a href="#">경제경영</a></li>
+                      <li><a href="#">만화</a></li>
+                      <li><a href="#">사회과학</a></li>
+                      <li><a href="#">소설</a></li>
+                      <li><a href="#">비소설/문학론</a></li>
+                      <li><a href="#">역사와 문화</a></li>
+                    </ul>
+                     <ul>
+                      <li><a href="#">자기계발</a></li>
+                      <li><a href="#">잡지</a></li>
+                      <li><a href="#">종교/역학</a></li>
+                      <li><a href="#">청소년</a></li>
+                      <li><a href="#">취미/레저</a></li>
+                      <li><a href="#">건강/뷰티</a></li>
+                      <li><a href="#">국어와 외국어</a></li>
+                    </ul>
+                    <ul>
+                      <li><a href="#">아동</a></li>
+                      <li><a href="#">여행</a></li>
+                      <li><a href="#">예술/대중문화</a></li>
+                      <li><a href="#">자격서/수험서</a></li>
+                      <li><a href="#">자연과 과학</a></li>
+                      <li><a href="#">전공/대학교재</a></li>
+                      <li><a href="#">중고등학습서</a></li>
+                    </ul>
+                    <ul>
+                      <li><a href="#">가정과 생활</a></li>
+                      <li><a href="#">경제경영</a></li>
+                      <li><a href="#">만화</a></li>
+                      <li><a href="#">사회과학</a></li>
+                      <li><a href="#">소설</a></li>
+                    </ul>
+                                  </div>
+
+                                    <div class="ly_bb">
+                                         <ul>
+                      <li><a href="#">새로나온책</a></li>
+                      <li><a href="#">예약판매</a></li>
+                      <li><a href="#">베스트셀러</a></li>
+                      <li><a href="#">스테디셀러</a></li>
+                    </ul>
+                    <ul>
+                             <li><a href="#">펼쳐보기</a></li>
+                             <li><a href="#">세일&amp;쿠폰</a></li>
+                             <li><a href="#">이벤트</a></li>
+                    </ul>
+                                          <p class="banner"><a href="#" onblur="hideGLayer('cateSub4'); "><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan.gif" alt=""/></a></p>
+                  </div>
+                </div>
+              </div>
+            <!-- 레이어 영역 E -->
+          </li>
+          <li onmouseover="showGLayer('cateSub5');" onmouseout="hideGLayer('cateSub5');">
+            <a href="/1st_cate/cd_main.html" onfocus="showGLayer('cateSub5');"><img onmouseover="gnbBtn(5)" onmouseout="gnbBtn(5)" id="btn_gnb5"  src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/20150708/gnb5_off.gif" alt="음반"/></a>
+            <span class="icoG_L05"></span>
+            <!-- 레이어 영역 S -->
+              <div class="lay_gnb" id="cateSub5" style="display:none;">
+                <div class="tt">
+                  <span class="arrow"></span>
+                  <span class="allview"><a href="javascript:ly_all(5)"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_ly_allView.gif" alt="전체보기"/></a></span>
+                  <a href="#"><img class="tit" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/cateSub05_title.gif" alt="인터파크 음반"/></a>
+                <!-- -->
+                </div>
+
+                <div  class="bb">
+                  <div id="ly_all_5" class="ly_all" style="display:;">
+                    <ul>
+                      <li><a href="#">가요</a></li>
+                      <li><a href="#">팝</a></li>
+                      <li><a href="#">클래식</a></li>
+                      <li><a href="#">국악</a></li>
+                    </ul>
+                    <ul >
+                      <li><a href="#">일본음악</a></li>
+                      <li><a href="#">락</a></li>
+                      <li><a href="#">뉴에이지</a></li>
+                      <li><a href="#">해외구매</a></li>
+                    </ul>
+                    <ul >
+                      <li><a href="#">수입음반</a></li>
+                      <li><a href="#">재즈</a></li>
+                      <li><a href="#">고3</a></li>
+                      <li><a href="#">유아&middot;아동&middot;태교</a></li>
+                      <li><a href="#">뮤직DVD</a></li>
+                    </ul>
+                    <ul >
+                      <li><a href="#">O.S.T</a></li>
+                      <li><a href="#">월드뮤직</a></li>
+                      <li><a href="#">종교</a></li>
+                      <li><a href="#">아티스트관련상품</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="ly_bb">
+                    <ul>
+                      <li><a href="#">예약&middot;음반</a></li>
+                      <li><a href="#">새로나온 음반</a></li>
+                      <li><a href="#">베스트 음반</a></li>
+                      <li><a href="#">스테디 음반</a></li>
+                    </ul>
+                    <ul>
+                      <li><a href="#">이벤트</a></li>
+                      <!-- 20140113 아티스트파일 추가 -->
+                      <li><a href="#"><b>아티스트파일</b></a><img src="http://bimage.interpark.com/renewPark/reBookpark/common/comm/ico_new.gif" alt="NEW"/></li>
+                    </ul>
+                    <p class="banner"><a href="#" onblur="hideGLayer('cateSub5'); "><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan.gif" alt=""/></a></p>
+                  </div>
+                </div>
+              </div>
+            <!-- 레이어 영역 E -->
+          </li>
+          <li onmouseover="showGLayer('cateSub6');" onmouseout="hideGLayer('cateSub6');">
+            <a href="#" onfocus="showGLayer('cateSub6');"><img onmouseover="gnbBtn(6)" onmouseout="gnbBtn(6)" id="btn_gnb6" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/20150708/gnb6_off.gif" alt="DVD"/></a>
+            <span class="icoG_L06"></span>
+            <!-- 레이어 영역 S -->
+            <div class="lay_gnb" id="cateSub6" style="display:none;">
+              <div class="tt">
+              <span class="arrow"></span>
+              <span class="allview"><a href="javascript:ly_all(6)"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/btn_ly_allView.gif" alt="전체보기"/></a></span>
+              <a href="#"><img class="tit" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/cateSub06_title.gif" alt="인터파크 DVD"/></a>
+              <!-- -->
+              </div>
+              <div  class="bb">
+                <div id="ly_all_6" class="ly_all" style="display:;">
+                  <ul>
+                    <li><a href="#">블루레이</a></li>
+                    <li><a href="#">EBS 교육용</a></li>
+                    <li><a href="#">유아&middot;아동&middot;태교</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">영화</a></li>
+                    <li><a href="#">다큐멘터리</a></li>
+                    <li><a href="#">건강/취미/스포츠</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">TV시리즈</a></li>
+                    <li><a href="#">해외구매</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">애니메이션</a></li>
+                    <li><a href="#">기타</a></li>
+                  </ul>
+                </div>
+
+                <div class="ly_bb">
+                  <ul>
+                    <li><a href="#">예약&middot;DVD</a></li>
+                    <li><a href="#">새로나온 DVD</a></li>
+                    <li><a href="#">베스트 DVD</a></li>
+                    <li><a href="#">스테디 DVD</a></li>
+                  </ul>
+                  <ul>
+                    <li><a href="#">이벤트</a></li>
+                  </ul>
+                  <p class="banner"><a href="#" onblur="hideGLayer('cateSub6');"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/sample_bngBan.gif" alt=""/></a></p>
+                </div>
+              </div>
+            </div>
+            <!-- 레이어 영역 E -->
+          </li>
+          <!-- 20140416 아트갤러리 변경
+          <li onmouseover="showGLayer('cateSub11');" onmouseout="hideGLayer('cateSub11');">
+            <a href="#" onfocus="showGLayer('cateSub11');"><img onmouseover="gnbBtn(11)" onmouseout="gnbBtn(11)" id="btn_gnb11" src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb11_off.gif" alt="ART"/><span class="icoG_L07"></span></a>
+          </li>
+          -// 20140416 아트갤러리 변경 -->
+
+          <!--20140416 아트갤러리 변경하면서 임시 처리 li에 style줌. (임시적용:한수인K 확인)
+            20140729 얼리버드 추가 class="icoG_eBird" 추가
+          -->
+        </ul>
+        <ul class="gnb_left2">
+          <li><a href="http://dev.bookpark.com/UI_event/re_price/rePrice.html"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb8.gif" alt="정가인하"/><span class="icoG_L08"></span></a></li>
+          <li onmouseover="showGLayer('cateSub7');" onmouseout="hideGLayer('cateSub7');"><span class="icoG_eBird"></span><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb7_off.gif" alt="신간"/></a>
+
+            <!-- 레이어 영역 S -->
+            <div class="lay_gnb" id="cateSub7" style="display:none;">
+              <div class="tt_event"><span class="arrow"></span> </div>
+              <ul>
+                <li><a href="#">인터파크 신간소개</a></li>
+                <li><a href="#">얼리버드 리뷰어</a></li>
+                <li><a href="#">특가도서</a></li>
+                <li><a href="http://dev.bookpark.com/presentMall/index_new.html">증정몰</a><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/ico_free.gif"  class="vam ml5" alt="공짜"/></li>
+                <li><a href="http://dev.bookpark.com/_goldenBook/2014/index.html" target="_blank">2014골든북어워즈</a></li>
+              </ul>
+            </div>
+          </li>
+          <!-- // 20140729 얼리버드 추가 class="icoG_eBird" 추가 -->
+
+          <li><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb9.gif" alt="추천"/><span class="icoG_L09"></span></a></li>
+          <li><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb12.gif" alt="기프트"/><span class="icoG_L11"></span></a></li><!-- 20150708 -->
+          <li onmouseover="showGLayer('cateSub10');" onmouseout="hideGLayer('cateSub10');">
+            <a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb10.gif" alt="이벤트"/></a>
+              <span class="icoG_L10"></span>
+              <!-- Layer Area S -->
+              <div class="lay_gnb" id="cateSub10" style="display:none;">
+                <div class="tt_event"><span class="arrow"></span></div>
+                <ul>
+                  <li><a href="http://dev.bookpark.com/referenceSearch/index.html">참고서검색서비스</a></li>
+                  <li><a href="http://dev.bookpark.com/giftMall/index.html">GiftMall Main</a></li>
+                  <li><a href="http://dev.bookpark.com/giftMall/bookCart.html">GiftMall(북카트)</a></li>
+                  <li><a href="http://dev.bookpark.com/templet/">이벤트 기획전 템플릿</a></li>
+                  <li><a href="http://dev.bookpark.com/uService/searchList.html">BookBUS</a></li>
+                  <li><a href="http://dev.bookpark.com/presentMall/index_new.html">스페셜 증정몰</a></li>
+                  <li><a href="http://dev.bookpark.com/UI_event/freeGift/freeGift.html">사은품컬렉션(리스트)</a></li>
+                  <li><a href="http://dev.bookpark.com/Promotion/calendar2015/calendar_main.html">2015캘린더프로모션</a></li>
+                  <li><a href="http://dev.bookpark.com/earlyBird/earlyBird_main.html">얼리버드리뷰 </a></li>
+                  <li><a href="http://dev.bookpark.com/Promotion/k_Author_Re/index.html">K-Author-케이오서어워즈</a></li>
+                  <li><a href="http://dev.bookpark.com/_offLine/" >명동성당 화면찾기</a></li>
+                  <li><a href="http://dev.bookpark.com/imk_mall/imk_main.html">imk_mall 메인리뉴얼</a></li>
+                  <li><a href="http://dev.bookpark.com/myongDong/index.html" target="_blank">명동북파크</a></li>
+                </ul>
+              </div>
+            <!--// Layer Area E -->
+          </li>
+          <li><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb13.gif" alt="굿즈샵"/><span class="icoG_Lgoods"></span></a></li>
+          <!--// 20140120 gnb 변경 -->
+        </ul>
+
+        <ul class="gnb_center">
+          <!-- 20150507 GNB 변경 -->
+          <li><span class="icoG_bdb"></span><a href="#"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb_cen01.gif" alt="북DB"/></a></li>
+          <li><a href="/rankChart_new/rankingChart.html"><img src="http://bimage.interpark.com/renewPark/reBookpark/header/gnb/gnb_cen03_new.gif" alt="랭킹"/></a></li>
+          <!--// 20150507 GNB 변경 -->
+
+        </ul>
+
+        <div class="gnb_right" onmouseover="showGLayer('gnb_rank');">
+
+          <div class="rightRanking" id="RankingList">
+            <a href="#"  onfocus="showGLayer('gnb_rank');">
+            <ol class="rankRoll">
+              <li>
+                <span class="gNum gn01"></span>
+                <span class="subj">옥스포드 블록책 - 아이스크림 가게</span>
+                <span class="date">23권</span>
+              </li>
+              <li>
+                <span class="gNum gn02"></span>
+                <span class="subj">와튼스쿨 인생 특강</span>
+                <span class="date">123권</span>
+              </li>
+              <li>
+                <span class="gNum gn03"></span>
+                <span class="subj">화요일의 여자</span>
+                <span class="date">23권</span>
+              </li>
+              <li>
+                <span class="gNum gn04"></span>
+                <span class="subj">쉿! 너만 알고 있어</span>
+                <span class="date">23권</span>
+              </li>
+              <li>
+                <span class="gNum gn05"></span>
+                <span class="subj">옥스포드 블록책 - 아이스크림 가게</span>
+                <span class="date">999권</span>
+              </li>
+              <li>
+                <span class="gNum gn06"></span>
+                <span class="subj">여자 취업에 필요한 모든 것</span>
+                <span class="date">23권</span>
+              </li>
+              <li>
+                <span class="gNum gn07"></span>
+                <span class="subj">노재희의 은신처에서 졸다</span>
+                <span class="date">23권</span>
+              </li>
+              <li>
+                <span class="gNum gn08"></span>
+                <span class="subj">베르나르 베르베르의 상상력 사전 (양장)</span>
+                <span class="date">1,023권</span>
+              </li>
+              <li>
+                <span class="gNum gn09"></span>
+                <span class="subj">베르나르 베르베르의 상상력 사전 (양장)</span>
+                <span class="date">23권</span>
+              </li>
+              <li>
+                <span class="gNum gn10"></span>
+                <span class="subj">생각대로 살지 않으면 사는 대로 생각하게 된다 2 </span>
+                <span class="date">23권</span>
+              </li>
+            </ol>
+            </a>
+          </div>
+
+          <!-- Rolling List Layer -->
+          <div class="rankLayBox" id="gnb_rank" onmouseout="hideGLayer('gnb_rank');" style="display: none;">
+            <div class="rankTit"><p><a href="#">실시간 베스트셀러</a></p></div>
+            <div class="">
+            <ol class="rankList">
+              <li>
+                <span class="rNum rn01"></span>
+                <span class="subj"><a href="#">인생수업</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn02"></span>
+                <span class="subj"><a href="#">인생수업</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn03"></span>
+                <span class="subj"><a href="#">인생수업</a></span>
+                <span class="date">123</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn04"></span>
+                <span class="subj"><a href="#">인생수업</a></span>
+                <span class="date">1,523</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn05"></span>
+                <span class="subj"><a href="#">인생수업</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn06"></span>
+                <span class="subj"><a href="#">생각대로 살지 않으면 사는 대로 생각하게 된다</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn07"></span>
+                <span class="subj"><a href="#">생각대로 살지 않으면 사는 대로 생각하게 된다</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn08"></span>
+                <span class="subj"><a href="#">생각대로 살지 않으면 사는 대로 생각하게 된다</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn09"></span>
+                <span class="subj"><a href="#">생각대로 살지 않으면 사는 대로 생각하게 된다</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+              <li>
+                <span class="rNum rn10"></span>
+                <span class="subj"><a href="#"  onblur="hideGLayer('gnb_rank');">생각대로 살지 않으면 사는 대로 생각하게 된다</a></span>
+                <span class="date">23</span>
+                <span class="vol">권</span>
+              </li>
+            </ol>
+          </div>
+            <ul class="dayCount">
+              <li class="dayTxt">일일 누적판매량 47,646권</li>
+              <li class="dateTxt">2013.11.05&nbsp;20:00 기준</li>
+            </ul>
+          </div>
+          <!--// Rolling List Layer -->
+
+        </div>
+
+          <script type="text/javascript">
+            <!--
+            var RankingList = new RollingList("RankingList", "ol", 24, 2000, 30, 1);    //위의 div에 RollingList 타입의 객체가 생성되고,
+            //각종 메소드 실행이 가능하게 된다.
+            // 이부분을 위 div 앞에 쓰면 실행이 안되니 주의
+            window.setTimeout("RankingList.init()", 1000);
+            -->
+          </script>
+      </div>
+      <!--// # GNB S E -->
+    </div>
+  </div>
+
+<script type="text/javascript">
+  <!--
+  var RankingList = new RollingList("RankingList", "ol", 24, 2000, 30, 1);    //위의 div에 RollingList 타입의 객체가 생성되고,
+  //각종 메소드 실행이 가능하게 된다.
+  // 이부분을 위 div 앞에 쓰면 실행이 안되니 주의
+  window.setTimeout("RankingList.init()", 1000);
+  -->
+</script>
+
+<script type="text/javascript">
+  // 검색창 열기
+  $(function(){
+    var speed = 400;
+    $("#header .srBtn").click(function(){
+      $("#auto").slideToggle(speed);
+    });
+    $("#header .slideToggle").click(function(){
+      $("#auto").slideToggle(speed);
+    });
+  });
+
+</script>

@@ -1,0 +1,28 @@
+# ESLint ignore patterns
+# http://eslint.org/docs/user-guide/configuring#ignoring-files-and-directories
+
+node_modules/**/*
+src/scripts/plugins/**/*
+src/scripts/libs/**/*
+public/**/*
+*.min.js
+
+# Legacy Compatibility
+
+src/scripts/jquery_ui.js
+src/scripts/plugins/bxslider/**/*
+src/scripts/plugins/rating/**/*
+src/scripts/plugins/swiper/**/*
+src/scripts/plugins/bxslider/jquery.bxslider.js
+src/scripts/plugins/rating/jquery.rating2.js
+src/scripts/plugins/newsticker/jquery.newsticker.js
+src/scripts/plugins/selectric/jquery.selectric.min.js
+src/scripts/common/common.js
+src/scripts/common/header_main.js
+src/scripts/common/mainLeft.js
+src/scripts/common/mainRight.js
+
+src/scripts/pages/shop/detail/last_inc_new.js
+src/scripts/pages/shop/specialSale/slick.js
+src/scripts/pages/login/icheck.js
+src/scripts/pages/login/placeholder_polyfill.jquery.js

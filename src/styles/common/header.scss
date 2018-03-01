@@ -1,0 +1,1776 @@
+//$imgPath: "./images";
+$imgPath: "http://bimage.interpark.com/renewPark/reBookpark/header" !default;
+
+#gateGnb {
+    z-index: 100;
+    position: relative;
+    width: 100%;
+    height: 32px;
+    background: #fff;
+    border-bottom: 1px solid #c1c1c1;
+
+    a {
+        font-size: 11px;
+        color: #666;
+        letter-spacing: -1px;
+    }
+}
+
+#gateCon {
+    position: relative;
+    width: 960px;
+    height: 32px;
+    margin: 0 auto;
+
+    a:link,
+    a:visited,
+    a:active {
+        font-size: 11px;
+        color: #666;
+        letter-spacing: -1px;
+    }
+
+    a:hover {
+        font-size: 11px;
+        color: #e45049;
+        letter-spacing: -1px;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+}
+
+#gateCon .gateLeft {
+    float: left;
+    height:  32px;
+    font-size:  0;
+    line-height:  0;
+
+    ul {
+        position: relative;
+    }
+
+    li {
+        float: left;
+
+        &.selected {
+            height: 33px;
+            background-color: #fff;
+        }
+
+        .bt_gateMenu1 {
+            display: inline-block;
+            width: 42px;
+            height: 32px;
+            background: url("#{$imgPath}/gateway/gate_menu1.gif") no-repeat left center;
+            text-indent: -9999px;
+        }
+
+        .bt_gateMenu2 {
+            display: inline-block;
+            width: 44px;
+            height: 32px;
+            background: url("#{$imgPath}/gateway/gate_menu2.gif") no-repeat left center;
+            text-indent: -9999px;
+        }
+
+        .bt_gateMenu3 {
+            display: inline-block;
+            width: 85px;
+            height: 32px;
+            background: url("#{$imgPath}/gateway/gate_menu3.gif") no-repeat left center;
+            text-indent: -9999px;
+        }
+
+        .bt_gateMenu4 {
+            display: inline-block;
+            width: 42px;
+            height: 32px;
+            background: url("#{$imgPath}/gateway/gate_menu4.gif") no-repeat left center;
+            text-indent: -9999px;
+        }
+
+        .bt_gateMenu5 {
+            display: inline-block;
+            width: 43px;
+            height: 32px;
+            background: url("#{$imgPath}/gateway/gate_menu5.gif") no-repeat left center;
+            text-indent: -9999px;
+        }
+
+        .bt_gateMenu6 {
+            display: inline-block;
+            width: 63px;
+            height: 32px;
+            background: url("#{$imgPath}/gateway/gate_menu6.gif") no-repeat left center;
+            text-indent: -9999px;
+        }
+
+    }
+
+}
+
+#gateCon .gateCenter {
+    float: left;
+    position: absolute;
+    left: 36%;
+    text-align: center;
+
+    p {
+        height: 28px;
+    }
+
+    img {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+#gateCon .gateRight {
+    float: right;
+    height: 28px;
+
+    ul {
+        position: relative;
+    }
+
+    li {
+        float: left;
+        padding: 0 6px;
+        margin-top: 10px;
+        letter-spacing: -1px;
+        background: url("#{$imgPath}/gnb/gate_bar01.gif") no-repeat left 1px;
+
+        &:first-child {
+            background: none;
+        }
+
+        &.mypg a,
+        &.mybp a {
+
+            &.bul {
+                color: #666;
+                text-decoration: none;
+                padding-right: 13px;
+                background: url("#{$imgPath}/gnb/arrow_down.gif") no-repeat right top;
+            }
+
+            &.on {
+                color: #666;
+                text-decoration: none;
+                padding-right: 13px;
+                background: url("#{$imgPath}/gnb/arrow_down.gif") no-repeat right top;
+            }
+
+            &.off {
+                color: #666;
+                text-decoration: none;
+                padding-right: 13px;
+                background: url("#{$imgPath}/gnb/arrow_up.gif") no-repeat right top;
+            }
+
+        }
+    }
+}
+
+/* Auto Login */
+#gateCon .gateRight .autoLogin {
+    position: relative;
+
+    a {
+        cursor: pointer;
+    }
+
+    .on {
+        vertical-align: -1px;
+        padding-left: 2px;
+        color: #666;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+}
+
+#gateCon .gateRight .layer_autoLogin {
+    clear: both;
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 245px;
+    color: #999;
+    background: #e38989;
+    text-align:  left;
+
+    .connect_box {
+        background: #fff;
+        margin:  2px;
+        padding: 12px 0 10px 0;
+    }
+
+    .txt1 {
+        margin: 0 0 6px 10px;
+        color:  #e05046;
+        font: bold 11px "dotum";
+    }
+
+    .txt2 {
+        margin: 0 0 0 10px;
+        font: normal 11px "dotum";
+        letter-spacing: -1px;
+        line-height: 15px;
+        color: #999;
+    }
+
+    .cBtn {
+        position: relative;
+        height: 20px;
+        margin: 8px 10px 0 0;
+        text-align:  right;
+    }
+
+    .closeW {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        height: 0;
+        margin: 0;
+        text-align:  right;
+    }
+
+    img {
+
+        &.close_x {
+            margin: 0 10px 0 0;
+        }
+
+        &.btnLeft {
+            margin: 1px 5px 0 0;
+        }
+
+        &.btnAlone {
+            margin: 1px 0 0 0;
+        }
+
+    }
+
+}
+
+#gateCon .gateRight .layer_autoLogin2 {
+    clear: both;
+    position: absolute;
+    top: 15px;
+    left: 5px;
+    width: 230px;
+    color: #999;
+    background: #e38989;
+    text-align:  left;
+
+    .connect_box {
+        background: #fff;
+        margin:  2px;
+        padding: 12px 0 10px 0;
+    }
+
+    .txt1 {
+        margin: 0 0 6px 10px;
+        color:  #e05046;
+        font: bold 11px "dotum";
+    }
+
+    .txt2 {
+        margin: 0 0 0 10px;
+        font: normal 11px "dotum";
+        line-height: 15px;
+        color: #999;
+    }
+
+    .closeW {
+        position: absolute;
+        top: 12px;
+        right: 0;
+        height: 0;
+        margin: 0;
+        text-align:  right;
+    }
+
+    .close_x {
+        margin: 0 10px 0 0;
+    }
+
+    .logout {
+        position: absolute;
+        bottom:  17px;
+        right:  10px;
+    }
+
+    .logon a {
+
+        strong {
+            color: #f12c2c;
+            padding-right: 13px;
+            background: url("#{$imgPath}/gnb/arrow_down.gif") no-repeat right 1px;
+        }
+
+        &:hover strong {
+            color: #f12c2c !important;
+        }
+
+    }
+
+    .logon-on a {
+
+        strong {
+            color: #f86f00;
+            padding-right: 13px;
+            background: url("#{$imgPath}/gnb/arrow_down.gif") no-repeat right 1px;
+        }
+
+        &:hover strong {
+            color: #f86f00 !important;
+        }
+
+    }
+
+}
+
+#gateCon .gateRight .mypgsub {
+    z-index: 10;
+    position: absolute;
+    top: 3px;
+    right: 230px;
+    width: 99px;
+    height: 63px;
+    margin: 20px 0 0 -18px;
+    line-height: 1.2em;
+
+    .mlv_Ly {
+        width: 80px;
+        padding: 5px 3px;
+        border: 2px solid #e38989;
+        background: #fff;
+
+        a:hover {
+            color: #bd4141;
+            text-decoration: underline;
+        }
+    }
+
+    .mypgsub {
+
+        dl {
+            position: relative;
+        }
+
+        dd {
+            padding: 3px 0 0 10px;
+            width: 99px;
+            height: 14px;
+            background: url("#{$imgPath}/gnb/bl_square_dot.gif")  no-repeat 5px 7px;
+            text-align: left;
+            letter-spacing: -1px;
+
+            a {
+                &:link,
+                &:visited,
+                &:active {
+                    font-size: 11px;
+                    color: #7f7f7f;
+                    letter-spacing: -1px;
+                }
+
+                &a:hover {
+                    font-size: 11px;
+                    color: #bd4141;
+                    letter-spacing: -1px;
+                }
+            }
+        }
+    }
+
+}
+
+#gateCon .gateRight .mybpsub {
+    z-index: 10;
+    position: absolute;
+    top: 3px;
+    right: 230px;
+    width: 30px;
+    height: 63px;
+    margin: 20px 0 0 -18px;
+    line-height: 1.2em;
+
+    .mbp_Ly {
+        width: 80px;
+        padding: 5px 3px;
+        border: 2px solid #e38989;
+        background: #fff;
+
+        a:hover {
+            color: #bd4141;
+            text-decoration: underline;
+        }
+    }
+
+    dl {
+        position: relative;
+    }
+
+    dd {
+        padding: 3px 0 0 10px;
+        width: 99px;
+        height: 14px;
+        background: url("#{$imgPath}/gnb/bl_square_dot.gif")  no-repeat 5px 7px;
+        text-align: left;
+        letter-spacing: -1px;
+
+        a {
+            &:link,
+            &:visited,
+            &:active {
+                font-size: 11px;
+                color: #7f7f7f;
+                letter-spacing: -1px;
+            }
+
+            &:hover {
+                font-size: 11px;
+                color: #bd4141;
+                letter-spacing: -1px;
+            }
+        }
+    }
+}
+
+/*20140124제휴사 레이어*/
+#gateCon .gateRight .mypgsub_allian {
+    z-index: 10;
+    position: absolute;
+    top: 3px;
+    right: 167px;
+    width: 99px;
+    height: 63px;
+    margin: 20px 0 0 -18px;
+    line-height: 1.2em;
+
+    .mlv_Ly {
+        width: 80px;
+        padding: 5px 3px;
+        border: 2px solid #e38989;
+        background: #fff;
+
+        a:hover {
+            color: #bd4141;
+            text-decoration: underline;
+        }
+    }
+
+    dl {
+        position: relative;
+    }
+
+    dd {
+        padding: 3px 0 0 10px;
+        width: 99px;
+        height: 14px;
+        background: url("#{$imgPath}/gnb/bl_square_dot.gif")  no-repeat 5px 7px;
+        text-align: left;
+        letter-spacing: -1px;
+
+        a {
+            &:link,
+            &:visited,
+            &:active {
+                font-size: 11px;
+                color: #7f7f7f;
+                letter-spacing: -1px;
+            }
+
+            &:hover {
+                font-size: 11px;
+                color: #bd4141;
+                letter-spacing: -1px;
+            }
+        }
+    }
+}
+
+.gnbArea {
+    z-index: 10;
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+
+    #searchWrap {
+        z-index: 6;
+        position: relative;
+        clear: both;
+        width:  960px;
+        margin: 0 auto;
+        padding: 0;
+        text-align:  left;
+
+        .searchArea {
+            position: relative;
+            width:  960px;
+
+            //20주년 로고
+            //h1 {
+            //    float: left;
+            //    position: relative;
+            //    width: 256px;
+            //    height: 79px;
+            //    font-size: 0;
+            //    line-height: 0;
+            //    background: url("#{$imgPath}/logo/inpark_logo_20.jpg") no-repeat left center;
+            //}
+
+            h1 {
+                float: left;
+                position: relative;
+                width: 256px;
+                height: 79px;
+                font-size: 0;
+                line-height: 0;
+                background: url("#{$imgPath}/logo/inpark_logo_new.jpg") no-repeat left center;
+
+                a {
+                    &.interpark {
+                        position: absolute;
+                        left: 66px;
+                        top: 18px;
+                        width: 140px;
+                        height: 32px;
+                        display: inline-block;
+                        text-indent: -999px;
+                        overflow: hidden;
+                    }
+
+                    &.book {
+                        position: absolute;
+                        left: 0;
+                        top: 18px;
+                        width: 64px;
+                        height: 32px;
+                        display: inline-block;
+                        text-indent: -999px;
+                        overflow: hidden;
+                    }
+
+                    //*20131218 도서만 노출*
+                    //&.book  {
+                    //    position: absolute;
+                    //    left: 0;
+                    //    top: 25px;
+                    //    width: 172px;
+                    //    height: 26px;
+                    //    display: inline-block;
+                    //    text-indent: -999px;
+                    //    overflow: hidden;
+                    //}
+
+                    &.pyungchang {
+                        display: none;
+                        text-indent: -999px;
+                        overflow: hidden;
+                    }
+
+                    &.aside {
+                        display: none;
+                        text-indent: -999px;
+                        overflow: hidden;
+                    }
+
+                    &.nhn {
+                        position: absolute;
+                        left: 0;
+                        top:  20px;
+                        width:  240px;
+                        text-indent:  0;
+                        background-color:  #fff;
+                    }
+
+                    &.purmee {
+                        position: absolute;
+                        left: 0;
+                        top: 20px;
+                        width:  250px;
+                        text-indent:  0;
+                        background-color:  #fff;
+                    }
+                }
+            }
+
+            .gnbSearch {
+                position:  relative;
+                width: 460px;
+                float:  left;
+                margin-top:  15px;
+
+                .searchBox {
+                    float: left;
+                    width: 382px;
+                    padding: 4px;
+                    height: 32px;
+                    background: url("#{$imgPath}/gnb/bg_scInput.gif")  no-repeat left top;
+
+                    input {
+                        width:  350px;
+                        margin-left: 2px;
+                        margin:  5px 2px 2px 5px;
+                        line-height: 120%;
+                        color:  #b74545;
+                        font:  bold 12px "dotum";
+                        letter-spacing:  0;
+                        border:  0;
+                        background:  #fff;
+                    }
+
+                    .inputBtn {
+                        margin:  10px 4px 0 4px;
+                    }
+                }
+            }
+
+            .srBtn {
+                float:  left;
+                margin-left:  6px;
+            }
+
+            .gnbRight_Ban {
+                float: right;
+                position: relative;
+                right: 0;
+                top: 15px;
+                width: 242px;
+
+                .rightBan {
+                    text-align:  right;
+                }
+            }
+
+            .hotClick {
+                position: absolute;
+                top:  55px;
+                left:  256px;
+                width:  460px;
+                height: 14px;
+                overflow:  hidden;
+
+                .hcTit {
+                    float: left;
+                    width: 40px;
+                    top: 1px;
+
+                    img {
+                        vertical-align:  5px;
+                        font-size:  0;
+                        line-height:  0;
+                    }
+                }
+
+                ul.keyword {
+                    float:  left;
+                    margin: 0;
+                    width: 420px;
+                    font-size:  11px;
+
+                    li {
+                        float:  left;
+                        line-height: 14px;
+                        padding:  0 4px;
+                        background: url("#{$imgPath}/gnb/bar_gnb2.gif")  no-repeat left 4px;
+                    }
+
+                    &:first-child {
+                        background: none;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+#auto {
+    z-index: 1000;
+    position: absolute;
+    left: 256px;
+    top: 46px;
+    padding: 10px;
+    width: 690px;
+    line-height: 17px;
+    overflow: hidden;
+    border: 1px solid #999;
+    background: #fff;
+
+    a:hover {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .select {
+        float: left;
+        width: 435px;
+
+        ul {
+            width: 420px;
+            padding-bottom: 5px;
+
+            li {
+                padding: 3px 3px 0 10px;
+
+                &.on {
+                    font-weight: bold;
+                    background: url("#{$imgPath}/autoLayer/ico_selectArrow.gif")  no-repeat right 5px;
+
+                    a {
+                        color: #333;
+                    }
+                }
+
+                span {
+                    color: #b84646;
+                }
+            }
+
+            &.pub {
+                border-top: 1px solid #ebebeb;
+                font-size: 11px;
+                padding-top: 8px;
+
+                li {
+                    color: #03b1ce;
+                }
+            }
+        }
+    }
+
+    h2 a {
+        font-weight: bold;
+        color: #333;
+        padding-bottom: 10px;
+
+        b {
+            color: #03b1ce;
+        }
+
+        span {
+            color: #b84646;
+        }
+    }
+
+    .info {
+        font-weight: normal;
+        font-size: 11px;
+        padding-bottom: 3px;
+    }
+
+    .his {
+        float: right;
+        padding: 5px 3px 30px 15px;
+        display: none;
+        width: 228px;
+        border-left: 1px solid #ebebeb;
+
+        ul li {
+            padding-bottom: 5px;
+
+            &:hover {
+                font-weight: bold;
+                letter-spacing: -1px;
+            }
+        }
+    }
+
+    .book {
+        float: right;
+        padding: 5px 3px 25px 15px;
+        width: 228px;
+        border-left: 1px solid #ebebeb;
+
+        dl {
+            font-size: 11px;
+
+            dt {
+                text-align: center;
+
+                img {
+                    border: 1px solid #bbb;
+                    width: 102px;
+                }
+
+                span {
+                    position: absolute;
+                    margin: -5px 0 0 -5px;
+                    width: 38px;
+                    height: 38px;
+                    overflow: hidden;
+                    text-indent: -999px;
+                    background: url("#{$imgPath}/autoLayer/ico_writer_book.png") no-repeat left top;
+                }
+            }
+
+            dd {
+                text-align: center;
+
+                p {
+                    &.tit {
+                        font-weight: bold;
+                        color: #333;
+                        font-size: 12px;
+                    }
+
+                    &.num {
+                        padding-bottom: 3px;
+
+                        span {
+                            font-size: 0;
+                            line-height: 0;
+                            padding-right: 5px;
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+        .price {
+            b {
+                font-size: 12px;
+                color: #dd5656;
+            }
+
+            span {
+                font-size: 12px;
+                color: #2ba5e4;
+            }
+        }
+
+        .priceNew {
+            font-size: 12px;
+            color: #c10000;
+            font-weight:  bold;
+
+            span {
+                font-size: 12px;
+                color: #666;
+                font-weight:  normal;
+            }
+        }
+
+        .btn {
+            clear: both;
+            padding: 7px 0 0 0;
+            text-align: center;
+        }
+
+    }
+
+    .option {
+        text-align: right;
+        clear: both;
+        width: 215px;
+        position: absolute;
+        right: 18px;
+        bottom: 10px;
+        padding-top: 4px;
+
+        img {
+            cursor: pointer;
+        }
+    }
+}
+
+#gnbWrap {
+    z-index: 30;
+    position: relative;
+    width:  960px;
+    height:  36px;
+    margin: 0 auto;
+    background: url("#{$imgPath}/gnb/bg_gnb20160728.gif")  no-repeat left top;
+    clear: both;
+
+    .gnb_left {
+        position: absolute;
+        left: 0;
+        top: 10px;
+
+        > li {
+            display: inline-block;
+            float: left;
+            padding: 0 12px 11px 12px;
+            background: url("#{$imgPath}/gnb/bar_gnb.gif")  no-repeat left 2px;
+
+            &:first-child {
+                background: none;
+                padding: 0 12px 11px 22px;
+            }
+        }
+
+        span {
+            z-index: 10;
+            position: absolute;
+            display: block;
+
+            //&.icoG_L01{
+            //    left: 55px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+
+            &.icoG_L02 {
+                left: 68px;
+                top: -17px;
+                width: 88px;
+                height: 19px;
+                background: url("#{$imgPath}/gnb/icon_coupon.png")  no-repeat left top;
+
+            }
+
+            &.icoG_L02 a {
+                display:  inline-block;
+                width: 88px;
+                text-indent:  -9999em;
+
+            }
+
+            //&.icoG_L03{
+            //    left: 138px;
+            //    top: -19px;
+            //    width: 83px;
+            //    height: 19px;
+            //    background: url("#{$imgPath}/gnb/icon_biscuitSale2.png") no-repeat left top;
+            //}
+            //
+            //&.icoG_L04{
+            //    left: 45px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+            //
+            //&.icoG_L05{
+            //    left: 35px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif") no-repeat left top;
+            //}
+            //
+            //&.icoG_L06{
+            //    left: 40px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif") no-repeat left top;
+            //}
+            //
+            //&.icoG_L07{
+            //    left: 357px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif") no-repeat left top;
+            //}
+
+            &.icoG_L08 {
+                left: 485px;
+                top: -18px;
+                width: 56px;
+                height: 19px;
+                background: url("#{$imgPath}/gnb/ico_freePresent.png")  no-repeat left top;
+            }
+
+            //&.icoG_L09{
+            //    left: 452px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+            //
+            //&.icoG_L10{
+            //    left: 497px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+            //
+            //&.icoG_eBird{
+            //    right: 130px;
+            //    top: -20px;
+            //    width: 55px;
+            //    height: 19px;
+            //    background: url("#{$imgPath}/gnb/ico_earlyBird.png")  no-repeat left top;
+            //}
+
+        }
+    }
+
+    .gnb_left2 {
+        position: absolute;
+        right: 325px;
+        top: 10px;
+
+        > li  {
+            display: inline-block;
+            float: left;
+            padding: 0 8px 11px 9px;
+            background: url("#{$imgPath}/gnb/bar_gnb.gif")  no-repeat left 2px;
+
+            //&:first-child {
+            //    background: none;
+            //}
+        }
+
+        span {
+            z-index: 10;
+            position: absolute;
+            display: block;
+
+            &.icoG_Lgoods {
+                left: 230px;
+                top: -19px;
+                width: 68px;
+                height: 19px;
+                background: url("#{$imgPath}/gnb/ico_goods_25Sale.png") no-repeat left top;
+            }
+        }
+    }
+
+    .gnb_center {
+        span {
+            z-index: 10;
+            position: absolute;
+            display: block;
+
+            &.icoG_C01 {
+                left: -15px;
+                top: 2px;
+                width: 10px;
+                height: 9px;
+                background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            }
+
+            //&.icoG_C02{
+            //    left: 79px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+            //
+            //&.icoG_C03{
+            //    left: 135px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+            //
+            //&.icoG_C04{
+            //    left: 192px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+            //
+            //&.icoG_C05{
+            //    left: 237px;
+            //    top: -8px;
+            //    width: 10px;
+            //    height: 9px;
+            //    background: url("#{$imgPath}/gnb/ico_new.gif")  no-repeat left top;
+            //}
+
+            &.icoG_C06 {
+                left: 236px;
+                top: -10px;
+                width: 10px;
+                height: 9px;
+                background: url("#{$imgPath}/gnb/ico_new.gif") no-repeat left top;
+            }
+
+            //&.icoG_bdb{
+            //    left: 16px;
+            //    top: -20px;
+            //    width: 37px;
+            //    height: 19px;
+            //    background: url("#{$imgPath}/gnb/ico_kAuthor2.png")  no-repeat left top;
+            //}
+            //
+            //&.icoG_bcR2{
+            //    left: 80px;
+            //    top: -20px;
+            //    width: 50px;
+            //    height: 17px;
+            //    background: url("#{$imgPath}/gnb/ico_bookClub.png")  no-repeat left top;
+            //}
+
+        }
+    }
+
+    #cateSub1 {
+        left: 0;
+
+        .arrow {
+            left: 40px;
+        }
+    }
+
+    #cateSub2 {
+        left: 0;
+
+        .arrow {
+            left: 110px;
+        }
+    }
+
+    #cateSub3 {
+        left: 0;
+
+        .arrow {
+            left: 175px;
+        }
+    }
+
+    #cateSub4 {
+        left: 0;
+
+        .arrow {
+            left: 226px;
+        }
+    }
+
+    #cateSub5 {
+        left: 0;
+
+        .arrow {
+            left: 271px;
+        }
+    }
+
+    #cateSub6 {
+        left: 0;
+
+        .arrow {
+            left: 319px;
+        }
+    }
+
+    #cateSub7 {
+        position: absolute;
+        top: 26px;
+        left: 21px;
+        width: 122px;
+        background: url("#{$imgPath}/gnb/bg_ly_gnbEvent2.png")  no-repeat left bottom;
+
+        .arrow {
+            left: 55px;
+            top: -5px;
+        }
+
+        .tt_event {
+            position: relative;
+        }
+
+        ul  {
+            width: 100%;
+            font-size: 12px;
+            letter-spacing:  -1px;
+
+            a {
+                color: #777;
+            }
+
+        }
+    }
+
+    #cateSub8 {
+        position: absolute;
+        top: 26px;
+        left: 440px;
+        width: 122px;
+        background: url("#{$imgPath}/gnb/bg_ly_gnbEvent2.png")  no-repeat left bottom;
+
+        .arrow {
+            left: 55px;
+            top: -5px;
+        }
+
+        .tt_event {
+            position: relative;
+        }
+
+        ul {
+            width: 100%;
+            font-size: 12px;
+            letter-spacing:  -1px;
+
+            a {
+                color: #777;
+            }
+        }
+    }
+
+    #cateSub10 {
+        position: absolute;
+        top: 26px;
+        left: -22px;
+        width: 338px;
+        background: url("#{$imgPath}/gnb/bg_ly_gnbEvent.png")  no-repeat left bottom;
+
+        .arrow {
+            left: 230px;
+            top: -5px;
+        }
+
+        .tt_event {
+            position: relative;
+        }
+
+        ul {
+            width: 100%;
+            font-size: 11px;
+
+            a {
+                color: #777;
+            }
+        }
+    }
+
+    #cateSub11 {
+        position: absolute;
+        top: 24px;
+        width: 338px;
+        background: url("#{$imgPath}/gnb/bg_ly_gnbEvent.png")  no-repeat left bottom;
+
+        .arrow {
+            left: 205px;
+            top: -5px;
+        }
+
+        .tt_event {
+            position: relative;
+        }
+
+        ul {
+            width: 100%;
+            font-size: 11px;
+
+            a {
+                color: #777;
+            }
+        }
+    }
+
+    .lay_gnb {
+        position: absolute;
+        left: 0;
+        top: 25px;
+        width: 476px;
+
+        .tt  {
+            position: relative;
+            width: 476px;
+            height: 32px;
+            clear: both;
+            background: url("#{$imgPath}/gnb/bg_ly_gnb2.png")  no-repeat left top;
+        }
+
+        .bb  {
+            position: relative;
+            width: 476px;
+            clear: both;
+            overflow: hidden;
+            background: url("#{$imgPath}/gnb/bg_ly_gnb3.png")  no-repeat left bottom;
+        }
+
+        .arrow   {
+            display: block;
+            width: 9px;
+            height: 5px;
+            position: absolute;
+            top: -4px;
+            background: url("#{$imgPath}/gnb/ly_arrow_gnb.gif")  no-repeat left top;
+        }
+
+        .tit {
+            position: absolute;
+            left: 16px;
+            top: 11px;
+        }
+
+        .allview {
+            position: absolute;
+            right: 17px;
+            top: 14px;
+        }
+
+        .banner  {
+            position: absolute;
+            right: 3px;
+            top: 0;
+
+            img {
+                width: 213px;
+                height: 97px;
+                border-left: 1px solid #efefef;
+            }
+        }
+
+        .ly_all  {
+            width: 472px;
+            margin-left: 1px;
+            border-bottom: 1px solid #efefef;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .ly_bb   {
+            width: 472px;
+            position: relative;
+            margin-left: 1px;
+            clear: both;
+            overflow: hidden;
+            display: block;
+        }
+
+        .ly_cc   {
+            width: 472px;
+            margin: -3px 0 0 1px;
+            border-top: 1px solid #efefef;
+            clear: both;
+            overflow: hidden;
+        }
+
+        ul {
+            float: left;
+            padding: 12px 0 12px 10px;
+            width: 108px;
+
+            > li  {
+                display: block;
+                padding: 0 0 5px 7px;
+                float: none;
+                clear: both;
+                background: url("#{$imgPath}/gnb/dot_ly_gnb.gif")  no-repeat left 4px;
+
+                &.on {
+                    float: left;
+                    font-weight: bold;
+                    letter-spacing: -1px;
+                    padding: 0;
+                    background: none;
+
+                    a {
+                        color: #4c4c4c;
+                    }
+                }
+
+                //.icon_saleMark {
+                //    display: inline-block;
+                //    width: 38px;
+                //    height: 15px;
+                //    background: url("#{$imgPath}/gnb/icon_saleMark.png")  no-repeat center center
+                //}
+            }
+        }
+
+        ul.ebok {
+            position: relative;
+
+            > li {
+                float: left;
+                width: 108px;
+                padding: 0 0 5px 7px;
+                background: url("#{$imgPath}/gnb/dot_ly_gnb.gif")  no-repeat left 4px;
+
+                a {
+                    color: #747474;
+                }
+
+                &.on {
+                    float: left;
+                    font-weight: bold;
+                    letter-spacing: -1px;
+                    padding: 0;
+                    background: none;
+
+                    a {
+                        color: #4c4c4c;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .gnb_center {
+        position: absolute;
+        right: 190px;
+        top: 12px;
+
+        > li {
+            display: inline;
+            float: left;
+            padding: 0 10px 11px;
+            background: url("#{$imgPath}/gnb_1401/bar_gnb2.gif")  no-repeat left 2px;
+
+            &:first-child {
+                background:  none;
+                padding:  0 10px 11px;
+            }
+
+            .nService {
+                margin-top: -8px;
+            }
+
+        }
+    }
+}
+
+
+/* right Ranking Add */
+#RankingList a {
+    display: block;
+    color: #fff;
+    cursor:  pointer;
+
+    &:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+}
+
+#gnbWrap .gnb_right {
+    position: absolute;
+    right: 0;
+    width: 180px;
+    z-index: 7;
+    height: 24px;
+
+    .rightRanking {
+        position: absolute;
+        top: 5px;
+        right: 0;
+        width: 180px;
+        z-index: 7;
+        height: 25px;
+        overflow: hidden;
+    }
+
+    ol.rankRoll {
+        width: 170px;
+        margin: 5px 5px;
+
+        li {
+            width: 170px;
+            line-height: 20px;
+            height: 24px;
+            font-size: 11px;
+            vertical-align: middle;
+
+            &:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            .gNum {
+                float: left;
+                width: 20px;
+                vertical-align: middle;
+                display: inline-block;
+                margin-right: 4px;
+                background: url("#{$imgPath}/gnb/gnb_num.png") no-repeat left top;
+            }
+
+            .gn01 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 0;
+            }
+
+            .gn02 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -20px;
+            }
+
+            .gn03 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -40px;
+            }
+
+            .gn04 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -60px;
+            }
+
+            .gn05 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -80px;
+            }
+
+            .gn06 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -100px;
+            }
+
+            .gn07 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -120px;
+            }
+
+            .gn08 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -140px;
+            }
+
+            .gn09 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -160px;
+            }
+
+            .gn10 {
+                width: 16px;
+                height: 16px;
+                background-position:  0 -180px;
+            }
+
+            .subj {
+                float: left;
+                width: 140px;
+                padding: 0 0 0 5px;
+                color: #fff;
+                line-height: 18px;
+                overflow: hidden;
+                white-space:  nowrap;
+                text-overflow:  ellipsis;
+            }
+
+            .date {
+                display: none;
+                float: left;
+                width: 43px;
+                text-align: right;
+                color: #cccaca;
+            }
+        }
+
+    }
+}
+
+#gnbWrap .rankLayBox {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    top: 0;
+    padding: 0;
+    width: 182px;
+    border: 2px solid #c82626;
+    background: #fff;
+    z-index: 10;
+
+    .rankTit {
+        position: relative;
+        height: 15px;
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px 0;
+        text-align: center;
+
+        p {
+            font-weight: bold;
+            color: #666;
+        }
+
+        a:hover {
+            color: #da6464;
+        }
+    }
+
+    ol.rankList {
+        width: 170px;
+        margin: 10px;
+        padding: 0;
+
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        li {
+            width: 170px;
+            line-height: 18px;
+            padding: 0;
+            margin: 0;
+            font-size:  11px;
+            color: #333;
+
+            &:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            .rNum {
+                float: left;
+                width: 20px;
+                vertical-align: middle;
+                display: inline-block;
+                margin-right: 2px;
+                background: url("#{$imgPath}/gnb/gnb_num.png") no-repeat left top;
+            }
+
+            .rn01 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px 0;
+            }
+
+            .rn02 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -20px;
+            }
+
+            .rn03 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -40px;
+            }
+
+            .rn04 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -60px;
+            }
+
+            .rn05 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -80px;
+            }
+
+            .rn06 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -100px;
+            }
+
+            .rn07 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -120px;
+            }
+
+            .rn08 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -140px;
+            }
+
+            .rn09 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -160px;
+            }
+
+            .rn10 {
+                width: 16px;
+                height: 16px;
+                background-position:  -20px -180px;
+            }
+
+            .subj {
+                float: left;
+                width: 140px;
+                padding: 0 0 0 3px;
+                line-height: 18px;
+
+                a {
+                    float: left;
+                    width: 140px;
+                    padding: 0;
+                    line-height: 18px;
+                    overflow: hidden;
+                    white-space:  nowrap;
+                    text-overflow:  ellipsis;
+                }
+            }
+
+            .date {
+                display: none;
+                float: left;
+                width: 30px;
+                text-align: right;
+                color: #54a9ef;
+            }
+
+            .vol {
+                display: none;
+                float: left;
+                width: 10px;
+                text-align: right;
+                color: #666;
+            }
+        }
+
+        a {
+            padding: 0;
+            margin: 0;
+
+            &:link {
+                display: block;
+                color: #333;
+                cursor:  pointer;
+            }
+
+            &:hover {
+                color: #e44;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    ul.dayCount {
+        font-size:  11px;
+        line-height: 16px;
+
+        li {
+            &.dayTxt {
+                display: none;
+                color: #4d4d4d;
+                margin-top: 10px;
+                padding: 0 5px 0 10px;
+                background: url("#{$imgPath}/gnb/ico_arrow.gif")  no-repeat 5px 6px;
+            }
+
+            &.dateTxt {
+                float: right;
+                color: #999;
+                padding: 3px 10px 10px 0;
+            }
+        }
+    }
+}
