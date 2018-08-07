@@ -6,21 +6,16 @@ var fs = require('fs');
 
 var $ = gulpLoadPlugins();
 var site = JSON.parse(fs.readFileSync('./package.json'));
-var ejsFilters = require('./config/filters');
-var asciiIntro = require('./config/asciiIntro')(site);
-
-console.info(asciiIntro);
 
 var base = {
   src: 'src',
-  dist: 'dist',
-  data: 'data',
-  map: '../map'
+  convert: 'convert',
+  data: 'data'
 };
 
 gulp.task('server', function() {
   $.connect.server({
-    root: base.dist,
+    root: base.convert,
     port: process.env.npm_config_port || site.port,
     livereload: false,
     middleware: function(connect, opt) {
@@ -45,11 +40,9 @@ gulp.task('scripts', function() {
 
   return gulp
     .src(path.join(base.src, dir, '**/*.js'))
-    .pipe($.sourcemaps.init())
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe($.sourcemaps.write(path.join(base.map, dir)))
-    .pipe(gulp.dest(path.join(base.dist, dir)));
+    .pipe(gulp.dest(path.join(base.convert, dir)));
 });
 
 gulp.task('styles', function() {
@@ -65,14 +58,12 @@ gulp.task('styles', function() {
 
   return gulp
     .src(path.join(base.src, dir, '**/*.scss'))
-    .pipe($.sourcemaps.init())
     .pipe($.sassLint())
     .pipe($.sassLint.format())
     .pipe($.sassLint.failOnError())
     .pipe($.sass(opts.scss).on('error', $.sass.logError))
     .pipe($.autoprefixer(opts.autoprefixer))
-    .pipe($.sourcemaps.write(path.join(base.map, dir)))
-    .pipe(gulp.dest(path.join(base.dist, dir)));
+    .pipe(gulp.dest(path.join(base.convert, dir)));
 });
 
 gulp.task('images', function() {
@@ -80,7 +71,7 @@ gulp.task('images', function() {
 
   return gulp
     .src(path.join(base.src, dir, '**/*.{png,jpg,gif,jpeg}'))
-    .pipe(gulp.dest(path.join(base.dist, dir)));
+    .pipe(gulp.dest(path.join(base.convert, dir)));
 });
 
 gulp.task('html', function() {
@@ -175,8 +166,7 @@ gulp.task('html', function() {
         site: site,
         page: file.meta,
         data: contentData,
-        state: state,
-        $: ejsFilters()
+        state: state
       };
 
       gulp
@@ -187,7 +177,7 @@ gulp.task('html', function() {
         .pipe($.htmlhint(lintCfg))
         .pipe($.htmlhint.reporter())
         .pipe($.if(isCustomEncode, $.convertEncoding(listOpts.convertEncoding)))
-        .pipe(gulp.dest(path.join(base.dist, dir)));
+        .pipe(gulp.dest(path.join(base.convert, dir)));
     });
   };
 
@@ -237,11 +227,12 @@ gulp.task('html', function() {
       .pipe($.prettify(opts.prettify))
       .pipe($.htmlhint(lintCfg))
       .pipe($.htmlhint.reporter())
-      .pipe(gulp.dest(base.dist));
+      .pipe(gulp.dest(base.convert));
   };
 
   return gulp
     .src([
+      path.join(base.src, dir, '**/*.html'),
       path.join(base.src, dir, '**/*.ejs'),
       path.join('!' + base.src, dir, '**/_*.ejs'),
       path.join('!' + base.src, dir, 'layouts/*.ejs')
@@ -257,15 +248,7 @@ gulp.task('data_texts', function() {
 
   return gulp
     .src(path.join(base.data, dir, '**/*.json'))
-    .pipe(gulp.dest(path.join(base.dist, base.data, dir)));
-});
-
-gulp.task('data_images', function() {
-  var dir = 'images';
-
-  return gulp
-    .src(path.join(base.data, dir, '**/*.{png,jpg,gif,jpeg}'))
-    .pipe(gulp.dest(path.join(base.dist, base.data, dir)));
+    .pipe(gulp.dest(path.join(base.convert, base.data, dir)));
 });
 
 gulp.task('clean', function() {
@@ -280,7 +263,7 @@ gulp.task('clean', function() {
 
 
   return gulp
-    .src(base.dist, opts.src)
+    .src(base.convert, opts.src)
     .pipe($.clean(opts.clean));
 });
 
@@ -289,6 +272,5 @@ gulp.task('default', $.sequence('clean', [
   'styles',
   'images',
   'scripts',
-  'data_images',
   'data_texts'
 ]));

@@ -1,0 +1,6 @@
+<% if (typeof page.scripts !== 'undefined' && page.scripts instanceof Array) { %>
+  <% page.scripts.forEach(function(jsPath) { %>
+    <script src="<%= jsPath %>"></script>
+  <% }) %>
+<% } %>
+

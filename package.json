@@ -1,19 +1,15 @@
 {
-  "name": "else",
-  "siteName": "else",
-  "description": "UI framework for webapp development",
-  "homepage": "http://ui.interpark.com:8080/ui/else",
-  "version": "0.5.4",
-  "author": "1up <1up@interpark.com>",
+  "name": "jqueryStudy",
+  "siteName": "jqueryStudy",
+  "description": "jqueryStudy",
+  "homepage": "https://gitlab.com/ithaza/js-study/study01/",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "http://ui.interpark.com:8080/ui/else.git"
+    "url": "https://gitlab.com/ithaza/js-study/study01.git"
   },
-  "company": "INTERPARK",
-  "team": "UI Development Team",
-  "license": "UNLICENSED",
   "private": true,
-  "port": 8096,
+  "port": 8080,
   "devDependencies": {
     "autoprefixer": "7.2.4",
     "ejs": "2.5.7",
@@ -66,7 +62,7 @@
     "ignore": [
       ".git",
       "node_modules",
-      "dist",
+      "convert",
       "src"
     ],
     "env": {

@@ -9,10 +9,9 @@ var mime = require('mime-types');
 var sassMiddleware = require('node-sass-middleware');
 var autoprefixer = require('autoprefixer');
 var postcssMiddleware  = require('postcss-middleware');
-var ejsFilters = require('./config/filters');
 
 global.src = path.join(__dirname, 'src');
-global.dist = path.join(__dirname, 'dist');
+global.convert = path.join(__dirname, 'convert');
 global.site = require('./package.json');
 
 app.set('port', process.env.npm_config_port || site.port);
@@ -29,6 +28,10 @@ app.get('/', function(req, res, next) {
   };
 
   var viewFIles = glob.sync('views/pages/**/[^_]*.ejs', {
+    cwd: src
+  });
+
+  var viewFIlesHtml = glob.sync('views/pages/**/[^_]*.html', {
     cwd: src
   });
 
@@ -82,6 +85,44 @@ app.get('/', function(req, res, next) {
     }
   });
 
+  viewFIlesHtml.forEach(function(filePath) {
+    var pathObj = path.parse(filePath);
+    var srcPath = '/' + pathObj.dir + '/' + pathObj.name;
+    var fileFullPath = path.join(src, filePath);
+    var fileFm = matter.read(fileFullPath);
+    var fmData = fileFm.data;
+    var group = fmData.indexGroup;
+    var states = fmData.state || {
+      'default': fmData.title
+    };
+
+    if (!group || !group in data.list) {
+      return;
+    }
+
+    var token = filePath
+      .replace(/\.html$/i, '')
+      .replace(/\//g, '-');
+
+    var pages = Object.keys(states).reduce(function(before, state) {
+      var isDefault = state === 'default';
+
+      return before.concat({
+        text: states[state],
+        token: token + (isDefault ? '' : '-' + state),
+        href: srcPath + (isDefault ? '' : '.' + state) + '.html'
+      });
+    }, []);
+
+    data.list[group].pages = data.list[group].pages.concat(pages);
+
+    if (data.list[group].pages.length > 1) {
+      data.list[group].pages.sort(function(a, b) {
+        return a.text === b.text ? 0 : a.text < b.text ? -1 : 1;
+      });
+    }
+  });
+
   res.end(ejs.render(content, data, ejsOption));
 });
 
@@ -106,7 +147,6 @@ app.get('/views/*/?*.html', function(req, res, next) {
         page: fm.data,
         state: fileState[1] || 'default',
         site: site,
-        $: ejsFilters(),
         data: {}
       };
 
@@ -131,7 +171,52 @@ app.get('/views/*/?*.html', function(req, res, next) {
   });
 });
 
-app.get('/data/**/*/?*', function(req, res, next) {
+app.get('/views/*/?*.html', function(req, res, next) {
+  var pathObj = path.parse(req.path);
+  var fileState = pathObj.name.split('.');
+  var targetFile = fileState[0];
+  var targetPathHtml = path.join(src, pathObj.dir, targetFile + '.html');
+  var ejsOption = {
+    root: path.join(src, 'views')
+  };
+
+  fs.readFile(targetPathHtml, function(err, data) {
+    var fm;
+    var renderData;
+
+    if (err) {
+      next();
+    } else {
+      fm = matter(data.toString());
+      renderData = {
+        page: fm.data,
+        state: fileState[1] || 'default',
+        site: site,
+        data: {}
+      };
+
+      ejsOption.filename = targetPathHtml;
+
+      if (fm.data.data && Object.keys(fm.data.data).length) {
+        fm.data.data.forEach(function(filePath) {
+          var fileName = path.basename(filePath, '.json');
+          var fileFullPath = path.join(__dirname, filePath);
+          var parsedStr;
+
+          if (fs.existsSync(fileFullPath)) {
+            parsedStr = fs.readFileSync(fileFullPath);
+            renderData.data[fileName] = JSON.parse(parsedStr);
+          }
+        });
+      }
+
+      res.set('Content-Type', 'text/html');
+      res.end(ejs.render(fm.content, renderData, ejsOption));
+    }
+  });
+});
+
+app.get('/data/images/*/?*', function(req, res, next) {
   var targetPath = path.join(__dirname, req.path);
   var mimeType = mime.contentType(targetPath);
 
@@ -147,7 +232,7 @@ app.get('/data/**/*/?*', function(req, res, next) {
 
 app.use('/styles', sassMiddleware({
   src: path.join(__dirname, 'src/styles'),
-  dest: path.join(dist, 'styles'),
+  dest: path.join(convert, 'styles'),
   outputStyle: 'expanded',
   force: true,
   response: false,
@@ -165,13 +250,13 @@ app.use('/styles', postcssMiddleware({
     })
   ],
   src: function(req) {
-    return path.join(dist, 'styles', req.url);
+    return path.join(convert, 'styles', req.url);
   }
 }));
 
 app.use('/scripts', express.static(path.join(src, 'scripts')));
 app.use('/images', express.static(path.join(src, 'images')));
-app.use('/styles', express.static(path.join(dist, 'styles')));
+app.use('/styles', express.static(path.join(convert, 'styles')));
 
 app.listen(app.get('port'), function() {
   var port = app.get('port');

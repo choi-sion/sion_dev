@@ -1,6 +1,15 @@
 ---
 groups:
-  main: 도서메인
+  yeonkyoung: 이연경
+  jaeman: 이재만
+  sion: 최시온
+  soryong: 김소롱
+  bonghoon: 금봉훈
+  juri: 문주리
+  borim: 김보림
+  jiman: 김지만
+  joohyeon: 김주현
+  sungjin: 김성진
 ---
 
 <!doctype html>
@@ -8,7 +17,7 @@ groups:
   <head>
     <title><%= pkgInfo.siteName %></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="/styles/index/common.css">
     <link rel="stylesheet" href="/styles/index/index.css">
     <link rel="shortcut icon" href="/images/icons/favicon.ico">
   </head>
@@ -20,19 +29,6 @@ groups:
         class="asideCol col">
 
         <div class="projectInfo expanded">
-          <div class="avatar">
-            <img
-              src="/data/images/index/avatar.png"
-              alt="<%= pkgInfo.name %>">
-          </div>
-
-          <h1>
-            <a
-              href="<%- pkgInfo.homepage %>"
-              target="_blank"><%= pkgInfo.siteName %></a>
-          </h1>
-
-          <p class="description"><%= pkgInfo.description %></p>
 
           <div class="meta">
             <dl class="version" title="Current Version">
@@ -45,25 +41,6 @@ groups:
                 </a>
               </dd>
             </dl>
-          </div>
-
-          <div class="search">
-            <input
-              id="searchInput"
-              type="search"
-              placeholder="Search"
-              required>
-
-            <button
-              type="reset"
-              class="resetButton"
-              title="입력취소">reset</button>
-          </div>
-
-          <div class="viewToggler">
-            <button type="button" class="viewToggleButton">
-              <span>toggle</span>
-            </button>
           </div>
         </div>
 
@@ -124,8 +101,7 @@ groups:
       </div>
     </div>
 
-    <script src="/scripts/libs/jquery/jquery.js"></script>
-    <script src="/scripts/plugins/js.cookie/js.cookie.min.js"></script>
+    <script src="/scripts/index/jquery.js"></script>
     <script src="/scripts/index/index.js"></script>
   </body>
 </html>

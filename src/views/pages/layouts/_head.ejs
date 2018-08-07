@@ -1,0 +1,9 @@
+  <title>jqueryStudy</title>
+  <meta charset="<%= page.charset || 'utf-8' %>">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <% if (typeof page.styles !== 'undefined' && page.styles instanceof Array) { %>
+    <% page.styles.forEach(function(cssPath) { %>
+      <link rel="stylesheet" href="<%= cssPath %>">
+    <% }) %>
+  <% } %>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
