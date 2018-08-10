@@ -9,7 +9,7 @@
     "url": "https://gitlab.com/ithaza/js-study/study01.git"
   },
   "private": true,
-  "port": 8080,
+  "port": 8090,
   "devDependencies": {
     "autoprefixer": "7.2.4",
     "ejs": "2.5.7",
