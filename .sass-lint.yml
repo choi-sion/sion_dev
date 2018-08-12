@@ -18,7 +18,7 @@ rules:
     - 0
 
   brace-style:
-    - 1
+    - 2
     - style: 1tbs
       allow-single-line: false
 
@@ -29,7 +29,7 @@ rules:
     - 0
 
   empty-line-between-blocks:
-    - 1
+    - 2
     - ignore-single-line-rulesets: true
 
   extends-before-declarations:
@@ -39,7 +39,7 @@ rules:
     - 0
 
   final-newline:
-    - 1
+    - 2
     - include: true
 
   force-attribute-nesting:
@@ -56,11 +56,11 @@ rules:
     - allow-leading-underscore: true
 
   hex-length:
-    - 1
+    - 2
     - style: short
 
   hex-notation:
-    - 1
+    - 2
     - style: lowercase
 
   id-name-format:
@@ -68,11 +68,11 @@ rules:
     - allow-leading-underscore: true
 
   indentation:
-    - 1
+    - 2
     - size: 4
 
   leading-zero:
-    - 1
+    - 2
     - include: false
 
   mixin-name-format:
@@ -80,7 +80,7 @@ rules:
     - allow-leading-underscore: true
 
   mixins-before-declarations:
-    - 1
+    - 2
 
   nesting-depth:
     - 0
@@ -95,13 +95,13 @@ rules:
     - 0
 
   no-debug:
-    - 1
+    - 2
 
   no-duplicate-properties:
     - 0
 
   no-empty-rulesets:
-    - 1
+    - 2
 
   no-extends:
     - 0
@@ -113,7 +113,7 @@ rules:
     - 0
 
   no-invalid-hex:
-    - 1
+    - 2
 
   no-mergeable-selectors:
     - 0
@@ -132,7 +132,7 @@ rules:
       allow-element-with-id: true
 
   no-trailing-zero:
-    - 1
+    - 2
 
   no-transition-all:
     - 0
@@ -146,7 +146,7 @@ rules:
       excluded-identifiers: []
 
   one-declaration-per-line:
-    - 1
+    - 2
 
   placeholder-in-extend:
     - 0
@@ -160,7 +160,7 @@ rules:
     - ignore-custom-properties: false
 
   property-units:
-    - 1
+    - 2
     - global:
         - px
         - em
@@ -175,7 +175,7 @@ rules:
       per-property: {}
 
   quotes:
-    - 1
+    - 2
     - style: double
 
   shorthand-values:
@@ -186,46 +186,46 @@ rules:
         - 3
 
   single-line-per-selector:
-    - 1
+    - 2
 
   space-after-bang:
-    - 1
+    - 2
     - include: false
 
   space-after-colon:
-    - 1
+    - 2
     - include: true
 
   space-after-comma:
-    - 1
+    - 2
     - include: true
 
   space-around-operator:
-    - 1
+    - 2
     - include: true
 
   space-before-bang:
-    - 1
+    - 2
     - include: true
 
   space-before-brace:
-    - 1
+    - 2
     - include: true
 
   space-before-colon:
-    - 1
+    - 2
     - include: false
 
   space-between-parens:
-    - 1
+    - 2
     - include: false
 
   trailing-semicolon:
-    - 1
+    - 2
     - include: true
 
   url-quotes:
-    - 1
+    - 2
 
   variable-for-property:
     - 0
@@ -236,6 +236,6 @@ rules:
     - allow-leading-underscore: true
 
   zero-unit:
-    - 1
+    - 2
     - include: false
 
