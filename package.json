@@ -85,5 +85,8 @@
     "preserve_newlines": false,
     "extra_liners": [],
     "indent_size": 2
+  },
+  "dependencies": {
+    "vue": "^2.5.17"
   }
 }
