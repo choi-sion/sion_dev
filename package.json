@@ -8,8 +8,7 @@
     "type": "git",
     "url": "https://gitlab.com/webPublisher/sion.git"
   },
-  "company": "INTERPARK",
-  "team": "UI Development Team",
+  "team": "UI Developer",
   "license": "SEE LICENSE IN LICENSE.txt",
   "private": true,
   "port": 8090,
