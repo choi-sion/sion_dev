@@ -3,19 +3,21 @@ var gulpLoadPlugins = require('gulp-load-plugins');
 var path = require('path');
 var url = require('url');
 var fs = require('fs');
+var argv = require('yargs').argv;
 
 var $ = gulpLoadPlugins();
 var site = JSON.parse(fs.readFileSync('./package.json'));
+var ejsFilters = require('./config/filters');
+var asciiIntro = require('./config/asciiIntro')(site);
+var banner = require('./config/banner')(site, argv.preview ? 'preview' : '');
+var base = site.base;
 
-var base = {
-  src: 'src',
-  convert: 'convert',
-  data: 'data'
-};
+console.info(asciiIntro);
 
 gulp.task('server', function() {
   $.connect.server({
-    root: base.convert,
+    host: '0.0.0.0',
+    root: base.dist,
     port: process.env.npm_config_port || site.port,
     livereload: false,
     middleware: function(connect, opt) {
@@ -42,14 +44,17 @@ gulp.task('scripts', function() {
     .src(path.join(base.src, dir, '**/*.js'))
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe(gulp.dest(path.join(base.convert, dir)));
+    .pipe($.eslint.failAfterError())
+    .pipe(gulp.dest(path.join(base.dist, dir)));
 });
 
 gulp.task('styles', function() {
   var dir = 'styles';
   var opts = {
+    banner: '/*!' + banner + '*/',
     scss: {
-      outputStyle: 'expanded'
+      outputStyle: 'expanded',
+      includePaths: path.join(base.src, dir)
     },
     autoprefixer: {
       cascade: false
@@ -61,9 +66,10 @@ gulp.task('styles', function() {
     .pipe($.sassLint())
     .pipe($.sassLint.format())
     .pipe($.sassLint.failOnError())
+    .pipe($.header(opts.banner))
     .pipe($.sass(opts.scss).on('error', $.sass.logError))
     .pipe($.autoprefixer(opts.autoprefixer))
-    .pipe(gulp.dest(path.join(base.convert, dir)));
+    .pipe(gulp.dest(path.join(base.dist, dir)));
 });
 
 gulp.task('images', function() {
@@ -71,7 +77,7 @@ gulp.task('images', function() {
 
   return gulp
     .src(path.join(base.src, dir, '**/*.{png,jpg,gif,jpeg}'))
-    .pipe(gulp.dest(path.join(base.convert, dir)));
+    .pipe(gulp.dest(path.join(base.dist, dir)));
 });
 
 gulp.task('html', function() {
@@ -82,12 +88,7 @@ gulp.task('html', function() {
       property: 'meta',
       remove: true
     },
-    prettify: {
-      end_with_newline: true,
-      unformatted: true,
-      preserve_newlines: false,
-      extra_liners: []
-    }
+    prettify: site.htmlBeautify
   };
 
   var generatePages = function(file) {
@@ -166,7 +167,8 @@ gulp.task('html', function() {
         site: site,
         page: file.meta,
         data: contentData,
-        state: state
+        state: state,
+        $: ejsFilters()
       };
 
       gulp
@@ -176,8 +178,9 @@ gulp.task('html', function() {
         .pipe($.prettify(opts.prettify))
         .pipe($.htmlhint(lintCfg))
         .pipe($.htmlhint.reporter())
+        .pipe($.htmlhint.failOnError())
         .pipe($.if(isCustomEncode, $.convertEncoding(listOpts.convertEncoding)))
-        .pipe(gulp.dest(path.join(base.convert, dir)));
+        .pipe(gulp.dest(path.join(base.dist, dir)));
     });
   };
 
@@ -227,12 +230,11 @@ gulp.task('html', function() {
       .pipe($.prettify(opts.prettify))
       .pipe($.htmlhint(lintCfg))
       .pipe($.htmlhint.reporter())
-      .pipe(gulp.dest(base.convert));
+      .pipe(gulp.dest(base.dist));
   };
 
   return gulp
     .src([
-      path.join(base.src, dir, '**/*.html'),
       path.join(base.src, dir, '**/*.ejs'),
       path.join('!' + base.src, dir, '**/_*.ejs'),
       path.join('!' + base.src, dir, 'layouts/*.ejs')
@@ -248,7 +250,15 @@ gulp.task('data_texts', function() {
 
   return gulp
     .src(path.join(base.data, dir, '**/*.json'))
-    .pipe(gulp.dest(path.join(base.convert, base.data, dir)));
+    .pipe(gulp.dest(path.join(base.dist, base.data, dir)));
+});
+
+gulp.task('data_images', function() {
+  var dir = 'images';
+
+  return gulp
+    .src(path.join(base.data, dir, '**/*.{png,jpg,gif,jpeg}'))
+    .pipe(gulp.dest(path.join(base.dist, base.data, dir)));
 });
 
 gulp.task('clean', function() {
@@ -263,7 +273,7 @@ gulp.task('clean', function() {
 
 
   return gulp
-    .src(base.convert, opts.src)
+    .src(base.dist, opts.src)
     .pipe($.clean(opts.clean));
 });
 
@@ -272,5 +282,6 @@ gulp.task('default', $.sequence('clean', [
   'styles',
   'images',
   'scripts',
+  'data_images',
   'data_texts'
 ]));

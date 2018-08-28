@@ -3,7 +3,7 @@
   "siteName": "sion",
   "description": "sion",
   "homepage": "https://gitlab.com/webPublisher/sion/",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/webPublisher/sion.git"
