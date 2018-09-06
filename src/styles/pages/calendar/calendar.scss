@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+$imgPath: "/images/pages/calendar";
+$boldWeight: 500;
+$normalWeight: 300;
+
+@mixin blind {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+table {
+    border: .1rem solid #eee;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: table;
+
+    caption {
+        font-weight: 500;
+        font-size: 1.6rem;
+        color: #000;
+        line-height: 4rem;
+    }
+
+    tr {
+        th {
+            text-align: center;
+            line-height: 3rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-right: .1rem solid #eee;
+
+            &:first-of-type {
+                color: #d41616;
+                border-left: 0;
+            }
+
+            &:last-of-type {
+                color: #1e46c6;
+            }
+        }
+    }
+}

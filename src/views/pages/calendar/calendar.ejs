@@ -1,0 +1,34 @@
+---
+title: calendar
+indexGroup: calendar
+styles:
+  - /styles/pages/calendar/calendar.css 
+state:
+  default: calendar
+---
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <%- include('../layouts/_head'); %>
+</head>
+
+<body>
+  
+  <table>
+    <caption>월</caption>
+    <thead>
+      <tr>
+        <%
+          var weekly = ['일', '월', '화', '수', '목', '금', '토'];
+          weekly.forEach(function(s, i) {
+        %>
+        <th><%= s %></th>
+        <% }); %>
+      </tr>
+    </thead>
+  </table>
+  
+</body>
+
+</html>
