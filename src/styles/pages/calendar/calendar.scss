@@ -39,11 +39,11 @@ table {
 
             &:first-of-type {
                 color: #d41616;
-                border-left: 0;
             }
 
             &:last-of-type {
                 color: #1e46c6;
+                border-right: 0;
             }
         }
     }

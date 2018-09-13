@@ -1,20 +1,34 @@
-;(function($) {
+(function($) {
   $.extend($.fn, {
     monthWrapper: function() {
       var now = new Date();
       var years = now.getFullYear();
-      var caption = now.getMonth() + 1;
+      var month = now.getMonth();
+      var days = now.getDate();
 
-      console.log(years);
+      var today = new Date(years,month,1);
+      var week = today.getDay();
 
-      $(this).find('caption').append('<span>' + caption +'월</span>');
-    // NowTime += '-' + Now.getMonth() + 1 ;
-    // NowTime += '-' + Now.getDate();
-    // NowTime += ' ' + Now.getHours();
-    // NowTime += ':' + Now.getMinutes();
-    // NowTime += ':' + Now.getSeconds();
+      var lastDay = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+      if (years * 4) {
+        fourYearsLastDay = lastDay[1] = 29;
+      }
+
+      $(this).find('caption').append('<span>' + (month+1) +'월</span>');
+
+      var dNum = 1;
+      for (var i = 1; i <= 7; i++) {
+        if (i <= week || dNum > lastDay) {
+          var dd =$(this).find('td').eq(i);
+          console.log(dd);
+        } else {
+          $(this).find('td').eq(i).text(dNum);
+        }
+      }
     }
   });
 
   $('table').monthWrapper();
 })(jQuery);
+

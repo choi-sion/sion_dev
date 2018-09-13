@@ -3,6 +3,9 @@ title: calendar
 indexGroup: calendar
 styles:
   - /styles/pages/calendar/calendar.css 
+scripts:
+  - /scripts/pages/calendar/calendar.js 
+  - /scripts/pages/calendar/calendar01.js 
 state:
   default: calendar
 ---
@@ -16,7 +19,7 @@ state:
 <body>
   
   <table>
-    <caption>월</caption>
+    <caption></caption>
     <thead>
       <tr>
         <%
@@ -28,7 +31,7 @@ state:
       </tr>
     </thead>
   </table>
-  
+  <%- include('../layouts/_scripts'); %>
 </body>
 
 </html>
