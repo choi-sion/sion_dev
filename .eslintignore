@@ -2,13 +2,11 @@
 # http://eslint.org/docs/user-guide/configuring#ignoring-files-and-directories
 
 node_modules/**/*
+src/scripts/index/**/*
 src/scripts/plugins/**/*
-src/scripts/libs/**/*
 public/**/*
 *.min.js
 
 # Legacy Compatibility
 
-src/scripts/jquery-1.7.2.min.js
-src/scripts/index/jquery.js
-src/scripts/index/index.js
+scripts/plugins/**/*

@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+@import "reset";
+
+$base-url: "http://openimage.interpark.com/.ui/interpark/mobile";
+
+html {
+    height: 100%;
+    text-size-adjust: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font: normal 62.5% "Noto Sans KR", "Nanum Gothic", "NanumGothic", "Malgun Gothic", "Dotum", "sans-serif";
+}
+
+body {
+    height: 100%;
+    font-size: 1.3rem;
+    display: block;
+}
+
+.headerWrap {
+    z-index: 10;
+    background-color: #fff;
+    left: 0;
+    top: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    .gnbWrap {
+        position: relative;
+
+        h1 {
+            border-bottom: 1px solid #e0e0e0;
+
+            span {
+                font-weight: normal;
+                display: block;
+                line-height: 4.4rem;
+                text-align: center;
+                font-size: 1.6rem;
+                color: #202020;
+            }
+
+            a.btnClose {
+                background: url("#{$base-url}/close.png") no-repeat center center;
+                background-size: 2rem 2rem;
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: block;
+                width: 2rem;
+                height: 2rem;
+                padding: 1.2rem;
+                text-indent: -1000rem;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.footerWrap {
+    margin-top: 6.7rem;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+
+    p {
+        display: table;
+        margin: 0 auto 1.1rem;
+        color: #707070;
+        font-size: 1.1rem;
+
+        a {
+            display: table-cell;
+            color: #202020;
+            font-size: 1.1rem;
+            padding: 0 .3rem;
+
+            &.footerlogo {
+                background: url("#{$base-url}/footerLogo.png") no-repeat center center;
+                background-size: 7.3rem 1.1rem;
+                width: 7.3rem;
+                height: 1.1rem;
+                text-indent: -1000rem;
+            }
+        }
+
+        &.clauseWrap {
+            a {
+                padding: 0;
+
+                &:after {
+                    content: "ㅣ";
+                    padding: 0 .3rem;
+                }
+
+                &:last-of-type {
+                    &:after {
+                        content: "";
+                    }
+                }
+            }
+        }
+    }
+}

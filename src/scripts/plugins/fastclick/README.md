@@ -1,0 +1,3 @@
+- Name: FastClick
+- Version: 1.0.3
+- Website: https://github.com/ftlabs/fastclick

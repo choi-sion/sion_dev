@@ -1,0 +1,3 @@
+- Name: jQuery RWD Image Maps
+- Version: 1.5
+- Website: https://github.com/stowball/jQuery-rwdImageMaps/

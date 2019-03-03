@@ -8,7 +8,7 @@ groups:
   <head>
     <title><%= pkgInfo.siteName %></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/styles/index/common.css">
+    <link rel="stylesheet" href="/styles/common/common.css">
     <link rel="stylesheet" href="/styles/index/index.css">
     <link rel="shortcut icon" href="/images/icons/favicon.ico">
   </head>
@@ -20,9 +20,22 @@ groups:
         class="asideCol col">
 
         <div class="projectInfo expanded">
+          <div class="avatar">
+            <img
+              src="/data/images/index/avatar.png"
+              alt="<%= pkgInfo.name %>">
+          </div>
+
+          <h1>
+            <a
+              href="<%- pkgInfo.homepage %>"
+              target="_blank"><%= pkgInfo.siteName %></a>
+          </h1>
+
+          <p class="description"><%= pkgInfo.description %></p>
 
           <div class="meta">
-            <dl class="version" title="Current Version">
+            <dl>
               <dt>Version</dt>
               <dd>
                 <a
@@ -32,6 +45,34 @@ groups:
                 </a>
               </dd>
             </dl>
+
+            <% if (lastUpdatedDate) { %>
+              <dl>
+                <dt>Last Update</dt>
+                <dd>
+                  <time><%= lastUpdatedDate %></time>
+                </dd>
+              </dl>
+            <% } %>
+          </div>
+
+          <div class="search">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search"
+              required>
+
+            <button
+              type="reset"
+              class="resetButton"
+              title="입력취소">reset</button>
+          </div>
+
+          <div class="viewToggler">
+            <button type="button" class="viewToggleButton">
+              <span>toggle</span>
+            </button>
           </div>
         </div>
 
@@ -39,24 +80,35 @@ groups:
           <div class="asideWrapper">
 
             <% for (var group in list) { %>
-              <div class="group">
+              <div class="group" data-search-level="0">
                 <h3><%= list[group].name %></h3>
                 <ul>
                   <% list[group].pages.forEach(function(page) { %>
-                    <li>
-                      <a
-                        href="<%- page.href %>"
-                        data-token="<%- page.token %>"
-                        class="innerLink"
-                        data-group-name="<%= list[group].name %>">
-                        <span><%= page.text %></span>
-                      </a>
+                    <li data-search-level="1">
+                      <span
+                        title="<%= page.path %>"
+                        class="pageName">
+                          <%= page.name %>
+                      </span>
 
-                      <a
-                        href="<%- page.href %>"
-                        class="newWindow"
-                        title="새 창에서 열기"
-                        target="_blank">새창</a>
+                      <% if (page.states.length) { %>
+                        <ul>
+                          <% page.states.forEach(function(state) { %>
+                            <li
+                              <%- state.unexposed ? 'class="unexposed"' : '' %>
+                              data-search-level="2">
+                              <a
+                                href="<%- state.href %>"
+                                title="<%= page.name + ' - ' + state.text %>"
+                                data-group-name="<%= list[group].name %>"
+                                data-token="<%- state.token %>">
+                                <%= state.text %>
+                              </a>
+                            </li>
+                          <% }) %>
+                        </ul>
+                      <% } %>
+
                     </li>
                   <% }) %>
                 </ul>
@@ -92,7 +144,8 @@ groups:
       </div>
     </div>
 
-    <script src="/scripts/index/jquery.js"></script>
+    <script src="/scripts/libs/jquery/jquery.min.js"></script>
+    <script src="/scripts/plugins/js.cookie/js.cookie.min.js"></script>
     <script src="/scripts/index/index.js"></script>
   </body>
 </html>

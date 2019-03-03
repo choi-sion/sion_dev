@@ -1,9 +1,14 @@
 var gulp = require('gulp');
+var log = require('fancy-log');
+var chalk = require('chalk');
 var gulpLoadPlugins = require('gulp-load-plugins');
+var autoprefixer = require('autoprefixer');
 var path = require('path');
 var url = require('url');
+var del = require('del');
 var fs = require('fs');
 var argv = require('yargs').argv;
+var exec = require('child_process').exec;
 
 var $ = gulpLoadPlugins();
 var site = JSON.parse(fs.readFileSync('./package.json'));
@@ -11,10 +16,47 @@ var ejsFilters = require('./config/filters');
 var asciiIntro = require('./config/asciiIntro')(site);
 var banner = require('./config/banner')(site, argv.preview ? 'preview' : '');
 var base = site.base;
+var defaultLanguage = 'ko';
+var isMultiLang = false;
+
+site.languages = site.languages || [defaultLanguage];
+site.languages = [].concat.apply([], [site.languages]);
+
+if (site.languages.length > 1) {
+  isMultiLang = true;
+  defaultLanguage = site.languages[0];
+  site.languages.push('keyCode');
+}
 
 console.info(asciiIntro);
+var isTestMode = !!argv.testonly;
 
-gulp.task('server', function() {
+if (isTestMode) {
+  log.info(chalk.red('This mode is intended for testing purposes'));
+}
+
+var lastUpdatedDate;
+exec('git log --pretty=format:\'%cD\' -1', function(error, stdout, stderr) {
+  if (error !== null) {
+    return;
+  }
+
+  var d = new Date(stdout);
+  var date = [
+    d.getFullYear(),
+    d.getMonth() + 1,
+    d.getDate()
+  ].join('. ');
+
+  var time = [
+    d.getHours(),
+    d.getMinutes()
+  ].join(':');
+
+  lastUpdatedDate = date + ' ' + time;
+});
+
+function server() {
   $.connect.server({
     host: '0.0.0.0',
     root: base.dist,
@@ -35,90 +77,169 @@ gulp.task('server', function() {
       ];
     }
   });
-});
+}
 
-gulp.task('scripts', function() {
+function scripts() {
   var dir = 'scripts';
-
-  return gulp
-    .src(path.join(base.src, dir, '**/*.js'))
+  var stream = gulp
+    .src('**/*.js', {
+      cwd: path.join(base.src, dir)
+    })
     .pipe($.eslint())
-    .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError())
-    .pipe(gulp.dest(path.join(base.dist, dir)));
-});
+    .pipe($.eslint.format());
 
-gulp.task('styles', function() {
+  if (isTestMode) {
+    stream = stream
+      .pipe($.eslint.failAfterError());
+  } else {
+    stream = stream
+      .pipe(gulp.dest(path.join(base.dist, dir)));
+  }
+
+  return stream;
+}
+
+function styles() {
   var dir = 'styles';
   var opts = {
     banner: '/*!' + banner + '*/',
     scss: {
-      outputStyle: 'expanded',
+      outputStyle: argv.cssstyle || 'expanded',
       includePaths: path.join(base.src, dir)
     },
-    autoprefixer: {
-      cascade: false
-    }
+    postcss: [
+      autoprefixer({
+        remove: false,
+        cascade: false
+      })
+    ]
   };
 
-  return gulp
-    .src(path.join(base.src, dir, '**/*.scss'))
-    .pipe($.sassLint())
-    .pipe($.sassLint.format())
-    .pipe($.sassLint.failOnError())
-    .pipe($.header(opts.banner))
-    .pipe($.sass(opts.scss).on('error', $.sass.logError))
-    .pipe($.autoprefixer(opts.autoprefixer))
-    .pipe(gulp.dest(path.join(base.dist, dir)));
-});
+  var sassVars = Object.keys(argv).reduce(function(result, key) {
+    var prefix = 'sassvar_';
+    var regex = new RegExp('^' + prefix, 'i');
+    var sassProp;
 
-gulp.task('images', function() {
+    if (regex.test(key)) {
+      sassProp = key.replace(regex, '');
+      sassProp = sassProp[0] === '$' ? sassProp : '$' + sassProp;
+      result.push(sassProp + ': "' + argv[key] + '";');
+    }
+
+    return result;
+  }, []).join('\n');
+
+  var stream = gulp
+    .src('**/*.scss', {
+      cwd: path.join(base.src, dir)
+    })
+    .pipe($.sassLint())
+    .pipe($.sassLint.format());
+
+  if (isTestMode) {
+    stream = stream
+      .pipe($.sassLint.failOnError());
+  }
+
+  if (sassVars) {
+    sassVars.split('\n').forEach(function(vars) {
+      log.info('Injected Sass variable ' + chalk.yellow(vars));
+    });
+
+    stream = stream
+      .pipe($.header(sassVars));
+  }
+
+  if (!isTestMode) {
+    stream = stream
+      .pipe($.header(opts.banner));
+  }
+
+  stream = stream
+    .pipe($.sass(opts.scss).on('error', $.sass.logError));
+
+  if (!isTestMode) {
+    stream = stream
+      .pipe($.postcss(opts.postcss))
+      .pipe(gulp.dest(path.join(base.dist, dir)));
+  }
+
+  return stream;
+}
+
+function images() {
   var dir = 'images';
 
   return gulp
-    .src(path.join(base.src, dir, '**/*.{png,jpg,gif,jpeg}'))
+    .src('**/*.{png,jpg,jpeg,gif,svg,ico}', {
+      cwd: path.join(base.src, dir)
+    })
     .pipe(gulp.dest(path.join(base.dist, dir)));
-});
+}
 
-gulp.task('html', function() {
+function html() {
   var dir = 'views';
   var lintCfg = '.htmlhintrc';
   var opts = {
     frontMatter: {
-      property: 'meta',
+      property: 'fm',
       remove: true
     },
     prettify: site.htmlBeautify
   };
 
-  var generatePages = function(file) {
-    var meta = file.meta;
-    var dataPaths = meta.data;
-    var dataPath;
-    var contentData = {};
-    var list = ['default'];
+  var htmlVars = Object.keys(argv).reduce(function(result, key) {
+    var prefix = 'htmlvar_';
+    var regex = new RegExp('^' + prefix, 'i');
 
-    if (meta.state !== undefined) {
-      list = list.concat(Object.keys(meta.state));
-      list = Array.from(new Set(list));
+    if (regex.test(key)) {
+      prop = key.replace(regex, '');
+      result[prop] = argv[key];
+
+      log.info(
+        'Injected HTML variable ' +
+        chalk.yellow('{' + prop + ': "' + argv[key] + '"}')
+      );
     }
 
-    file.meta.idxData = {};
-    file.meta.idxData.groupName = meta.indexGroup;
+    return result;
+  }, {});
 
-    var charset = meta.charset || 'utf-8';
+  var indexData = {};
+  var generatePages = function(page) {
+    var pageFm = page.fm;
+    var charset = pageFm.charset || 'utf-8';
     var isCustomEncode = charset.toLowerCase() !== 'utf-8';
-
-    var basePath = path.resolve(file.cwd, base.src);
-    var srcPath = file.path.replace(basePath, '');
-
-    srcPath = srcPath
-      .substr(0, srcPath.lastIndexOf('.'))
+    var basePath = path.resolve(page.cwd, base.src);
+    var srcPath = page.path.replace(basePath, '')
+      .replace(/\.[^/\\.]+$/, '')
       .split(path.sep)
       .join('/');
 
     var token = srcPath.replace(/\//g, '-').slice(1);
-    file.meta.idxData.pages = [];
+    var isPartialPage = path.basename(srcPath).substring(0, 2) === '__';
+    var pageName = pageFm.pageName || srcPath;
+    var dataPaths = pageFm.data;
+    var dataPath;
+    var contentData = {};
+
+    if (Object.keys(htmlVars).length) {
+      Object.assign(pageFm, htmlVars);
+    }
+
+    var states = Object.assign({
+      'default': pageName + ' 기본'
+    }, (pageFm.state || {}));
+
+    if (pageFm.indexGroup) {
+      indexData[pageFm.indexGroup] = indexData[pageFm.indexGroup] || {
+        pages: []
+      };
+    } else {
+      if (!isPartialPage) {
+        log(chalk.red('"indexGroup" is not defined: ') + srcPath);
+      }
+    }
 
     if (dataPaths) {
       if (!Array.isArray(dataPaths)) {
@@ -139,149 +260,287 @@ gulp.task('html', function() {
       contentData[path.parse(dataPath).name] = require(dataPath);
     }
 
-    list.forEach(function(state) {
+    var pageData = Object.keys(states).reduce(function(before, state) {
       var isDefault = state === 'default';
+      var isUnexposedPage = states[state][0] === '_';
+      var stateName = isUnexposedPage ? states[state].substr(1) : states[state];
 
-      file.meta.idxData.pages.push({
-        href: srcPath + (isDefault ? '' : '.' + state) + '.html',
-        text: (meta.state && meta.state[state]) ||  meta.title,
-        token: token + (isDefault ? '' : '-' + state)
+      site.languages.forEach(function(lang) {
+        var stateData = {
+          text: stateName,
+          token: token,
+          href: srcPath,
+          unexposed: isUnexposedPage
+        };
+
+        if (!isDefault) {
+          stateData.token += '-' + state;
+          stateData.href += '.' + state;
+        }
+
+        if (isMultiLang) {
+          stateData.text += ' (' + lang + ')';
+          stateData.token += '-' + lang;
+          stateData.href = stateData.href.replace(
+            new RegExp('^\/' + dir),
+            '/' + dir + '/' + lang
+          );
+        }
+
+        stateData.href += '.html';
+        before.states = before.states.concat(stateData);
       });
 
-      var listOpts = {
-        src: {
-          base: path.join(base.src, dir)
-        },
-        ejs: {
-          root: path.join(__dirname, base.src, dir)
-        },
-        ejsSettings: {
-          ext: (isDefault ? '' : '.' + state) + '.html'
-        },
-        convertEncoding: {
-          to: charset
+      return before;
+    }, {
+      states: []
+    });
+
+    pageData.name = pageName;
+    pageData.path = srcPath;
+
+    if (pageFm.indexGroup) {
+      indexData[pageFm.indexGroup].pages.push(pageData);
+    }
+
+    site.languages.forEach(function(lang) {
+      var distDir = isMultiLang ? path.join(dir, lang) : dir;
+
+      Object.keys(states).forEach(function(state) {
+        var isDefault = state === 'default';
+        var listOpts = {
+          src: {
+            base: path.join(base.src, dir)
+          },
+          ejs: {
+            root: path.join(__dirname, base.src, dir),
+            outputFunctionName: 'echo'
+          },
+          ejsSettings: {
+            ext: (isDefault ? '' : '.' + state) + '.html'
+          },
+          convertEncoding: {
+            to: charset
+          }
+        };
+
+        var loadData = function(dataPath) {
+          var fileFullPath = path.join(__dirname, dataPath);
+          var basename = path.basename(dataPath);
+          var extname = path.extname(dataPath);
+          var parsedStr;
+
+          if (extname !== '.json') {
+            console.log(basename + ' is not JSON file.');
+            return;
+          }
+
+          if (fs.existsSync(fileFullPath)) {
+            parsedStr = JSON.parse(fs.readFileSync(fileFullPath));
+          } else {
+            console.log(dataPath + ' file does not exist.');
+            return;
+          }
+
+          return parsedStr;
+        };
+
+        var setProp = function Prop(obj, is, value) {
+          if (typeof is === 'string') {
+            is = is.split('.');
+          }
+
+          if (is.length === 1 && value !== undefined) {
+            return (obj[is[0]] = value);
+          } else if (is.length === 0) {
+            return obj;
+          } else {
+            var prop = is.shift();
+
+            if (value !== undefined && obj[prop] === undefined) {
+              obj[prop] = {};
+            }
+
+            return setProp(obj[prop], is, value);
+          }
+        };
+
+        var replacer = function(str, obj) {
+          return str.replace(/\$\{(.+?)\}/g, function(match, p1) {
+            return setProp(obj, p1);
+          });
+        };
+
+        var i18n = function(keyCode, textObj, data) {
+          if (lang === 'keyCode') {
+            return '{{' + keyCode + '}}';
+          }
+
+          if (!(lang in textObj)) {
+            return '\'' + lang + '\' property is not exist.';
+          }
+
+          data = data || {};
+          return replacer(textObj[lang], data);
+        };
+
+        var listData = {
+          site: site,
+          page: pageFm,
+          state: state,
+          data: contentData,
+          loadData: loadData,
+          $: ejsFilters(),
+          lang: lang === 'keyCode' ? defaultLanguage : lang,
+          i18n: i18n
+        };
+
+        var stream = gulp
+          .src(page.path, listOpts.src)
+          .pipe($.frontMatter(opts.frontMatter))
+          .pipe($.ejs(listData, listOpts.ejs, listOpts.ejsSettings));
+
+        if (!isPartialPage) {
+          stream = stream
+            .pipe($.htmlhint(lintCfg))
+            .pipe($.htmlhint.reporter());
+
+          if (isTestMode) {
+            stream = stream
+              .pipe($.htmlhint.failOnError());
+          }
         }
-      };
 
-      var listData = {
-        site: site,
-        page: file.meta,
-        data: contentData,
-        state: state,
-        $: ejsFilters()
-      };
+        if (!isTestMode) {
+          stream = stream
+            .pipe($.prettify(opts.prettify));
 
-      gulp
-        .src(file.path, listOpts.src)
-        .pipe($.frontMatter(opts.frontMatter))
-        .pipe($.ejs(listData, listOpts.ejs, listOpts.ejsSettings))
-        .pipe($.prettify(opts.prettify))
-        .pipe($.htmlhint(lintCfg))
-        .pipe($.htmlhint.reporter())
-        .pipe($.htmlhint.failOnError())
-        .pipe($.if(isCustomEncode, $.convertEncoding(listOpts.convertEncoding)))
-        .pipe(gulp.dest(path.join(base.dist, dir)));
+          if (isCustomEncode) {
+            stream = stream
+              .pipe($.convertEncoding(listOpts.convertEncoding));
+          }
+
+          if (isPartialPage) {
+            stream = stream
+              .pipe($.rename(function(path) {
+                path.basename = path.basename.replace(/^__/, '');
+              }));
+          }
+
+          stream = stream
+            .pipe(gulp.dest(path.join(base.dist, distDir)));
+        }
+
+        return stream;
+      });
     });
   };
 
   var generateIndex = function(file) {
     var indexOpts = {
       ejs: {
-        ext: '.html'
+        root: path.join(__dirname, base.src, dir),
+        outputFunctionName: 'echo'
       },
       ejsSettings: {
         ext: '.html'
       }
     };
 
-    gulp
-      .src(path.join(base.src, 'index.ejs'))
-      .pipe($.frontMatter(opts.frontMatter))
-      .pipe($.data(function(_file) {
-        var groups = _file.meta.groups;
-        var idxData = {};
-        var currMeta;
-        var group;
-        var pages;
+    var getIndexData = function(index) {
+      var indexFm = index.fm;
+      var groups = indexFm.groups;
 
-        Object.keys(groups).forEach(function(group) {
-          idxData[group] = {
-            name: groups[group],
-            pages: []
+      Object.keys(groups).forEach(function(group) {
+        if (indexData[group]) {
+          groups[group] = {
+            name: groups[group]
           };
-        });
 
-        for (var i = 0, len = file.meta.length; i < len; i++) {
-          currMeta = file.meta[i];
-          group = currMeta.indexGroup;
-
-          if (group && group in groups) {
-            pages = idxData[group].pages;
-            idxData[group].pages = pages.concat(currMeta.idxData.pages);
-          }
+          Object.assign(groups[group], indexData[group]);
+        } else {
+          log(chalk.red(
+            'group name is not found ') +
+            group + ': ' + groups[group]
+          );
         }
+      });
 
-        _file.meta.list = idxData;
-        _file.meta.pkgInfo = site;
+      indexFm.list = groups;
+      indexFm.pkgInfo = site;
+      indexFm.lastUpdatedDate = lastUpdatedDate;
 
-        return _file.meta;
-      }))
+      return indexFm;
+    };
+
+    var stream = gulp
+      .src('index.ejs', {
+        cwd: base.src
+      })
+      .pipe($.frontMatter(opts.frontMatter))
+      .pipe($.data(getIndexData))
       .pipe($.ejs(null, indexOpts.ejs, indexOpts.ejsSettings))
-      .pipe($.prettify(opts.prettify))
       .pipe($.htmlhint(lintCfg))
-      .pipe($.htmlhint.reporter())
-      .pipe(gulp.dest(base.dist));
+      .pipe($.htmlhint.reporter());
+
+    if (isTestMode) {
+      stream = stream
+        .pipe($.htmlhint.failOnError());
+    } else {
+      stream = stream
+        .pipe($.prettify(opts.prettify))
+        .pipe(gulp.dest(base.dist));
+    }
+
+    return stream;
   };
 
   return gulp
     .src([
       path.join(base.src, dir, '**/*.ejs'),
-      path.join('!' + base.src, dir, '**/_*.ejs'),
-      path.join('!' + base.src, dir, 'layouts/*.ejs')
-    ])
+      path.join('!' + base.src, dir, '**/_!(_)*.ejs'),
+      path.join('!' + base.src, dir, 'layouts/**/*.ejs')
+    ], {
+      nosort: true
+    })
     .pipe($.frontMatter(opts.frontMatter))
     .pipe($.data(generatePages))
-    .pipe($.pluck('meta'))
+    .pipe($.pluck('fm'))
     .pipe($.data(generateIndex));
-});
+}
 
-gulp.task('data_texts', function() {
+function data_texts() {
   var dir = 'texts';
 
   return gulp
-    .src(path.join(base.data, dir, '**/*.json'))
+    .src('**/*.json', {
+      cwd: path.join(base.data, dir)
+    })
     .pipe(gulp.dest(path.join(base.dist, base.data, dir)));
-});
+}
 
-gulp.task('data_images', function() {
+function data_images() {
   var dir = 'images';
 
   return gulp
-    .src(path.join(base.data, dir, '**/*.{png,jpg,gif,jpeg}'))
+    .src('**/*.{png,jpg,jpeg,gif,svg,ico}', {
+      cwd: path.join(base.data, dir)
+    })
     .pipe(gulp.dest(path.join(base.dist, base.data, dir)));
-});
+}
 
-gulp.task('clean', function() {
+function clean() {
   var opts = {
-    src: {
-      read: false
-    },
-    clean: {
-      force: true
-    }
+    force: true
   };
 
+  return del(base.dist, opts);
+}
 
-  return gulp
-    .src(base.dist, opts.src)
-    .pipe($.clean(opts.clean));
-});
+var tasks = {
+  normal: gulp.series(clean, gulp.parallel(html, styles, images, scripts, data_images, data_texts)),
+  test: gulp.parallel(html, styles, scripts)
+};
 
-gulp.task('default', $.sequence('clean', [
-  'html',
-  'styles',
-  'images',
-  'scripts',
-  'data_images',
-  'data_texts'
-]));
+gulp.task('default', tasks[isTestMode ? 'test' : 'normal']);
+gulp.task('server', server);
