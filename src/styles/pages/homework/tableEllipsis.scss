@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.tableEllipsis {
+
+    table {
+        width: 100%;
+        display: table;
+
+        td {
+            height: 14px;
+            position: relative;
+
+            p {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: 0;
+                padding: 0;
+
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    display: inline-block;
+                    max-width: 80%;
+                    vertical-align: middle;
+                }
+
+                i {
+                    height: 14px;
+                    padding: 1px 3px 0;
+                    border: 1px solid #d94242;
+                    border-radius: 2px;
+                    background: #fb5554;
+                    line-height: 14px;
+                    font-size: 11px;
+                    color: #fff;
+                    text-decoration: none;
+                    box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .08);
+                }
+            }
+        }
+    }
+}
