@@ -29,7 +29,7 @@ body {
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     display: inline-block;
-                    max-width: 80%;
+                    max-width: 100%;
                     vertical-align: middle;
                 }
 
@@ -44,6 +44,10 @@ body {
                     color: #fff;
                     text-decoration: none;
                     box-shadow: inset 1px 1px 1px rgba(255, 255, 255, .08);
+
+                    + span {
+                        max-width: 80%;
+                    }
                 }
             }
         }
