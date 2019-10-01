@@ -179,7 +179,8 @@ function images() {
 
 function html() {
   var dir = 'views';
-  var lintCfg = '.htmlhintrc';
+  var lintCfg = site.htmlhint;
+
   var opts = {
     frontMatter: {
       property: 'fm',
@@ -316,8 +317,8 @@ function html() {
             root: path.join(__dirname, base.src, dir),
             outputFunctionName: 'echo'
           },
-          ejsSettings: {
-            ext: (isDefault ? '' : '.' + state) + '.html'
+          rename: {
+            extname: (isDefault ? '' : '.' + state) + '.html'
           },
           convertEncoding: {
             to: charset
@@ -398,7 +399,8 @@ function html() {
         var stream = gulp
           .src(page.path, listOpts.src)
           .pipe($.frontMatter(opts.frontMatter))
-          .pipe($.ejs(listData, listOpts.ejs, listOpts.ejsSettings));
+          .pipe($.ejs(listData, listOpts.ejs))
+          .pipe($.rename(listOpts.rename));
 
         if (!isPartialPage) {
           stream = stream
@@ -442,8 +444,8 @@ function html() {
         root: path.join(__dirname, base.src, dir),
         outputFunctionName: 'echo'
       },
-      ejsSettings: {
-        ext: '.html'
+      rename: {
+        extname: '.html'
       }
     };
 
@@ -479,7 +481,8 @@ function html() {
       })
       .pipe($.frontMatter(opts.frontMatter))
       .pipe($.data(getIndexData))
-      .pipe($.ejs(null, indexOpts.ejs, indexOpts.ejsSettings))
+      .pipe($.ejs(null, indexOpts.ejs))
+      .pipe($.rename(indexOpts.rename))
       .pipe($.htmlhint(lintCfg))
       .pipe($.htmlhint.reporter());
 
