@@ -1,16 +1,12 @@
 {
-  "name": "tour-desktop-spa",
-  "siteName": "tour-desktop-spa",
-  "description": "Tour Desktop Spa",
-  "homepage": "http://ui.interpark.com:8000/ui/tour-desktop-spa",
-  "version": "0.6.57",
-  "author": "Jisun Lim <okayjj@interpark.com>",
+  "name": "sion",
+  "siteName": "sion_dev",
+  "description": "sion_dev",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git@ui.interpark.com:ui/tour-newplatform-desktop.git"
+    "url": "git@gitlab.com:choi.sion/sion.git"
   },
-  "company": "INTERPARK",
-  "team": "UI Development Team",
   "license": "SEE LICENSE IN LICENSE.txt",
   "private": true,
   "port": 9116,
