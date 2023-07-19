@@ -1,7 +1,7 @@
 ---
 groups:
-  calendar: 달력
-  homework: 숙제
+  air: 항공메인
+base: /images
 ---
 
 <!doctype html>
@@ -9,7 +9,6 @@ groups:
   <head>
     <title><%= pkgInfo.siteName %></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/styles/common/common.css">
     <link rel="stylesheet" href="/styles/index/index.css">
     <link rel="shortcut icon" href="/images/icons/favicon.ico">
   </head>
@@ -81,39 +80,41 @@ groups:
           <div class="asideWrapper">
 
             <% for (var group in list) { %>
-              <div class="group" data-search-level="0">
-                <h3><%= list[group].name %></h3>
-                <ul>
-                  <% list[group].pages.forEach(function(page) { %>
-                    <li data-search-level="1">
-                      <span
-                        title="<%= page.path %>"
-                        class="pageName">
-                          <%= page.name %>
-                      </span>
+              <% if(list[group].pages) {%>
+                <div class="group" data-search-level="0">
+                  <h3><%= list[group].name %></h3>
+                  <ul>
+                    <% list[group].pages.forEach(function(page) { %>
+                      <li data-search-level="1">
+                        <span
+                          title="<%= page.path %>"
+                          class="pageName">
+                            <%= page.name %>
+                        </span>
 
-                      <% if (page.states.length) { %>
-                        <ul>
-                          <% page.states.forEach(function(state) { %>
-                            <li
-                              <%- state.unexposed ? 'class="unexposed"' : '' %>
-                              data-search-level="2">
-                              <a
-                                href="<%- state.href %>"
-                                title="<%= page.name + ' - ' + state.text %>"
-                                data-group-name="<%= list[group].name %>"
-                                data-token="<%- state.token %>">
-                                <%= state.text %>
-                              </a>
-                            </li>
-                          <% }) %>
-                        </ul>
-                      <% } %>
+                        <% if (page.states.length) { %>
+                          <ul>
+                            <% page.states.forEach(function(state) { %>
+                              <li
+                                <%- state.unexposed ? 'class="unexposed"' : '' %>
+                                data-search-level="2">
+                                <a
+                                  href="<%- state.href %>"
+                                  title="<%= page.name + ' - ' + state.text %>"
+                                  data-group-name="<%= list[group].name %>"
+                                  data-token="<%- state.token %>">
+                                  <%= state.text %>
+                                </a>
+                              </li>
+                            <% }) %>
+                          </ul>
+                        <% } %>
 
-                    </li>
-                  <% }) %>
-                </ul>
-              </div>
+                      </li>
+                    <% }) %>
+                  </ul>
+                </div>
+              <% } %>
             <% } %>
 
           </div>

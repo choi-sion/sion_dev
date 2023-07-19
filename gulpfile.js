@@ -14,7 +14,7 @@ var $ = gulpLoadPlugins();
 var site = JSON.parse(fs.readFileSync('./package.json'));
 var ejsFilters = require('./config/filters');
 var asciiIntro = require('./config/asciiIntro')(site);
-var banner = require('./config/banner')(site, argv.preview ? 'preview' : '');
+var banner = require('./config/banner');
 var base = site.base;
 var defaultLanguage = 'ko';
 var isMultiLang = false;
@@ -82,7 +82,10 @@ function server() {
 function scripts() {
   var dir = 'scripts';
   var stream = gulp
-    .src('**/*.js', {
+    .src([
+      '**/*.js',
+      '!{libs,plugins}/**/*.js'
+    ], {
       cwd: path.join(base.src, dir)
     })
     .pipe($.eslint())
@@ -102,7 +105,6 @@ function scripts() {
 function styles() {
   var dir = 'styles';
   var opts = {
-    banner: '/*!' + banner + '*/',
     scss: {
       outputStyle: argv.cssstyle || 'expanded',
       includePaths: path.join(base.src, dir)
@@ -152,7 +154,20 @@ function styles() {
 
   if (!isTestMode) {
     stream = stream
-      .pipe($.header(opts.banner));
+      .pipe($.data(function(file) {
+        var cssPath = path
+          .resolve(file.path)
+          .replace(path.resolve(__dirname, base.src), '')
+          .replace(/\\/g, '/');
+
+        var cssBanner = [
+          '/*!',
+          banner(site, (argv.preview ? 'preview' : ''), cssPath),
+          '*/\n'
+        ].join('');
+
+        file.contents = Buffer.from(cssBanner + String(file.contents));
+      }));
   }
 
   stream = stream
@@ -163,7 +178,6 @@ function styles() {
       .pipe($.postcss(opts.postcss))
       .pipe(gulp.dest(path.join(base.dist, dir)));
   }
-
   return stream;
 }
 
@@ -502,7 +516,7 @@ function html() {
     .src([
       path.join(base.src, dir, '**/*.ejs'),
       path.join('!' + base.src, dir, '**/_!(_)*.ejs'),
-      path.join('!' + base.src, dir, 'layouts/**/*.ejs')
+      path.join('!' + base.src, dir, 'components/**/*.ejs')
     ], {
       nosort: true
     })
@@ -510,6 +524,18 @@ function html() {
     .pipe($.data(generatePages))
     .pipe($.pluck('fm'))
     .pipe($.data(generateIndex));
+}
+
+function statics() {
+  return gulp
+    .src([
+      'styles/**/*.css',
+      'scripts/{libs,plugins}/**/*.js'
+    ], {
+      base: base.src,
+      cwd: base.src
+    })
+    .pipe(gulp.dest(base.dist));
 }
 
 function data_texts() {
@@ -541,7 +567,18 @@ function clean() {
 }
 
 var tasks = {
-  normal: gulp.series(clean, gulp.parallel(html, styles, images, scripts, data_images, data_texts)),
+  normal: gulp.series(
+    clean,
+    gulp.parallel(
+      html,
+      styles,
+      images,
+      scripts,
+      statics,
+      data_images,
+      data_texts
+    )
+  ),
   test: gulp.parallel(html, styles, scripts)
 };
 

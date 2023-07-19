@@ -18,7 +18,7 @@ global.site = require('./package.json');
 global.src = path.join(__dirname, site.base.src);
 global.dist = path.join(__dirname, site.base.dist);
 
-var banner = require('./config/banner')(site, 'dev');
+var banner = require('./config/banner');
 var defaultLanguage = 'ko';
 var isMultiLang = false;
 
@@ -102,7 +102,7 @@ app.get('/', function(req, res, next) {
       'default': pageName + ' 기본'
     }, (pageFm.state || {}));
 
-    if (!indexGroup || !indexGroup in indexData.list) {
+    if (!indexGroup || !indexGroup in indexData.list || !indexData.list[indexGroup]) {
       return;
     }
 
@@ -158,6 +158,10 @@ app.get('/views/:lang(' + langsWithPipe + ')?/**/?*.html', function(req, res, ne
 
   if (isMultiLang && lang) {
     pathObj.dir = pathObj.dir.replace(new RegExp('^(\/views\/)' + lang), '$1');
+  }
+
+  if (!lang) {
+    lang = defaultLanguage;
   }
 
   var fileState = pathObj.name.split('.');
@@ -310,7 +314,12 @@ app.use('/styles', postcssMiddleware({
     function(root, result) {
       var first = root.first;
       var hasCharset = first.type === 'atrule' && first.name === 'charset';
-      var cssBanner = '/*!' + banner + '*/';
+      var cssPath = path
+        .resolve(root.source.input.file)
+        .replace(path.resolve(dist), '')
+        .replace(/\\/g, '/');
+
+      var cssBanner = '/*!' + banner(site, 'dev', cssPath) + '*/';
 
       if (hasCharset) {
         root.first.after('\n' + cssBanner);
