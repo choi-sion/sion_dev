@@ -1,0 +1,177 @@
+<%
+  var domestic = [
+    {
+      "schedule": "김포(GMP) - 제주(CJU)",
+      "airLine": "아시아나항공",
+      "airLineImg": "//openimage.interpark.com/tourpark/tour_ui/air_logo/logo_20/OZ.jpg",
+      "date": "2021.01.30(수) 14:00 - 16:00",
+      "time": "2시간",
+      "baggage": "15Kg",
+      "price": 54000
+    },
+    {
+      "schedule": "김포(GMP) - 제주(CJU)",
+      "airLine": "대한항공",
+      "airLineImg": "//openimage.interpark.com/tourpark/tour_ui/air_logo/logo_20/KE.jpg",
+      "date": "2021.01.30(수) 14:00 - 16:00",
+      "time": "2시간",
+      "baggage": "15Kg",
+      "price": 54000
+    },
+    {
+      "schedule": "김포(GMP) - 제주(CJU)",
+      "airLine": "에티하드항공",
+      "airLineImg": "//openimage.interpark.com/tourpark/tour_ui/air_logo/logo_20/EY.jpg",
+      "date": "2021.01.30(수) 14:00 - 16:00",
+      "time": "2시간",
+      "baggage": "15Kg",
+      "price": 54000
+    }
+  ]
+
+  var overseas = [
+    {
+      "schedule": "김포(GMP) - 오사카 간사이(KIX)",
+      "airLine": "아시아나항공",
+      "airLineImg": "//openimage.interpark.com/tourpark/tour_ui/air_logo/logo_20/OZ.jpg",
+      "date": "2021.01.30(수) 14:00 - 16:00",
+      "time": "2시간",
+      "baggage": "직항",
+      "price": 156000
+    },
+    {
+      "schedule": "김포(GMP) - 도쿄 나리타(NRT)",
+      "airLine": "대한항공",
+      "airLineImg": "//openimage.interpark.com/tourpark/tour_ui/air_logo/logo_20/KE.jpg",
+      "date": "2021.01.30(수) 14:00 - 16:00",
+      "time": "2시간",
+      "baggage": "직항",
+      "price": 156000
+    },
+    {
+      "schedule": "인천(ICN) - 산또 도밍고, 도미니카공화국(SDQ)",
+      "airLine": "에티하드항공",
+      "airLineImg": "//openimage.interpark.com/tourpark/tour_ui/air_logo/logo_20/EY.jpg",
+      "date": "2021.01.30(수) 14:00 - 16:00",
+      "time": "2시간",
+      "baggage": "직항",
+      "price": 2234000
+    }
+  ]
+
+  var comparison;
+  var idx;
+
+  switch (state) {
+    case 'domesticRound':
+    case 'domesticMultiRound':
+      comparison = domestic;
+      idx = 1;
+      break;
+
+    case 'comparison':
+      comparison = domestic.slice(undefined, 2);
+      idx = 1;
+      break;
+
+    case 'domesticOneway':
+      comparison = domestic;
+      idx = 0;
+      break;
+
+    case 'overseasRound':
+    case 'overseasMultiRound':
+      comparison = overseas;
+      idx = 1;
+      break;
+
+    case 'overseasOneway':
+      comparison = overseas;
+      idx = 0;
+      break;
+    default:
+      comparison = domestic;
+      idx = 0;
+      break;
+  }
+
+  var multi = state.match('Multi');
+  var overseas = state.match('overseas');
+  var noPrice = state !== 'overseasMultiRound' && state !== 'overseasRound';
+  var alert = state.match('alert');
+
+%>
+<div class="popup zzimCompare <% if(state !== "default" && state !== "empty" && !alert) { %>on<% } %>" id="<%= id %>">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <h2 class="popupTitle">찜한 항공권 비교하기</h2>
+      <button class="popupCloseBtn" type="button" aria-label="닫기">팝업창 닫기</button>
+    </div>
+    <div class="popupContents">
+      <% for (var i = 0; i <= idx; i++) { %>
+      <div class="zzimTable">
+        <dl class="zzimCaption">
+          <dt><% if(multi) { %>구간<%= i + 1 %><% } else if (multi || i === 0 ) { %>가는<% } else { %>오는<% } %>항공편</dt>
+
+          <dd>항공사</dd>
+          <dd>출발/도착 일시</dd>
+          <dd>소요시간</dd>
+          <dd><% if(overseas) { %>직항/경유<% } else { %>무료 수하물<% } %></dd>
+          <% if(noPrice) { %>
+          <dd>가격</dd>
+          <% } %>
+        </dl>
+        <% comparison.forEach(($do, n) => { %>
+        <dl>
+          <dt><%- $.nl2br($do.schedule) %></dt>
+          <dd><span><img src="<%= $do.airLineImg %>" alt="<%= $do.airLine %>"></span><%= $do.airLine %></dd>
+          <dd><%= $do.date %></dd>
+          <dd><%= $do.time %></dd>
+          <dd><%= $do.baggage %></dd>
+          <% if(noPrice) { %>
+          <dd><strong><%= $.withCommas($do.price) %>원</strong></dd>
+          <% } %>
+        </dl>
+        <% }) %>
+      </div>
+      <% } %>
+
+      <div class="zzimTable">
+        <dl class="zzimCaption">
+          <dd>예약</dd>
+        </dl>
+        <% comparison.forEach(($do, n) => { %>
+        <dl>
+          <dd class="reservation"><button type="button">
+            <% if(noPrice) { %>
+              예약하기
+            <% } else { %>
+              총 248,000원 예약하기
+            <% } %>
+            </button></dd>
+        </dl>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var arr = [];
+
+    $('.zzimTable dl').each(function() {
+      var targetElem= $(this).children('dt');
+      var zzimHeight = targetElem.innerHeight();
+
+      if (zzimHeight !== null && 46 < zzimHeight ) {
+        arr.push(zzimHeight);
+      }
+    });
+
+    var result = $.unique(arr);
+    var max = Math.max.apply(null, result);
+
+    $('.zzimTable dl dt').css('height', max);
+  });
+</script>

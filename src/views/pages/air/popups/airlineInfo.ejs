@@ -1,0 +1,84 @@
+---
+pageName: 항공메인 새창팝업
+title: 항공메인 새창팝업
+pageId: airMain
+indexGroup: air
+styles:
+  - /styles/pages/air/popups/airlineInfo.css
+state:
+  default: 메인 - 항공사정보 팝업
+base: /images
+---
+
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <%- include('/components/common/_head'); %>
+</head>
+
+<body id="<%= page.pageId %>">
+  <div class="airlineInfo">
+    <div class="popupPosition">
+      <div class="popupHeader">
+        <h2 class="popupTitle">항공사 안내</h2>
+      </div>
+      <div class="popupContents">
+        <p>주말, 공휴일 등 인터파크 항공 상담시간이 아닌 경우, 각 항공사로 문의하시면 더 빠른 처리가 가능합니다. </p>
+        <div class="airline">
+          <%
+          var airlineInfo = [
+            {
+              "imgUrl": "/pages/air/main/airline_koreanair.png",
+              "airline" : "대한항공",
+              "tel" : "1588-2001"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_asiana.png",
+              "airline" : "아시아나항공",
+              "tel" : "1588-8000"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_jejuair.png",
+              "airline" : "제주항공",
+              "tel" : "1599-1500"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_eastar.png",
+              "airline" : "이스타항공",
+              "tel" : "1544-0080"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_jinair.png",
+              "airline" : "진에어",
+              "tel" : "1600-6200"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_tway.png",
+              "airline" : "티웨이항공",
+              "tel" : "1688-8686"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_airseoul.png",
+              "airline" : "에어서울",
+              "tel" : "1800-8100"
+            },
+            {
+              "imgUrl": "/pages/air/main/airline_airbusan.png",
+              "airline" : "에어부산",
+              "tel" : "1666-3060"
+            },
+          ].forEach($ai => { %>
+            <dl>
+              <dt><img src="<%= page.base %><%= $ai.imgUrl %>" alt="<%= $ai.airline %>"></dt>
+              <dd>
+                <span><%= $ai.airline %></span>
+                <span><strong><%= $ai.tel %></strong></span>
+              </dd>
+            </dl>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

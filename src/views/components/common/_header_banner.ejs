@@ -1,0 +1,23 @@
+<!-- 스킵네비 -->
+<p class="skip-nav">
+  <a href="#">본문 바로가기</a>
+</p>
+<!-- 상단 띠배너 -->
+<% if (page.indexGroup === 'main') { %>
+  <div id="divTop_Banner" class="tour-top-banner" style="background: #ffe4d6;" role="region">
+    <div class="banner-wrap">
+      <button class="close-btn" onclick="javascript:this.parentNode.parentNode.style.display='none';">닫기</button>
+      <div class="link-wrap">
+        <a href="#" target="_blank" class="banner-link">
+          <img src="/data/images/common/header/top_banner01.gif" alt="여행박람회1 여행TV">
+        </a>
+        <a href="#" target="_blank" class="banner-link">
+          <img src="/data/images/common/header/top_banner02.gif" alt="여행박람회2 여행TV">
+        </a>
+        <a href="#" target="_blank" class="banner-link">
+          <img src="/data/images/common/header/top_banner03.gif" alt="여행박람회3 여행TV">
+        </a>
+      </div>
+    </div>
+  </div>
+<% } %>

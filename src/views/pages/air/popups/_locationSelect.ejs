@@ -1,0 +1,147 @@
+<%
+  var travel =[
+    {
+      "nation": "국내",
+      "region": ["인천", "김포", "부산", "대구", "청주", "제주", "무안", "양양"]
+    },
+    {
+      "nation": "일본",
+      "region": ["도교(나리타)", "도쿄(하네다)", "오사카", "나고야", "오키나와", "후쿠오카", "삿포로", "가고시마"]
+    },
+    {
+      "nation": "중국",
+      "region": ["상하이(푸동)", "상하이(홍차우)", "북경", "청도", "광저우", "연길", "심양", "심청"]
+    },
+    {
+      "nation": "동남아",
+      "region": ["홍콩", "하노이", "방콕", "마닐라", "타이페이", "싱가폴", "다낭", "호치민"]
+    },
+    {
+      "nation": "미주",
+      "region": ["로스엔젤레스", "뉴욕(JFK)", "샌프란시스코", "벤쿠버", "하와이", "토론토", "시애틀", "시카고"]
+    },
+    {
+      "nation": "유럽",
+      "region": ["파리", "런던", "로마", "프라하", "프랑크푸르트", "마드리드", "바르셀로나", "취리히"]
+    },
+    {
+      "nation": "대양주",
+      "region": ["괌", "사이판", "시드니", "오클랜드"]
+    }
+  ]
+
+  var air =[
+  {
+    "region":"제주",
+    "state": "대한민국 CJU",
+    "subTxt":"제주, Jeju Intl Arpt"
+  },
+  {
+    "region":"제네바",
+    "state": "스위스 GVA",
+    "subTxt":"제네바(코인트린), Geneve Cointrin"
+  },
+  {
+    "region":"제다",
+    "state": "사우디아라비아 JED",
+    "subTxt":"제다, Jeddah Intl"
+  },
+  {
+    "region":"제노바",
+    "state": "이탈리아 GOA",
+    "subTxt":"제노바(GOA), Christoforo Colombo"
+  },
+  {
+    "region":"마드리드",
+    "state": "스페인 MAD",
+    "subTxt":"마드리드, Barajas Arpt"
+  },
+  {
+    "region":"산또 도밍고",
+    "state": "도미니카공화국 SDQ",
+    "subTxt":"산또 도밍고(라스 아메리카,호세 프란치스코 페나 고메스), Las Americas Arpt"
+  },
+  {
+    "region":"마드리드",
+    "state": "스페인 MAD",
+    "subTxt":"마드리드, Barajas Arpt"
+  },
+  {
+    "region":"산또 도밍고",
+    "state": "도미니카공화국 SDQ",
+    "subTxt":"산또 도밍고(라스 아메리카,호세 프란치스코 페나 고메스), Las Americas Arpt"
+  }
+]
+%>
+
+<div class="popup locationSel" id="<%= id %>">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <h2 class="popupTitle">출발 도시/공항</h2>
+      <button class="popupCloseBtn" type="button" aria-label="닫기">팝업창 닫기</button>
+    </div>
+    <div class="popupContents">
+      <div class="searchLayer" role="dialog" aria-modal="true">
+        <div class="searchLayerInner">
+          <% if(state !== 'noitems') {%>
+          <div data-searched="false">
+            <div class="airLineWrap">
+              <ul>
+                <% air.forEach(function($air, idx) { %>
+                <li>
+                  <a role="select">
+                    <span><% if (idx === 0) { %>
+                      <em><%= $air.region %></em>
+                      <% } else { %>
+                      <%= $air.region %>
+                      <% } %>,
+                    </span>
+                    <span><%= $air.state %></span>
+                    <span class="subInfo"><%= $air.subTxt %></span>
+                  </a>
+                </li>
+                <% }) %>
+              </ul>
+            </div>
+          </div>
+          <% } else { %>
+          <div data-searched="false" class="noSearchResults">
+            <p>
+              <strong>검색 결과가 없습니다.</strong>
+              도시, 공항명을 확인 후 다시 입력해주세요.
+            </p>
+          </div>
+          <% } %>
+          <div data-searched="true">
+            <div class="latestWrap">
+              <h5>최근검색</h5>
+              <p>
+                <%
+                  var latest =["도교 나리타", "제주", "하노이 노아바이", "산또도밍고 라스아메리카스", "볼티모어 워싱턴 서굿 마셜"]
+                  .forEach($la => {
+                %>
+                <span class="searchItem" aria-selected="false"><%= $la %>
+                  <button class="itemDel">삭제</button>
+                </span>
+                <% }) %>
+              </p>
+            </div>
+
+            <div class="travelselectCity">
+              <% travel.forEach(function($p, idx) { %>
+              <dl>
+                <dt><%= $p.nation %></dt>
+                <% for(var i = 0; i < travel[idx].region.length; i++) { %>
+                <dd>
+                  <a role="select" aria-selected="false"><%= $p.region[i] %></a>
+                </dd>
+                <% } %>
+              </dl>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

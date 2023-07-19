@@ -1,0 +1,599 @@
+$fColor_midGray: #666;
+$fColor_gray: #ccc;
+$fColor_white: #fff;
+$fColor_black: #000;
+
+// Bg Color
+$bColor_gray: #333;
+$bColor_folkstonegray: #eee;
+$bColor_white: #fff;
+
+$normalWeight: normal;
+$boldWeight: bold;
+
+@mixin blind {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    font-size: 10px;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+@mixin square($width, $height, $radius: 0) {
+    width: $width;
+    height: $height;
+
+    @if $radius != 0 {
+        border-radius: $radius;
+    }
+}
+
+button {
+    padding: 0;
+    font-family: inherit;
+    letter-spacing: inherit;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+%more-arrow {
+    content: "";
+    height: 0;
+    width: 0;
+    right: 0;
+    top: 4px;
+    position: absolute;
+    border: 5px solid transparent;
+    border-right-width: 0;
+}
+
+.airSearchArea {
+    position: relative;
+    width: 100%;
+    display: table;
+    padding-top: 50px;
+
+    .airSearchVisual {
+        position: relative;
+        width: 1280px;
+        margin: 5px auto 14px;
+        color: $fColor_white;
+        text-align: right;
+
+        &+ .airSearchFormWrap {
+            &:after {
+                height: 249px;
+            }
+        }
+
+        a {
+            color: $fColor_black;
+        }
+
+        .searchTxt {
+            display: flex;
+            align-items: center;
+            color: $fColor_white;
+            font-weight: $boldWeight;
+
+            .searchNotice {
+                font-size: 14px;
+                margin: 0 10px 0 auto;
+                min-width: 0;
+
+                li {
+                    width: 100% !important;
+                }
+
+                a {
+                    display: block;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .noticMoreBtn {
+                flex-shrink: 0;
+
+                a {
+                    display: inline-block;
+                    position: relative;
+                    margin-right: 12px;
+                    padding: 8px 17px 9px 8px;
+                    border: 1px solid rgba(0, 0, 0, .5);
+                    border-radius: 8px;
+                    font-size: 13px;
+                    line-height: 13px;
+
+                    &:after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%;
+                        right: 4px;
+                        transform: translateY(-50%);
+                        width: .8rem;
+                        height: .5rem;
+                        background: url("#{$base}/pages/air/main/icon-arrow-right-black.svg") no-repeat center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.airSearchFormWrap {
+    width: 1280px;
+    margin: 0 auto;
+    z-index: 20;
+
+    &:after {
+        content: "";
+        position: absolute;
+        background: #c6e3ff url("#{$base}/pages/air/main/mainVisualPalmtree.jpg") no-repeat center bottom;
+        width: 100%;
+        height: 212px;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        z-index: -1;
+    }
+}
+
+.airSearchForm {
+    position: relative;
+    width: 1280px;
+    margin: 0 auto;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: $fColor_white;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .25);
+    min-height: 185px;
+
+    .schTabsWrap {
+        position: relative;
+        display: table;
+        width: 100%;
+        padding: 20px 25px 15px;
+        box-sizing: border-box;
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(#b6bdc7, .4);
+            display: inline-block;
+        }
+
+        .schTabs {
+            font-size: 0;
+            display: table-cell;
+
+            button {
+                padding: 7px 19px 9px 20px;
+                border-radius: 20px;
+                background-color: $bColor_folkstonegray;
+                font-size: 18px;
+                margin-right: 10px;
+
+                &.selected {
+                    background-color: #333;
+                    color: $fColor_white;
+                    font-weight: $boldWeight;
+                  }
+            }
+        }
+
+        .row {
+            text-align: right;
+
+            .chkBox {
+                input[type="checkbox"] {
+                    display: none;
+
+                    &:focus {
+                        + label {
+                            outline: 1px solid #b5b5b8;
+                        }
+                    }
+                }
+
+                label {
+                    position: relative;
+                    padding-left: 26px;
+                    color: $fColor_midGray;
+                    font-size: 14px;
+                    line-height: 20px;
+                    cursor: pointer;
+
+                    &:before {
+                        @include square(20px, 20px, $radius: 4px);
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        box-sizing: border-box;
+                        border: 1px solid $fColor_gray;
+                        background: $fColor_white;
+                        display: inline-block;
+                    }
+                }
+
+                &.checked {
+                    label {
+                        &:before {
+                            background: url("#{$base}/pages/air/main/icon-check.png") no-repeat center;
+                            background-size: 20px 20px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .filterWrap {
+        padding: 0 25px 0 22px;
+        box-sizing: border-box;
+        display: block;
+
+        .schForm {
+            legend {
+                @include blind;
+            }
+
+            input[type="text"] {
+                line-height: 30px;
+                letter-spacing: inherit;
+                box-sizing: border-box;
+                background: $fColor_white;
+                display: inline-block;
+                font-size: 22px;
+                font-weight: $boldWeight;
+                vertical-align: middle;
+                color: $fColor_black;
+                border: 0;
+                height: 30px;
+                width: 100%;
+
+                &::placeholder,
+                &::-webkit-input-placeholder,
+                &:-ms-input-placeholder,
+                &:-mos-input-placeholder {
+                    color: $fColor_gray;
+                }
+
+                &:focus {
+                    outline: 0;
+                }
+
+            }
+
+            .schFlight {
+                display: table;
+
+                &.multi {
+                    .iconRoundCircle {
+                        display: none;
+                    }
+                }
+
+                .errorCheck {
+                    color: #ef3e43;
+
+                    &::placeholder,
+                    &::-webkit-input-placeholder,
+                    &:-ms-input-placeholder,
+                    &:-mos-input-placeholder {
+                        color: #ef3e43;
+                    }
+                }
+
+                .colWrap {
+                    position: relative;
+                    display: table-cell;
+                    vertical-align: middle;
+
+                    &:first-of-type {
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            width: 1px;
+                            height: 100%;
+                            display: inline-block;
+                            top: 0;
+                            background-color: rgba(#b6bdc7, .4);
+                            right: 0;
+                        }
+                    }
+
+                    .col {
+                        position: relative;
+                        display: table;
+
+                        &+.col {
+
+                            &:before {
+                                content: "";
+                                border-top: 1px solid rgba(182, 189, 199, .4);
+                                top: 0;
+                                left: -25px;
+                                width: 870px;
+                                position: absolute;
+                            }
+                        }
+
+                        &:nth-child(3n) {
+                            .addColBtn {
+                                &:after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    .addColBtn {
+                        @include square(36px, 36px, $radius: 50%);
+                        text-indent: -9999px;
+                        overflow: hidden;
+                        background: $bColor_gray;
+                        position: absolute;
+                        right: 0;
+                        bottom: 50%;
+                        margin: -18px;
+                        z-index: 13;
+
+
+                        &:before,
+                        &:after {
+                            @include square(16px, 2px, $radius: 7px);
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            margin: auto;
+                            background: $bColor_white;
+                            display: inline-block;
+                        }
+
+                        &:after {
+                            width: 2px;
+                            height: 16px;
+                        }
+                    }
+
+                    &.peop {
+                        &:before {
+                            content: "";
+                            display: inline-block;
+                            width: 1px;
+                            height: 100%;
+                            vertical-align: middle;
+                        }
+
+                        .col {
+                            vertical-align: middle;
+                            margin-top: -18px;
+                        }
+                    }
+                }
+
+
+                .row {
+                    float: left;
+                    position: relative;
+                    padding: 25px 0 30px;
+                    box-sizing: border-box;
+                    height: 111px;
+
+                    &.flighDate {
+                        width: 282px;
+                        padding-left: 30px;
+                        box-sizing: border-box;
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 1px;
+                            height: 100%;
+                            display: inline-block;
+                            top: 0;
+                            background-color: rgba(#b6bdc7, .4);
+                            left: 0;
+                        }
+                    }
+
+
+                    &.peop {
+                        width: 252px;
+                        padding-left: 30px;
+                        box-sizing: border-box;
+                    }
+
+                    &.sehBtn {
+                        padding: 21px 0;
+                    }
+
+                    h4 {
+                        text-align: left;
+                        color: #999;
+                        font-size: 16px;
+                        margin-bottom: 5px;
+                        padding-left: 3px;
+                    }
+                }
+            }
+
+            .flightDes {
+                width: 564px;
+
+                .rowEl {
+                    position: relative;
+                    text-align: center;
+                    overflow: hidden;
+                    display: inline-block;
+
+                    &:focus {
+                        outline: 1px;
+                    }
+
+                    input {
+                        width: 218px;
+
+                        &.active {
+                            color: $fColor_black;
+
+                            &::placeholder,
+                            &::-webkit-input-placeholder,
+                            &:-ms-input-placeholder,
+                            &:-mos-input-placeholder {
+                                color: $fColor_black;
+                            }
+                        }
+                    }
+                }
+
+                .icon {
+                    position: relative;
+                    flex-shrink: 0;
+                    font-size: 0;
+
+                    &Round {
+                        width: 38px;
+                        height: 56px;
+                        background: transparent url("#{$base}/pages/air/main/icon-airplane.png") no-repeat center;
+                        background-size: 38px auto;
+                        margin: 0 25px;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+
+                        &Circle {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: transparent url("#{$base}/pages/air/main/icon-circle.png") no-repeat center center;
+                            background-size: 38px auto;
+                        }
+                    }
+                }
+            }
+
+            %input-wrap {
+                position: relative;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .keyword {
+                @extend %input-wrap;
+                width: 372px;
+
+                .autoComList {
+                    overflow-y: auto;
+                    position: absolute;
+                    top: 100%;
+                    width: 100%;
+                    max-height: 527px;
+                    margin-top: 10px;
+                    box-sizing: border-box;
+                    font-size: 14px;
+                    border: 1px solid #333;
+                    background: $fColor_white;
+                    box-shadow: 4px 4px 8px 0 rgba(#999, .3);
+                    z-index: 10;
+
+                    &.hidden {
+                        display: none;
+                    }
+
+                    .optGroup {
+                        padding: 17px 15px 20px;
+
+                        ~ .optGroup {
+                            border-top: 1px solid #dde4ec;
+                        }
+
+                        .cate {
+                            padding-left: 1px;
+                            color: $fColor_gray;
+                            font-size: 12px;
+                            font-weight: 300;
+                        }
+
+                        ul {
+                            margin-top: 12px;
+                        }
+
+                        li {
+                            cursor: pointer;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+
+                            ~ li {
+                                margin-top: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dateWrap {
+                @extend %input-wrap;
+                width: 250px;
+            }
+
+            .peopNum {
+                @extend %input-wrap;
+                width: 220px;
+            }
+
+            .layerBtn {
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                text-indent: 100%;
+                white-space: nowrap;
+                background: url("#{$base}/pages/checkinnow/housing/common/bg_blank.png") repeat;
+            }
+
+            .schBtn {
+                @include square(132px, 70px, $radius: 15px);
+                width: 132px;
+                height: 70px;
+                color: $fColor_white;
+                font-size: 18px;
+                font-weight: bold;
+                background: #ef3e43;
+            }
+
+            .chkSpot {
+                display: inline-block;
+
+                .chkBox {
+                    display: inline-block;
+                    margin-right: 10px;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

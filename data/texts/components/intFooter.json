@@ -1,0 +1,366 @@
+{
+  "partner": [
+    {
+      "name": "(주)인터파크홀딩스",
+      "href": "http://incorp.interpark.com/communication/CompanyInfo.do?_method=initial"
+    },
+    {
+      "name": "아이마켓코리아",
+      "href": "http://www.imarketkorea.com?wid1=footer&amp;wid2=group&amp;wid3=imk"
+    },
+    {
+      "name": "인터파크로지스틱스",
+      "href": "http://www.interparklogistics.com?wid1=footer&amp;wid2=group&amp;wid3=intlogi"
+    },
+    {
+      "name": "인터파크씨어터",
+      "href": "http://www.bluesquare.kr/Info/Bluesquare_Info.asp?m_menu=bluesquare&amp;s_menu=info&amp;wid1=footer&amp;wid2=group&amp;wid3=theatre"
+    },
+    {
+      "name": "블루스퀘어",
+      "href": "http://www.bluesquare.kr?wid1=footer&amp;wid2=group&amp;wid3=bluesquare"
+    },
+    {
+      "name": "가디언",
+      "href": "http://www.guard365.co.kr?wid1=footer&amp;wid2=group&amp;wid3=digitalidea"
+    },
+    {
+      "name": "큐브릿지",
+      "href": "http://ir.qubridge.com?wid1=footer&amp;wid2=group&amp;wid3=digiart"
+    }
+  ],
+  "link": [
+    {
+      "service": "all",
+      "name": "회사소개",
+      "href": "http://www.interpark.com/int/communication/CompanyInfo.do?_method=initial&amp;wid1=footer&amp;wid2=company"
+    },
+    {
+      "service": "all",
+      "name": "개인정보처리방침",
+      "href": "http://www.interpark.com/gate/info/protect_privacy.html?wid1=footer&amp;wid2=privacy"
+    },
+    {
+      "service": "all",
+      "name": "이용약관",
+      "href": "http://www.interpark.com/gate/info/mem_clause.html?wid1=footer&amp;wid2=agree"
+    },
+    {
+      "service": "shopping",
+      "name": "지식재산권보호센터",
+      "href": "http://www.interpark.com/tns/IntellectualPropertyRights.html?wid1=footer&amp;wid2="
+    },
+    {
+      "service": "shopping",
+      "name": "제휴/광고안내",
+      "href": "http://adcenter.interpark.com"
+    },
+    {
+      "service": "shopping",
+      "name": "안전거래센터",
+      "href": "http://www.interpark.com/html/safetyDealingCenter/safetyCenter.html?wid1=footer&amp;wid2=safe"
+    },
+    {
+      "service": "shopping",
+      "name": "판매자센터",
+      "href": "http://www.interpark.com/communication/SellerCenter.do?_method=main&wid1=footer&wid2=sellercenter"
+    },
+    {
+      "service": "ticket",
+      "name": "티켓판매안내",
+      "href": "http://ticket.interpark.com/TiKi/Info/ENTInfo.asp?info=c_info_20"
+    },
+    {
+      "service": "ticket",
+      "name": "티켓 제휴/광고 안내",
+      "href": "http://ticket.interpark.com/TiKi/Info/EntInfo.asp?Info=c_info_22"
+    },
+    {
+      "service": "ticket",
+      "name": "티켓 FAQ",
+      "href": "http://ticket.interpark.com/HelpDesk/FAQSearch.asp?FaqKind=QT001&tid1=scroll_out&tid2=guide&tid3=ticketqa&tid4=ticketfaq"
+    },
+    {
+      "service": "book",
+      "name": "도서제휴안내",
+      "href": "http://www.interpark.com/gate/company_info/01shopping.html"
+    },
+    {
+      "service": "book",
+      "name": "도서광고안내",
+      "href": "http://book.interpark.com/bookPark/InfoOpenShopGuide.do?_method=bookAdInfo&bid1=bot&bid2=X&bid3=footer&bid4=001"
+    },
+    {
+      "service": "book",
+      "name": "도서 판매자매니저",
+      "href": "http://book.interpark.com/display/displaylist.do?_method=secInfo&bid1=1depth&bid2=used&bid3=service&bid4=menu"
+    },
+    {
+      "service": "book",
+      "name": "신규출판사",
+      "href": "http://book.interpark.com/bookPark/InfoOpenShopGuide.do?_method=bookInitial&bid1=bot&bid2=X&bid3=footer&bid4=001"
+    },
+    {
+      "service": "tour",
+      "name": "여행약관",
+      "href": "http://tour.interpark.com/company/companyOutsidecovenant.aspx"
+    },
+    {
+      "service": "tour",
+      "name": "여행자보험가입내역",
+      "href": "http://tour.interpark.com/customer/noticeview.aspx?seq=10638"
+    },
+    {
+      "service": "tour",
+      "name": "해외안전여행 정보",
+      "href": "http://www.0404.go.kr/dev/main.mofa"
+    },
+    {
+      "service": "ipss",
+      "name": "지식재산권보호센터",
+      "href": "http://www.interpark.com/tns/IntellectualPropertyRights.html?wid1=footer&amp;wid2="
+    },
+    {
+      "service": "ipss",
+      "name": "판매자광고센터",
+      "href": "http://sellerad.interpark.com/common/joinStep01\n"
+    },
+    {
+      "service": "ipss",
+      "name": "안전거래센터",
+      "href": "http://www.interpark.com/html/safetyDealingCenter/safetyCenter.html?wid1=footer&amp;wid2=safe"
+    },
+    {
+      "service": "ipss",
+      "name": "판매자센터",
+      "href": "http://www.interpark.com/communication/SellerCenter.do?_method=main&wid1=footer&wid2=sellercenter"
+    }
+  ],
+  "info": [
+    {
+      "about": "Interpark",
+      "h2": "주식회사 인터파크<span class=\"footerBlind\">회사정보</span>",
+      "link": [
+        {
+          "a": "사업자정보확인",
+          "href": "javascript:licenseeInfo();",
+          "class": "intLinkBusinessNumber"
+        }
+      ],
+      "address": "서울특별시 강남구 삼성로 512 삼성동빌딩 10층(삼성동)",
+      "infoContact": [
+        {
+          "service": "all",
+          "class": "intCeoName",
+          "title": "대표이사",
+          "content": "강동화"
+        },
+        {
+          "service": "all",
+          "class": "intEmail",
+          "title": "이메일",
+          "content": "helpdesk@interpark.com"
+        },
+        {
+          "service": "all",
+          "class": "intLicensee",
+          "title": "사업자등록번호",
+          "content": "824-81-02515"
+        },
+        {
+          "service": "all",
+          "class": "intOrderBusiness",
+          "title": "통신판매업신고",
+          "content": "2022-서울강남-02179"
+        }
+      ]
+    },
+    {
+      "about": "Customer",
+      "h2": "고객센터",
+      "link": [
+        {
+          "a": "자주하는 질문",
+          "href": "http://www.interpark.com/ecenter/MainFAQ.do?_method=MainFAQ",
+          "target": "_blank",
+          "class": "intLinkFaq"
+        },
+        {
+          "a": "1:1 문의",
+          "href": "https://www.interpark.com/communication/SosBoard.do?_method=SosBoardWrite&FromLogin=Y",
+          "target": "_blank",
+          "class": "intLinkInquiry"
+        }
+      ],
+      "address": "서울 금천구 벚꽃로 278 SJ테크노빌 빌딩 15층 인터파크 고객센터",
+      "infoTel": [
+        {
+          "class": "intShoppingTel",
+          "title": "쇼핑",
+          "tel": "1588-1555"
+        },
+        {
+          "class": "intBookTel",
+          "title": "도서",
+          "tel": "1577-2555"
+        },
+        {
+          "class": "intTicketTel",
+          "title": "티켓",
+          "tel": "1544-1555"
+        },
+        {
+          "class": "intTourTel",
+          "title": "투어",
+          "tel": "1588-3443"
+        },
+        {
+          "class": "intPetTel",
+          "title": "펫",
+          "tel": "1644-2397"
+        }
+      ],
+      "infoFax": [
+        {
+          "class": "intAllFax",
+          "type": "all",
+          "title": "팩스",
+          "tel": "02-6924-9000"
+        },
+        {
+          "class": "intBookFax",
+          "type": "book",
+          "title": "팩스",
+          "tel": "02-6924-9050"
+        },
+        {
+          "class": "intOverseaTel",
+          "type": "tour",
+          "title": "해외항공전용",
+          "tel": "02-3479-4399"
+        }
+      ]
+    },
+    {
+      "about": "Solution",
+      "h2": "전자금융거래 분쟁처리담당<span class=\"footerBlind\">정보</span>",
+      "infoTel": [
+        {
+          "class": "intShoppingTel",
+          "title": "쇼핑",
+          "tel": "1588-1555"
+        },
+        {
+          "class": "intBookTel",
+          "title": "도서",
+          "tel": "1577-2555"
+        },
+        {
+          "class": "intTicketTel",
+          "title": "티켓",
+          "tel": "1544-1555"
+        },
+        {
+          "class": "intFax",
+          "title": "팩스",
+          "tel": "02-6924-9001"
+        }
+      ],
+      "infoContact": [
+        {
+          "title": "이메일",
+          "content": "intersolution@interpark.com"
+        },
+        {
+          "title": "개인정보보호책임자",
+          "content": "cpo@interpark.com"
+        }
+      ]
+    }
+  ],
+  "ipssInfo": [
+    {
+      "about": "Interpark",
+      "h2": "주식회사 인터파크<span class=\"footerBlind\">회사정보</span>",
+      "link": [
+        {
+          "a": "사업자정보확인",
+          "href": "javascript:licenseeInfo();",
+          "class": "intLinkBusinessNumber"
+        }
+      ],
+      "address": "서울특별시 강남구 삼성로 512 삼성동빌딩 10층(삼성동)",
+      "infoContact": [
+        {
+          "class": "intCeoName",
+          "title": "대표이사",
+          "content": "강동화"
+        },
+        {
+          "class": "intEmail",
+          "title": "이메일",
+          "content": "helpdesk@interpark.com"
+        },
+        {
+          "class": "intLicensee",
+          "title": "사업자등록번호",
+          "content": "824-81-02515"
+        },
+        {
+          "class": "intOrderBusiness",
+          "title": "통신판매업신고",
+          "content": "2022-서울강남-02179"
+        },
+        {
+          "class": "intServiceCenter",
+          "title": "판매자 서비스센터",
+          "content": "<a href=\"tel:1544-4155\">1544-4155</a>"
+        }
+      ]
+    }
+  ],
+  "award": [
+    {
+      "text": "개인정보보호 우수사이트",
+      "href": "http://www.interpark.com/malls/popup/pop_info_personal.html"
+    },
+    {
+      "text": "시큐리티 어워드 코리아 기업대상 이커머스부문"
+    },
+    {
+      "text": "제품안전 협력매장",
+      "href": "http://www.safetykorea.kr/"
+    },
+    {
+      "text": "KOLSA 사단법인 한국온라인쇼핑협회",
+      "href": "http://www.kolsa.or.kr/"
+    },
+    {
+      "text": "KCSI 한국산업의 고객만족도 1위",
+      "href": "http://kcsi.kmac.co.kr/certify/cert_sys03.asp"
+    },
+    {
+      "text": "소비자보호를 위한 오픈마켓 자율준수규",
+      "href": "http://www.interpark.com/malls/popup/pop_openmarket_agree.html"
+    },
+    {
+      "text": "사이버안전국 사이버신고-예방정보안내",
+      "href": "http://cyberbureau.police.go.kr/index.do"
+    },
+    {
+      "text": "위해상품차단시스템",
+      "href": "http://www.interpark.com/malls/popup/pop_hazardousProduct.html"
+    },
+    {
+      "text": "국외여행상품 정보제공 표준안 참여 여행사",
+      "href": "http://www.smartoutbound.or.kr/guide/html/guideInfo4.do?menu_code=0000000016"
+    }
+  ],
+  "shoppingNotice": "주식회사 인터파크는 통신판매중개자로서 통신판매의 당사자가 아니므로 개별 판매자가 등록한 오픈마켓 상품에 대해서 주식회사 인터파크는 일체 책임을 지지 않습니다.",
+  "tourNotice": [
+    "주식회사 인터파크는 항공사가 제공하는 개별 항공권 및 여행사가 제공하는 일부 여행상품에 대하여 통신판매중개자의 지위를 가지며, 해당상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있습니다.",
+    "항공권 또는 항공권이 포함된 경우, 표시되는 상품요금은 예상 유류할증료와 제세공과금이 포함된 가격이며, 발권일/환율 등에 따라 변동될 수 있습니다."
+  ],
+  "ipssNotice": "구매자의 개인정보는 상품배송 목적으로만 사용하실 수 있고 이를 위반 시 “정보통신망 이용촉진 및 정보보호 등에 관한 법률” 등 관계법령에 따라 처벌 받으실 수 있습니다.<br>판매자 매니저에서 조회되는 구매자의 개인정보 취급 시 반드시 보안 준수해 주시고 상품배송 목적으로만 사용하시길 바랍니다.\n",
+  "copyright": "Copyright&copy; Interpark Corporation All Rights Reserved."
+}

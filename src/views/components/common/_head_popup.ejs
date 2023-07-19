@@ -1,0 +1,15 @@
+<title><%= (page.title ? page.title + ' - ' : '') + site.siteName %></title>
+<meta charset="<%= page.charset || 'utf-8' %>">
+<meta name="description" content="<%= $.truncate((page.description || site.description), 150) %>">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="shortcut icon" href="/images/icons/favicon.ico">
+
+<% if (typeof page.styles !== 'undefined' && page.styles instanceof Array) { %>
+  <% page.styles.forEach(function(cssPath) { %>
+    <link rel="stylesheet" href="<%= cssPath %>">
+  <% }) %>
+<% } %>
+
+<% if (typeof noScript === 'undefined' || !noScript) { %>
+  <script src="/scripts/plugins/jquery/jquery.js"></script>
+<% } %>

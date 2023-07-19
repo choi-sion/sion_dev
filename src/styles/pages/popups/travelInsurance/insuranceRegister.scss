@@ -1,0 +1,425 @@
+@import "base/variables";
+@import "components/common/popup_header";
+
+$imgPath: "//openimage.interpark.com/tour-mobile/common/common/";
+
+html {
+    text-size-adjust: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: 62.5%;
+    background-color: #fff;
+}
+
+body {
+    min-width: auto;
+    background-color: #fff;
+}
+
+button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+@mixin blind {
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    text-indent: 100%;
+    white-space: nowrap;
+}
+
+.blind {
+    @include blind;
+}
+
+.popupHeader {
+    .popupHeaderLeft {
+        padding: 13px 52px 12px 20px;
+
+        .popupHeaderTitle {
+            font-size: 17px;
+        }
+    }
+
+    .popupHeaderRight {
+        top: 4px;
+
+        .commonClose {
+            margin-top: 0;
+        }
+    }
+}
+
+.travelInsuranceWrap {
+    padding: 40px 15px;
+
+    .title {
+        text-align: center;
+        font-size: 15px;
+        font-weight: $boldWeight;
+        line-height: 22px;
+        color: #000;
+    }
+
+    .addTxt {
+        padding-top: 4px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 22px;
+        font-weight: $normalWeight;
+        color: #666;
+    }
+
+    .serviceBox {
+        font-size: 0;
+        max-width: 380px;
+        margin: 20px auto;
+        padding: 0 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .item {
+            display: inline-block;
+            width: 100px;
+            height: 68px;
+            background-color: #f3f3f3;
+            border-radius: 20px;
+            padding: 16px 0;
+
+            &:before {
+                content: "";
+                display: inline-block;
+                width: 44px;
+                height: 44px;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+            }
+
+            &.servicePhone {
+                &:before {
+                    background-image: url("#{$imgPath}icon-service-phone.png");
+                }
+            }
+
+            &.serviceLuggage {
+                &:before {
+                    background-image: url("#{$imgPath}icon-service-luggage.png");
+                }
+            }
+
+            &.serviceDisease {
+                &:before {
+                    background-image: url("#{$imgPath}icon-service-disease.png");
+                }
+            }
+
+            span {
+                display: block;
+                font-size: 12px;
+                line-height: 18px;
+                color: #666;
+                margin-top: 6px;
+            }
+        }
+    }
+
+    .agreeWrap {
+        position: relative;
+        padding: 20px 5px;
+
+        .reservationTitle {
+            display: flex;
+            justify-content: space-between;
+            font-weight: $boldWeight;
+            font-size: 15px;
+
+            label {
+                font-weight: $boldWeight;
+                font-size: 15px;
+            }
+
+            span {
+                vertical-align: text-bottom;
+            }
+        }
+
+        input[type="checkbox"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+
+            &:focus {
+                & + span {
+                    outline: #000 solid 1px;
+                }
+
+                &:not(:focus-visible) + span {
+                    outline: none;
+                }
+            }
+
+            & ~ span {
+                position: relative;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+                border-radius: 20px;
+                background-color: #fff;
+                vertical-align: -5px;
+                font-size: 0;
+                cursor: pointer;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 4px;
+                    top: 5px;
+                    display: block;
+                    width: 8px;
+                    height: 4px;
+                    border-left: 2px solid #ccc;
+                    border-bottom: 2px solid #ccc;
+                    transform: rotate(-45deg);
+                }
+            }
+
+            &:checked {
+                & ~ span {
+                    border-color: #ef3e43;
+                    background-color: #ef3e43;
+
+                    &::after {
+                        border-color: #fff;
+                    }
+                }
+            }
+        }
+
+        .terms {
+            label {
+                span {
+                    margin-right: 10px;
+                }
+            }
+
+            &List {
+                li {
+                    position: relative;
+                    padding-left: 28px;
+                    margin-top: 10px;
+                    font-size: 0;
+
+                    &:first-child {
+                        margin-top: 12px;
+                    }
+
+                    span {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                    }
+
+                    button {
+                        position: relative;
+                        display: inline-block;
+                        padding-right: 10px;
+                        line-height: 20px;
+                        vertical-align: top;
+                        font-size: 13px;
+                        color: #666;
+
+                        &::after {
+                            content: "";
+                            transform: rotate(90deg);
+                            display: inline-block;
+                            width: 0;
+                            height: 0;
+                            margin-left: 5px;
+                            border-bottom: 5px solid #999;
+                            border-left: 4px solid transparent;
+                            border-right: 4px solid transparent;
+                            border-radius: 2px;
+                            vertical-align: 2px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .tourCompLayer {
+            &.halfHeight {
+                top: 328px;
+            }
+
+            .layerHeader {
+                padding: 26px 50px 12px 20px;
+            }
+
+            .layerBody {
+                padding: 12px 20px;
+
+                h4 {
+                    margin-bottom: 8px;
+                    font-size: 15px;
+                    color: #000;
+                }
+
+                ul + h4 {
+                    margin-top: 40px;
+                }
+
+                li,
+                p {
+                    line-height: 19px;
+                    font-size: 13px;
+                    color: #666;
+
+                    + li {
+                        margin-top: 12px;
+                    }
+                }
+
+                .termsContTabel {
+                    width: 100%;
+                    border-top: 1px solid #ddd;
+                    border-bottom: 1px solid #ddd;
+                    border-collapse: collapse;
+                    font-size: 15px;
+                    color: #000;
+
+                    caption {
+                        position: absolute;
+                        overflow: hidden;
+                        width: 1px;
+                        height: 1px;
+                        text-indent: 100%;
+                        font-size: 0;
+                    }
+
+                    tr + tr {
+                        border-top: 1px solid #eee;
+                    }
+
+                    th {
+                        padding: 12px 16px;
+                        box-sizing: border-box;
+                        word-break: keep-all;
+                        vertical-align: middle;
+                        line-height: 22px;
+                        text-align: left;
+                        background-color: #f8f8f8;
+                        font-size: 15px;
+                    }
+
+                    td {
+                        padding: 12px 0 12px 16px;
+                        line-height: 22px;
+                        border-left: 1px solid #eee;
+                        font-weight: $boldWeight;
+
+                        span {
+                            line-height: 19px;
+                            font-weight: $normalWeight;
+                            font-size: 13px;
+                            color: #000;
+                        }
+                    }
+                }
+
+                .notice {
+                    padding-top: 12px;
+                    line-height: 19px;
+                    font-size: 13px;
+                    color: #666;
+                }
+            }
+        }
+    }
+
+    .buttonWrap {
+        padding: 20px 0;
+        text-align: center;
+
+        .btnCheckOk {
+            width: 100%;
+            height: 48px;
+            border-radius: 8px;
+            background-color: #ccc;
+            font-weight: $boldWeight;
+            font-size: 15px;
+            color: #fff;
+
+            &:disabled {
+                background-color: #ccc;
+            }
+
+            &:enabled {
+                background-color: #ef3e43;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .contentWrapper {
+        margin-top: 14px;
+    }
+
+    .travelInsuranceWrap {
+        width: 375px;
+        margin: 0 auto;
+        padding: 40px 0 0;
+
+        .title {
+            text-align: center;
+        }
+
+        .addTxt {
+            text-align: center;
+        }
+
+        .btnGroup {
+            flex-direction: row-reverse;
+
+            .btnGroupItem {
+                + .btnGroupItem {
+                    padding-left: 0;
+                    padding-right: 12px;
+                }
+            }
+        }
+
+        .serviceBox {
+            padding: 0 10px;
+        }
+
+        .agreeWrap .tourCompLayer.halfHeight {
+            top: 90px;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .travelInsuranceWrap {
+        .serviceBox {
+            .item {
+                width: 85px;
+                height: 65px;
+                padding: 10px 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,232 @@
+.popup.peopNumSel {
+    right: 0;
+
+    .popupContents {
+        width: 408px;
+        box-sizing: border-box;
+
+        .searchLayer {
+            padding: 0 5px;
+            position: relative;
+
+
+            .searchLayerInner {
+                .searchAirCount {
+                    display: table;
+                    table-layout: fixed;
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    dt,
+                    dd  {
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+
+                    dt {
+                        width: 220px;
+
+                        strong {
+                            display: block;
+                            font-size: 14px;
+                        }
+
+                        span {
+                            display: block;
+                            color: #999;
+                            font-size: 12px;
+                            margin-top: 3px;
+                        }
+                    }
+
+                    dd {
+                        text-align: right;
+                    }
+                }
+
+                .quantitySelector {
+                    .controller {
+                        position: relative;
+                        display: inline-block;
+                        width: 32px;
+                        height: 32px;
+                        border: 1px solid #ccc;
+                        border-radius: 50%;
+                        text-indent: -9999px;
+                        overflow: hidden;
+
+                        &:before,
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            width: 12px;
+                            height: 2px;
+                            background: #ccc;
+                            margin: auto;
+                            border-radius: 7px;
+                            display: inline-block;
+                        }
+
+                        &.plus {
+                            &:before {
+                                background: #333;
+                            }
+
+                            &:after {
+                                width: 2px;
+                                height: 12px;
+                                background: #333;
+                            }
+                        }
+                    }
+
+                    .currentQuantity {
+                        width: 50px;
+                        line-height: 32px;
+                        font-size: 24px;
+                        font-weight: bold;
+                        vertical-align: top;
+                        box-sizing: border-box;
+                        display: inline-block;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .peopNotice {
+                position: relative;
+
+                a {
+                    color: #dc941b;
+                    font-weight: bold;
+                    cursor: pointer;
+                    display: inline;
+
+                    span {
+                        display: inline-block;
+                        font-size: 0;
+                        vertical-align: middle;
+                        width: 15px;
+
+                        &:after {
+                            content: "";
+                            background: transparent url("#{$base}/pages/air/main/icon-tooltip.png") no-repeat center center;
+                            width: 13px;
+                            height: 13px;
+                            display: inline-block;
+                        }
+                    }
+                }
+
+                .childReserveInfo {
+                    display: none;
+                    position: absolute;
+                    margin-top: 5px;
+                    padding: 15px 20px;
+                    font-size: 12px;
+                    color: #000;
+                    border: 1px solid #333;
+                    box-shadow: 0 5px 10px 0 rgba(51, 51, 51, .2);
+                    background-color: #fff;
+                    border-radius: 10px;
+                    z-index: 11;
+
+                    &.current {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    .popupFooter {
+        width: 408px;
+        padding: 21px 30px 25px;
+        box-sizing: border-box;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            width: calc(100% - 50px);
+            height: 1px;
+            background-color: rgba(#b6bdc7, .4);
+            left: 25px;
+            top: 0;
+            display: inline-block;
+        }
+
+        .radioWrap {
+            display: inline-block;
+        }
+
+        .radioItem {
+            float: left;
+            position: relative;
+            margin-right: 15px;
+            margin-bottom: 0;
+            color: #343434;
+            font-size: 14px;
+            vertical-align: middle;
+
+            &:nth-child(n + 4) {
+                margin-top: 12px;
+            }
+
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+
+
+
+            input {
+                position: absolute;
+                top: 1px;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                margin: 0;
+                padding: 0;
+
+                &:checked ~ label:after {
+                    content: "";
+                    position: absolute;
+                    top: 6px;
+                    left: 5px;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 100%;
+                    background: #ef3e43;
+                    z-index: 9;
+                    display: inline-block;
+                }
+            }
+        }
+
+        label {
+            display: block;
+            position: relative;
+            line-height: 20px;
+            padding-left: 25px;
+            cursor: pointer;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 1px;
+                left: 0;
+                width: 18px;
+                height: 18px;
+                border: 1px solid #ccc;
+                border-radius: 100%;
+                background: #fff;
+                z-index: 9;
+                display: inline-block;
+            }
+        }
+    }
+}

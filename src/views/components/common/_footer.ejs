@@ -1,0 +1,70 @@
+<%
+  const $footer = loadData('/data/texts/components/footer.json');
+  const imgPath = 'https://openimage.interpark.com/.ui/interparkMain/footer/';
+%>
+
+<div id="footArea">
+  <% if(state === 'powerLink') { %>
+    <%- include('./_powerLink'); %>
+  <% } %>
+
+  <% if(typeof footerBanner === 'undefined' || footerBanner === true) { %>
+    <%- include('./_footerBanner'); %>
+  <% } %>
+
+  <footer class="tourEnterFooter">
+    <div class="footCorp">
+      <ul class="corpList">
+        <% $footer.corp.forEach(t => { %>
+        <li>
+          <a href="<%= t.link %>"<% if(t.bold) { %> class="bold"<% } else if(t.sub) { %> class="sub"<% } %> target="_blank" title="새 창으로 열림"><%= t.name %></a>
+          <% if(t.sub) { %>
+            <ul class="depth">
+              <% t.sub.forEach(s => { %>
+              <li><a href="#"><%= s.name %></a></li>
+              <% }); %>
+            </ul>
+          <% } %>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+
+    <div class="footInfo">
+      <% $footer.info.forEach(i => { %>
+      <div class="infoCol">
+        <h2 class="infoTitle"><%= i.title %></h2>
+        <div class="infoContent">
+          <% if(i.type == 'address') { %>
+            <% i.content.forEach(c => { %>
+            <p><%= c.text %><% if(c.link) { %> <a href="#" class="linkText"><%= c.link %></a><% } %></p>
+            <% }); %>
+
+          <% } else if(i.type == 'info') { %>
+            <% i.content.forEach(c => { %>
+            <p>
+              <% if(c.item) { %>
+                <% c.item.forEach(i => { %>
+                <span>
+                  <%= i.text %>
+                  <a href="<%- i.mail ? 'mailto:' : 'tel:' %><%= i.num %>"<% if(i.link) { %> class="linkText"<% } %>><%= i.num %></a>
+                </span>
+                <% }); %>
+              <% } else { %>
+                <%= c.text %><% if(c.num) { %> <a href="mailto:<%= c.num %>"<% if(c.link) { %> class="linkText"<% } %>><%= c.num %></a><% } %>
+              <% } %>
+            </p>
+            <% }); %>
+          <% } %>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <div class="footNotice">
+      <% $footer.notice.forEach(noti => { %>
+      <p><%= noti.text %></p>
+      <% }); %>
+    </div>
+  </footer>
+</div>

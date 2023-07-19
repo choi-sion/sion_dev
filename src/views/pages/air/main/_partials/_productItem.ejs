@@ -1,0 +1,67 @@
+<% const SUB = typeof sub !== 'undefined' && sub === true;
+
+
+  if(SUB) {
+    var list = data.main.productItem.slice(undefined, 4);
+  } else {
+    var list = data.main.productItem;
+  }
+%>
+
+<% list.forEach($item => { %>
+<div class="productItem">
+  <div class="mainType">
+    <a href="#" title="<%= $item.alt%>">
+      <div class="dateImage">
+        <img src="<%= $item.img%>" onerror="this.src='<%= page.base %>/common/transparent.png'"  alt="">
+      </div>
+      <div class="saleInfo">
+        <div class="todayRegion">
+          <% if(typeof best !== 'undefined' && best === true) { %>
+          <span><%= $item.bestTitle %></span>
+          <% } else { %>
+          <span><%= $item.region.departure %></span>
+          -<span><%= $item.region.arrival %></span>
+          <% } %>
+        </div>
+        <div class="todayInfo<%=(typeof overseas !== 'undefined') ? ' overseas' : '' %>">
+          <% if(typeof overseas !== 'undefined' && overseas === true) { %>
+          <span><%= $item.overseas.air %></span>/
+          <span><%= $item.overseas.date %></span>
+          <% } else if (typeof domestic !== 'undefined' && domestic === true) { %>
+          <span><%= $item.domestic.air %></span>/
+          <span><%= $item.domestic.date %></span>
+          <% } else { %>
+          <span><%= $item.best.air %></span>/
+          <span><%= $item.best.date %></span>
+          <% } %>
+
+        </div>
+        <div class="todayPlace"><%=$.withCommas($item.place) %>원~</div>
+      </div>
+    </a>
+  </div>
+
+  <% if (SUB) { %>
+  <div class="subType">
+    <% data.main.subItemBestType.forEach($item => { %>
+    <div class="bestItem">
+      <a href="#" title="<%= $item.alt%>">
+        <div class="dateImage">
+          <img src="<%= $item.img%>" onerror="this.src='<%= page.base %>/common/transparent.png'" alt="">
+        </div>
+        <div class="bestInfo">
+          <div class="bestName">파크레지스 싱가포르 호텔</div>
+          <div class="bestPlace"><%=$.withCommas($item.place) %>원~</div>
+          <button class="moreHotelBtn">해외 호텔 더보기</button>
+        </div>
+      </a>
+    </div>
+    <% }) %>
+  </div>
+  <% } %>
+
+</div>
+<% }) %>
+
+

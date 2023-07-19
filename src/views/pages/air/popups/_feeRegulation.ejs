@@ -1,0 +1,9 @@
+<div class="popup feeRegulation <% if(state === "popup_roundTrip" || state === "popup_oneWay" ) { %>on<% } %>">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <h2 class="popupTitle">운임규정</h2>
+      <button class="popupCloseBtn" type="button" aria-label="닫기">팝업창 닫기</button>
+    </div>
+    <iframe width="600" height="<%= (state === "popup_roundTrip" ) ? '574' :'540' %>" frameborder="0" scrolling="no" src="./popup_regulation_new<% if(state === "popup_oneWay" ) { %>.popup_oneWay<% } %>.html"></iframe>
+  </div>
+</div>

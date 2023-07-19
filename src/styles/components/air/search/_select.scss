@@ -1,0 +1,95 @@
+@import "base/variables";
+@mixin select {
+    z-index: 10;
+    position: relative;
+    height: 100%;
+    font-size: 16px;
+    color: #343434;
+    cursor: pointer;
+    border: 1px solid #b6bdc7;
+    vertical-align: top;
+    user-select: none;
+
+    &::after {
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        right: 9px;
+        content: "";
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url("#{$imgPath}/icon_arrow_selectbox.png")no-repeat center;
+        background-size: 100% auto;
+    }
+
+    .viewPoint {
+        position: relative;
+        display: block;
+        padding: 7px 30px 8px 14px;
+        overflow: hidden;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        color: #000;
+        font-size: 14px;
+    }
+
+    .optionList {
+        display: none;
+        overflow: hidden;
+        position: absolute;
+        top: -9px;
+        left: -1px;
+        z-index: 1;
+        width: 100%;
+        padding: 5px 0 7px 0;
+        background: #fff;
+        border: 1px solid #333;
+        box-sizing: border-box;
+        border-radius: 6px;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+
+        &::after {
+            position: absolute;
+            top: 15px;
+            right: 9px;
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: url("#{$imgPath}/icon_arrow_selectbox.png")no-repeat center;
+            background-size: 100% auto;
+            transform: rotate(180deg);
+        }
+
+        .formSelectLabel {
+            padding-bottom: 10px;
+        }
+
+        ul {
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+
+            li {
+                a {
+                    display: block;
+                    padding: 10px 30px 12px 15px;
+                    font-size: 14px;
+                    color: #000;
+                }
+
+                &.current {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    &.open {
+        .optionList {
+            display: block;
+            z-index: 10;
+        }
+    }
+}

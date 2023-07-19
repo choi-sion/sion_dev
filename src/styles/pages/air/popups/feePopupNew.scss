@@ -1,0 +1,187 @@
+@charset "UTF-8";
+@import "base/reset";
+@import "base/variables";
+
+@mixin scrollbarCustom() {
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-clip: padding-box;
+        border: 7px #c1c1c1 solid;
+        border-radius: 1rem;
+    }
+}
+
+#feePopup {
+    button {
+        border: 0;
+        background: transparent;
+    }
+
+    &.popupContents {
+        display: block;
+        box-sizing: border-box;
+
+        .tabContent {
+            display: none;
+
+            &.active {
+                display: block;
+            }
+        }
+
+        .scrollBox {
+            @include scrollbarCustom();
+            height: 509px;
+            margin-top: 10px;
+            margin-right: 5px;
+            padding: 0 20px;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+        .tabList {
+            display: flex;
+            padding: 0 15px;
+
+            .tabItem {
+                flex-grow: 1;
+                width: 100%;
+                height: 35px;
+                text-align: center;
+                line-height: 35px;
+                border: 1px solid #ccc;
+                box-sizing: border-box;
+
+                &.active {
+                    border: 0;
+                    background-color: #333;
+                    z-index: 10;
+
+                    .tabBtn {
+                        color: #fff;
+                        font-weight: normal;
+                        line-height: 35px;
+                    }
+                }
+
+                &:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+
+                &:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+
+                .tabBtn {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    font-size: 15px;
+                    line-height: 33px;
+                    font-weight: normal;
+                    color: #666;
+                }
+            }
+
+            li + li {
+                margin: 0 0 0 -1px;
+            }
+        }
+
+        .feeTable {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            position: relative;
+
+            caption {
+                overflow: hidden;
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                text-indent: 100%;
+                font-size: 0;
+            }
+
+            tbody {
+                th,
+                td {
+                    text-align: left;
+                    font-size: 13px;
+                    font-weight: normal;
+                    color: #000;
+                    height: 33px;
+                    line-height: 25px;
+                    vertical-align: top;
+                }
+            }
+
+            h3 {
+                display: block;
+                margin-bottom: 20px;
+                font-size: 13px;
+                color: #000;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.double_tab {
+    display: flex;
+
+    li {
+        flex-grow: 1;
+        width: 100%;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+
+        &.current {
+            border: 0;
+            background-color: #333;
+            z-index: 10;
+
+            a {
+                color: #fff;
+                font-weight: normal;
+                line-height: 35px;
+            }
+        }
+
+        &:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        &:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 15px;
+            line-height: 33px;
+            font-weight: normal;
+            color: #666;
+        }
+    }
+
+    li + li {
+        margin: 0 0 0 -1px;
+    }
+
+    &.item_size5 {
+        li {
+            a {
+                font-size: 13px;
+            }
+        }
+    }
+}

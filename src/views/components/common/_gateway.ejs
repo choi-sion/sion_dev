@@ -1,0 +1,35 @@
+<% const $gateway = loadData('/data/texts/components/gateway.json'); %>
+
+<div class="gatewayWrapper">
+  <div class="gatewayInner">
+    <div class="gatewayInterGate">
+      <ul>
+        <% $gateway.intGate.forEach((t, i) => { %>
+        <li <%- i===1 ? 'class="current"' : '' %>>
+          <a href="#"><%= t %></a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+    <div class="gatewayMenus">
+      <ul>
+        <% $gateway.util.forEach(util => { %>
+        <li <%- util.subMenu ? 'class="hasSub"' : '' %>>
+          <a href="#"><%= util.menu %></a>
+          <% if(util.subMenu) { %>
+          <div class="gatewaySub">
+            <ul class="gatewaySubMenu">
+              <% util.subMenu.forEach(t => { %>
+              <li>
+                <a href="#"><%= t %></a>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+          <% } %>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+</div>

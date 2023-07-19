@@ -1,0 +1,222 @@
+.popupSticky {
+    z-index: 99;
+    position: sticky;
+    top: 0;
+    background: #fff;
+}
+
+.popupHeader {
+    position: relative;
+    width: 100%;
+    margin-bottom: -1px;
+    background: #fff;
+    z-index: 100;
+
+    .popupHeaderLeft {
+        padding: 28px 52px 8px 20px;
+        box-sizing: border-box;
+        text-align: left;
+
+        .popupHeaderTitle {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 25px;
+            line-height: 1.5;
+            font-weight: bold;
+            color: #000;
+        }
+    }
+
+    .popupHeaderRight {
+        position: absolute;
+        top: 10px;
+        right: 0;
+
+        .commonClose {
+            margin-top: 12px;
+            margin-right: 12px;
+            width: 46px;
+            height: 46px;
+            float: right;
+
+            a {
+                cursor: pointer;
+            }
+
+            span {
+                font-size: 0;
+                width: 16px;
+                height: 16px;
+                display: block;
+                padding: 15px;
+                position: relative;
+
+                &:before,
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 12px;
+                    left: 50%;
+                    height: 22px;
+                    width: 1.8px;
+                    background-color: #666;
+                }
+
+                &:before {
+                    transform: rotate(45deg);
+                }
+
+                &:after {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+    }
+}
+
+.popupTabList {
+    padding: .8rem 1.6rem;
+    overflow: hidden;
+
+    .tabList {
+        display: flex;
+    }
+
+    button {
+        display: block;
+        position: relative;
+        width: 100%;
+        border-top: .1rem solid #ddd;
+        border-bottom: .1rem solid #ddd;
+        color: #666;
+        font-size: 1.5rem;
+        line-height: 3.4rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 1px;
+            height: 100%;
+            background-color: #ddd;
+        }
+
+        &:first-child {
+            border-left: .1rem solid #ddd;
+            border-radius: 1rem 0 0 1rem;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &:last-child {
+            border-right: .1rem solid #ddd;
+            border-radius: 0 1rem 1rem 0;
+        }
+
+        &[aria-selected="true"] {
+            background-color: #333;
+            border-color: #333;
+            font-weight: bold;
+            color: #fff;
+
+            &::before {
+                display: none;
+            }
+
+            + button {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.popupTabPanel {
+    margin-top: 2rem;
+
+    [role="tabpanel"] {
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+}
+
+.popupTableCommon {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: #666;
+
+    + .popupTableCommon {
+        margin-top: 1.6rem;
+    }
+
+    &.popupTableLeft {
+        td {
+            padding-left: .8rem;
+            text-align: left;
+        }
+    }
+
+    caption {
+        @include srOnly;
+    }
+
+    thead,
+    tbody,
+    tfoot {
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+    tr {
+        border-top: 1px solid #e8e8e8;
+    }
+
+    th,
+    td {
+        padding: 1.2rem .5rem;
+        border-right: 1px solid #e8e8e8;
+        font-size: 1.3rem;
+        line-height: 1.5;
+        vertical-align: middle;
+        text-align: center;
+
+        &:last-child {
+            border-right: none;
+        }
+    }
+
+    th {
+        background: #f8f8f8;
+        font-weight: bold;
+    }
+
+    tfoot td {
+        font-weight: bold;
+    }
+
+    thead {
+        + tbody {
+            tr:first-child {
+                border-top: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .popupHeader {
+        .popupHeaderRight {
+            display: none;
+        }
+    }
+}

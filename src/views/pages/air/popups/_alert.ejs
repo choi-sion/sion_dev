@@ -1,0 +1,30 @@
+<%
+  var notice = ["항공권 비교하기는 왕복 간 또는 \n편도 간 비교만 가능합니다.","항공권은 최대 3개까지 비교 가능합니다.", "삭제할 항공권을 선택해주세요.", "비교할 항공권을 선택해주세요.\n(최대 3개)"];
+  var alertMc = state.match('alert');
+%>
+
+<div class="popup alert <% if(alertMc) { %>on<% } %>" id="<%= id %>">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <button class="popupCloseBtn" type="button" aria-label="닫기" onclick="$('.alert').removeClass('on');">팝업창 닫기</button>
+    </div>
+
+    <div class="popupContents">
+      <% if(state === "alert0") { %>
+      <%- $.nl2br(notice[0]) %>
+      <% } else if(state === "alert1"){ %>
+      <%- $.nl2br(notice[1]) %>
+      <% } else if(state === "alert2"){ %>
+      <%- $.nl2br(notice[2]) %>
+      <% } else { %>
+      <%- $.nl2br(notice[3]) %>
+      <% } %>
+    </div>
+
+    <div class="popupFooter">
+      <div class="confirmBtn">
+        <button type="button" class="popupConfirm">확인</button>
+      </div>
+    </div>
+  </div>
+</div>

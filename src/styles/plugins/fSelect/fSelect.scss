@@ -1,0 +1,171 @@
+.fsWrap {
+    display: block;
+    position: relative;
+    line-height: 1;
+    font-size: 13px;
+    font-weight: bold;
+    color: #555;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    &.inlineBlock {
+        display: inline-block;
+    }
+
+    .hidden {
+        display: none;
+    }
+}
+
+.fsLabelWrap {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    cursor: default;
+
+    .fsLabel {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .fsArrow {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #333;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        bottom: 0;
+        margin: auto;
+        transition: ease-in 0.15s;
+    }
+}
+
+.fsLabelWrap,
+.fsDropdown {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.fsOpen .fsArrow {
+    transform: rotate(-180deg);
+}
+
+.fsDropdown {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-top: 5px;
+    z-index: 1000;
+
+    .fsOptions {
+        height: 100%;
+        max-height: 200px;
+        overflow: auto;
+    }
+}
+
+.fsSearch input {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+    padding: 6px 0;
+    width: 100%;
+}
+
+.fsOption,
+.fsSearch,
+.fsOptgroupLabel {
+    padding: 6px 8px;
+    border-bottom: 1px solid #eee;
+    cursor: default;
+}
+
+.fsOption:last-child {
+    border-bottom: none;
+}
+
+.fsSearch {
+    padding: 0 8px;
+}
+
+.fsNoResults {
+    padding: 6px 8px;
+}
+
+.fsOption {
+    cursor: pointer;
+    word-break: break-all;
+
+    &.disabled {
+        opacity: 0.4;
+        cursor: default;
+    }
+
+    &.hl {
+        background-color: #f5f5f5;
+    }
+}
+
+.fsWrap.multiple {
+    .fsOption {
+        position: relative;
+        padding-left: 30px;
+
+        &.selected {
+            .fsCheckbox {
+                i {
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 2px;
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+    }
+
+    .fsCheckbox {
+        position: absolute;
+        display: block;
+        width: 30px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+
+        i {
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 14px;
+            height: 14px;
+            border: 1px solid #aeaeae;
+            border-radius: 2px;
+            background-color: #fff;
+        }
+    }
+}
+
+.fsOptgroupLabel {
+    font-weight: bold;
+    text-align: center;
+    background-color: #f8f8f8;
+}

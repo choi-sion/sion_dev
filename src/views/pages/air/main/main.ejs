@@ -1,0 +1,357 @@
+---
+pageName: 항공메인
+title: 항공메인
+pageId: airMain
+indexGroup: air
+description: 항공메인
+keywords: 인터파크투어
+metaService: tour
+pageWidth: 1280
+styles:
+  - /styles/pages/air/main/main.css
+  - /styles/pages/air/popups/popup.css
+scripts:
+  - /scripts/plugins/placeholders/placeholders.min.js
+  - /scripts/pages/air/main/main.js
+  - /scripts/pages/air/popups/layerPopup.js
+  - /scripts/pages/air/partials/airSearch.js
+  - /scripts/components/intFooter.js
+data:
+  - /data/texts/pages/air/main/main.json
+state:
+  default: 메인
+  multi: 다구간
+  noitems: 최근검색 없음
+  errorCheck:  유효성 체크
+  popFuel:  팝업 - 유류할증료 인상
+base: /images
+---
+
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<head>
+  <%- include('/components/common/_head'); %>
+</head>
+
+<body id="<%= page.pageId %>">
+  <%- include('/components/common/_header_banner'); %>
+
+  <%- include('/components/common/_header'); %>
+
+  <div id="airContainer">
+
+    <div class="airSearchWrap">
+      <%- include('/pages/air/partials/_airSearch'); %>
+
+      <%- include('/pages/air/main/_partials/_personal'); %>
+
+      <div class="mainCategory">
+        <div class="mainContent">
+          <ul>
+            <% data.main.mainCategory.forEach(function(item) { %>
+            <li>
+              <a href="#">
+                <div class="icon">
+                  <img src="<%= page.base %>/pages/air/main/icon_<%= item.icon %>.svg" alt="<%= item.label %>"> <!-- 하와이특가 live icon명 : icon_live.svg -->
+                  <p><%= item.title %></p>
+                </div>
+                <% if (typeof item.label !== 'undefined') { %><span><%= item.label %></span><% } %>
+              </a>
+            </li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="promotionWrap">
+        <h2 class="airTitle">비교불가! 나만을 위한 프로모션
+          <button type="button" class="openLayerBtn" aria-controls="promotionAll">
+            <span>전체보기</span>
+          </button>
+        </h2>
+        <div class="promotionViewWrap">
+          <div class="promotionSlide">
+            <ul class="promotionBanner slideArea">
+              <% data.main.eventBn.forEach(function($item) { %>
+              <li>
+                <a href="#" title="이벤트페이지로 이동">
+                  <img src="<%= $item.img %>" alt="{이벤트이름}">
+                </a>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+          <div class="promotionView">
+            <ul>
+              <li>
+                <a href="#">
+                  <img src="/data/images/pages/air/main/bigBannerSlider01.png" alt="{이벤트이름}">
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="/data/images/pages/air/main/bigBannerSlider02.png" alt="{이벤트이름}">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <%- include('/pages/air/popups/_bannerAll', {id: 'promotionAll'}); %>
+      </div>
+
+      <div class="todaySaleWrap">
+        <h2 class="airTitle">해외 인기도시 최저가</h2>
+        <%
+          var todaySale = [
+            {"nation": "China", "name" : "중국"},
+            {"nation": "Japan", "name" : "일본"},
+            {"nation": "SoutheastAsia", "name" : "동남아"},
+            {"nation": "America", "name" : "미주"},
+            {"nation": "Canada", "name" : "캐나다"},
+            {"nation": "Africa", "name" : "중동/아프리카"},
+            {"nation": "Europe", "name" : "유럽"},
+            {"nation": "Ocean", "name" : "대양주"}
+          ]
+        %>
+        <div class="todaySale airTabWrap">
+          <div class="airTabEl">
+            <div class="indTabs" role="tabList" aria-label="individual">
+              <% todaySale.forEach($today => { %>
+              <button role="tab" aria-selected="true" aria-controls="<%= $today.nation%>" id="tab<%= $today.nation%>"><%= $today.name%></button>
+              <% }) %>
+            </div>
+          </div>
+
+          <% todaySale.forEach(($today, i) => { %>
+          <div class="tabContain" role="tabContents" id="<%= $today.nation%>" aria-labelledby="tab<%= $today.nation%>">
+            <div class="productItemWrap">
+              <%- include('/pages/air/main/_partials/_productItem', {
+                overseas: true
+              }); %>
+            </div>
+            <div class="itemNoti" tabindex="0">
+              총 예상 요금은 항공편 선택 이전으로 선택 후 경유 도시/발권일/환율에 따라 변동 될 수 있습니다.
+            </div>
+          </div>
+          <% }) %>
+        </div>
+
+        <div class="rightWingBannerWrap">
+          <a href="#" role="link" aria-labelledby="talkFAQ">
+            <span><em>톡집사 문의</em></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="lowestPriceWrap">
+        <h2 class="airTitle">
+          <button class="lowestSortBtn sortBtn" type="button" aria-expanded="false">김포</button>
+          <div class="lowestSortList sortList" role="combobox" tabindex="0" aria-label="정렬" aria-haspopup="listbox" aria-expanded="false">
+            <ul class="list" role="listbox">
+              <%
+              var place = [
+                {"place": "김포"},
+                {"place": "제주"},
+                {"place": "청주"},
+                {"place": "부산"},
+                {"place": "양양"},
+                {"place": "대구"},
+                {"place": "인천"},
+                {"place": "무안"},
+              ].forEach(($place, i) => {
+                let selected = i === 0 ? 'true' : 'false';
+                %>
+              <li role="option" aria-selected="<% if (i === 0) { %>true<% } %>">
+                <a role="button" aria-selected="<%= selected %>"><%= $place.place%></a>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+          에서 떠나는 국내 최저가</h2>
+        <div class="productItemWrap">
+          <%- include('/pages/air/main/_partials/_productItem', {
+            domestic: true
+          }); %>
+        </div>
+      </div>
+
+      <div class="partnerBannerWrap">
+        <h2 class="airTitle">다양한 혜택으로 이제 떠나요! </h2>
+        <div class="partnerBannerView placePartnerListWrap ">
+          <ul class="partnerBanner slideArea">
+            <% data.main.partnerItem.forEach(function($p) { %>
+            <li class="placePartnerItem">
+              <a href="#" title="검색결과 다시보기">
+                <img src="<%= $p.img %>" alt="{이벤트이름}">
+              </a>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+
+        <div class="placeIndicator">
+          <div class="current">
+            <i class="blind">현재 슬라이드 번호</i>
+            <span class="num">1</span> /
+          </div>
+          <div class="max">
+            <i class="blind">전체 슬라이드 수</i>
+            <span class="num"></span>
+          </div>
+          <button type="button" class="openLayerBtn" aria-controls="bannerAll">
+            <span>전체보기</span>
+          </button>
+        </div>
+        <%- include('/pages/air/popups/_bannerAll', {id: 'bannerAll'}); %>
+      </div>
+
+      <div class="bestTravelWrap">
+        <h2 class="airTitle">최근 많이 예약된 BEST 인기여행지와 추천상품</h2>
+        <div class="productItemWrap bestType">
+          <%- include('/pages/air/main/_partials/_productItem', {
+            best: true,
+            sub: true
+          }); %>
+        </div>
+        <div class="itemNoti" tabindex="0">
+          ※ 표시된 요금은 접속 시점에 조회된 최저가이며 상품 잔여 여부에 따라 예약이 불가능할 수 있습니다.
+        </div>
+      </div>
+
+      <div class="paymentBenefitWrap">
+        <h2 class="airTitle">결제 전용혜택
+          <a href="#" role="link">
+              <span>해외항공 전용혜택 보기</span>
+          </a>
+        </h2>
+        <div class="benefit">
+          <% data.main.benefitItem.forEach(function($bi, idx) { %>
+          <div class="benefitItem">
+            <a href="#" title="">
+              <span class="category"><%= $bi.category %></span>
+              <span class="discountRate"><%=$.withCommas($bi.discountRate) %><%= $bi.unit %></span>
+              <span class="infoTxt"><%= $bi.infoTxt %></span>
+            </a>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="airCustomerWrap">
+        <h2 class="airTitle">인터파크 항공 고객센터</h2>
+        <div class="airCustomer">
+          <div class="customerService" tabindex="0">
+            <dl>
+              <dt>운영시간</dt>
+              <dd>평일 : 09:00 - 17:00</dd>
+              <dd>주말,공휴일 휴무</dd>
+              <dt>안내전화</dt>
+              <dd>02-3479-4340 (국내)</dd>
+              <dd>02-3479-4399 (해외)</dd>
+            </dl>
+          </div>
+          <div class="customerInquires">
+            <div class="inquiresTalk">
+              <a href="#">
+                <dl>
+                  <dt>톡집사 문의</dt>
+                  <dd>전화가 어렵다면<br>톡집사에게 톡!</dd>
+                </dl>
+              </a>
+            </div>
+            <div class="inquiresQuestion">
+              <a href="#">
+                <dl>
+                  <dt>자주 묻는 질문</dt>
+                  <dd>궁금하신 사항을<br>빠르게 확인하세요.</dd>
+                </dl>
+              </a>
+            </div>
+          </div>
+          <div class="customerEtc">
+            <div class="etcReservation" id="info_reservation">
+              <div class="title" tabindex="0" role="group" aria-labelledby="info_reservation">예약</div>
+              <ul>
+                <li><a href="#">해외숙소</a></li>
+                <li><a href="#">투어/티켓</a></li>
+                <li><a href="#">해외렌터카</a></li>
+                <li><a href="#">항공+호텔 예약</a></li>
+                <li><a href="#">추천여행일정</a></li>
+              </ul>
+              <ul>
+                <li><a href="#">여행자보험</a></li>
+                <li><a href="#">데이터/로밍</a></li>
+                <li><a href="#">환전</a></li>
+                <li><a href="#">면세점</a></li>
+                <li><a href="#">여행준비</a></li>
+              </ul>
+            </div>
+            <div id="info_etc">
+              <div class="title" tabindex="0" role="group" aria-labelledby="info_etc">단체</div>
+              <ul>
+                <li><a href="#">단체항공 문의</a></li>
+                <li><a href="#">고객상담/맞춤 견적</a></li>
+                <li><a href="#">단체/법인여행</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="itemNoti" tabindex="0">
+          <p>*국내 항공권의 경우 주말,공휴일 및 업무시간외에는 항공사를 통해 빠른 문의 가능합니다. <a aria-controls="airlineInfo" href="javascript:winOpen();"> 항공사 안내 &#62;</a></p>
+          <p>*해외 항공권 구매고객은 전세계 어디에서든지 개별 번호를 통한 긴급상담이 가능합니다.  <a href="https://tour.interpark.com/event/event_view.aspx?seq=4160" > 긴급상담 안내 &#62;</a></p>
+        </div>
+      </div>
+
+      <% if (state === 'popFuel') { %>
+      <div class="airPopWrap airPopFuel">
+        <img src="//openimage.interpark.com/tourpark/tour/mobile/180122_pop.png" alt="22년 6월부 유류할증료 인상">
+        <div class="blind">2022년 6월 1일 이후 대한항공/아시아나 항공 포함 항공사의 유류할증료가 인상됩니다. 5월 31일 17시까지 결제하셔야 인상 전 운임으로 적용되오니 결제를 미리 서두르시기 바랍니다.</div>
+        <a class="airPopLink" href="http://tour.interpark.com/customer/noticeview.aspx?seq=10713&PageNum=1&class=100&Gubun=Title&keyWord=">
+          자세히 보기
+        </a>
+        <div class="airPopBtnWrap">
+          <button type="button" class="btnNoToday">오늘 하루 열지 않음</button>
+          <button type="button" class="btnClose">닫기</button>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+    function winOpen() {
+      var nWidth = "820";
+      var nHeight = "600";
+
+      var curX = window.screenLeft;
+      var curY = window.screenTop;
+      var curWidth = document.body.clientWidth;
+      var curHeight = window.screen.height;
+
+      var nLeft = curX + (curWidth / 2) - (nWidth / 2);
+      var nTop = curY + (curHeight / 2) - (nHeight / 2);
+
+      var strOption = "";
+      strOption += "left=" + nLeft + "px,";
+      strOption += "top=" + nTop + "px,";
+      strOption += "width=" + nWidth + "px,";
+      strOption += "height=" + nHeight + "px,";
+      strOption += "toolbar=no,menubar=no,location=no,";
+      strOption += "resizable=yes,status=yes";
+
+      var m_strDlgUrl = "/views/pages/air/popups/airlineInfo.html";
+      var _strName = "항공사 안내";
+
+      window.open(m_strDlgUrl, _strName, strOption);
+    }
+
+    $('.airPopWrap .btnClose').on('click', function() {
+      $(this).parents('.airPopWrap').hide();
+    });
+  </script>
+
+
+  <%- include('/components/common/_footer'); %>
+  <%- include('/components/_scripts'); %>
+</body>
+</html>

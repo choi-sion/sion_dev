@@ -1,0 +1,94 @@
+@import "base/variables";
+
+.powerLinkWrap {
+    position: relative;
+    margin: 33px 0 53px;
+
+    * {
+        font-family: $system-font !important;
+    }
+
+    .powerLinkInner {
+        width: 980px;
+        margin: 0 auto;
+
+        .titleWrap {
+            position: relative;
+            padding: 0 0 13px 10px;
+            border-bottom: 1px solid #333;
+
+            .title {
+                margin-right: 3px;
+                font-size: 20px;
+                color: #000;
+            }
+
+            em {
+                font-size: 16px;
+                color: #999;
+            }
+
+            .requestButton {
+                position: absolute;
+                right: 11px;
+                bottom: 11px;
+                font-size: 12px;
+                color: #999;
+            }
+        }
+
+        ul {
+            padding: 30px 10px 0 10px;
+
+            li {
+                position: relative;
+                margin-top: 21px;
+                padding-left: 28px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                .number {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #ef3f43;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: #fff;
+                    text-align: center;
+                }
+
+                .text,
+                .link {
+                    display: block;
+                }
+
+                .text {
+                    overflow: hidden;
+                    width: 640px;
+                    font-size: 14px;
+                    color: #666;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    strong {
+                        color: #6262c2;
+                        text-decoration: underline;
+                    }
+                }
+
+                .link {
+                    margin: 1px 0 0 1px;
+                    font-size: 12px;
+                    line-height: 1;
+                    color: #5eb47a;
+                }
+            }
+        }
+    }
+}

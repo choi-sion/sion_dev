@@ -1,0 +1,190 @@
+@charset "utf-8";
+@import "base/variables";
+@import "pages/air/popups/_partials/calendar";
+@import "pages/air/popups/_partials/locationSelect";
+@import "pages/air/popups/_partials/peopAirSelect";
+
+$headerHeight: 50px;
+$fColor_midGray: #666;
+$fColor_gray: #ccc;
+$fColor_white: #fff;
+$fColor_black: #000;
+
+// Bg Color
+$bColor_gray: #333;
+$bColor_folkstonegray: #eee;
+$bColor_white: #fff;
+
+$normalWeight: normal;
+$boldWeight: bold;
+
+.popup {
+    z-index: 88;
+    position: absolute;
+    display: none;
+    white-space: nowrap;
+    text-align: center;
+    top: 0;
+
+    input,
+    button,
+    select,
+    textarea {
+        font-size: inherit;
+    }
+
+    &.on {
+        display: block;
+    }
+
+    &::selection {
+        background: 0;
+    }
+
+    &.first {
+        margin-top: 195px;
+    }
+
+    &.second {
+        margin-top: 310px;
+    }
+
+    &.third {
+        margin-top: 425px;
+    }
+
+    &.bannerAllPop {
+        z-index: 90;
+    }
+
+    .popupPosition {
+        z-index: 2;
+        position: relative;
+        display: inline-block;
+        max-height: 100%;
+        text-align: left;
+        border-radius: 25px;
+        font-size: 15px;
+        white-space: normal;
+        vertical-align: middle;
+        background: #fff;
+
+        &:before {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
+            border-radius: 25px;
+            content: "";
+            display: inline-block;
+        }
+    }
+
+
+    .popupHeader {
+        padding: 25px 25px 15px;
+
+        .popupTitle {
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .popupCloseBtn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 7px;
+            width: $headerHeight;
+            height: $headerHeight;
+            border: 0;
+            text-indent: -9999px;
+            background: transparent url("#{$base}/pages/popups/popupCloseBtn.png") no-repeat center center;
+            cursor: pointer;
+
+            &:active {
+                background-color: color-shade(#fff);
+            }
+        }
+    }
+
+    .popupContents {
+        padding: 0 25px 25px;
+    }
+
+    .popupFooter {
+        .confirmBtn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 18px;
+            border: 0;
+            border-radius: 6px;
+            background: 0;
+            padding: 8px 18px;
+
+            & + button {
+                margin-left: 10px;
+            }
+
+            &.popupConfirm {
+                color: #fff;
+                background: #333;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &.feeRegulation {
+        width: 600px;
+        margin: 0;
+        border-radius: 13px;
+        box-shadow: 0 6px 15px 0 rgba(0, 0, 0, .3);
+        transform: translate(-50%, -50%);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 999;
+        background-color: #fff;
+
+        .popupPosition {
+            &::before {
+                box-shadow: none;
+            }
+        }
+
+        .popupHeader {
+            height: 80px;
+            padding: 30px 20px 15px;
+            box-sizing: border-box;
+
+            .popupTitle {
+                font-size: 25px;
+                color: #000;
+                text-align: left;
+            }
+
+            .popupCloseBtn {
+                width: 46px;
+                height: 46px;
+                margin: 0;
+                top: 20px;
+                right: 10px;
+                position: absolute;
+                border: 0;
+                text-indent: -9999px;
+                background: transparent url("//openimage.interpark.com/tour-desktop/pages/air/search/popupCloseBtn.png") no-repeat center center;
+                background-size: contain;
+                cursor: pointer;
+            }
+        }
+    }
+}

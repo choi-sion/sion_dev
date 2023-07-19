@@ -1,0 +1,72 @@
+<div class="individualWrap airTabWrap">
+  <div class="indTabsWrap airTabEl">
+    <div class="indTabs" role="tabList" aria-label="individual">
+      <button role="tab" aria-selected="true" aria-controls="tabLatest" id="latest">최근검색</button>
+      <button role="tab" aria-selected="false" aria-controls="tabZzim" id="zzim">찜한 항공권</button>
+      <a  href="#" aria-labelledby="shortcut">바로가기</a>
+    </div>
+  </div>
+
+  <% if(state !== 'noitems') { %>
+  <%
+  var latest = [
+    {
+      "id": "tabLatest",
+      "labelledby" : "latest"
+    },
+    {
+      "id": "tabZzim",
+      "labelledby" : "zzim"
+    },
+  ].forEach((latest, i) => { %>
+  <div class="tabContain" role="tabContents" id="<%= latest.id%>" aria-labelledby="<%= latest.labelledby%>">
+    <div class="various">
+      <button type="button">
+        <span>전체삭제</span>
+      </button>
+      <button type="button" class="indMoreBtn">
+        <span>더보기</span>
+      </button>
+    </div>
+    <div class="latestSch" id="searchItemList<%= i %>" tabindex="0">
+      <% data.main.searchItem.forEach($item => { %>
+      <div class="searchItem" aria-labelledby="searchItemList<%= i %>">
+        <span class="travelBullet"><%= $item.bullet%></span>
+        <div class="travelCity" role="group" tabindex="0">
+          <div class="leave <% if($item.oneWay) { %><%= $item.oneWay%><% } %>">
+            <span class="place"><%= $item.leave%></span>
+            <span class="air"><%= $item.leave_air%></span>
+          </div>
+          <div class="arrive">
+            <span class="place"><%= $item.arrive%></span>
+            <span class="air"><%= $item.arrive_air%></span>
+          </div>
+        </div>
+        <div class="travelReserveInfo" tabindex="0">
+          <% if(latest.id === 'tabLatest') { %>
+          <div class="reserveInfo">
+            <% $item.travelReserveInfo.forEach($info => { %>
+            <span><%= $info.data%></span>
+            <% }) %>
+          </div>
+          <% } else { %>
+          <p class="<%= $item.travelSchedule.class%>"><%=$.withCommas($item.travelSchedule.price)%>원</p>
+          <div class="reserveInfo">
+            <% $item.travelSchedule.scheduleInfo.forEach($si => { %>
+            <span><%= $si.data%></span>
+            <% }) %>
+          </div>
+          <% } %>
+        </div>
+        <button class="itemDel">삭제</button>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+  <% }) %>
+  <% } else { %>
+  <div class="noItems">
+    <p>최근검색 내역이 없습니다.</p>
+  </div>
+  <% } %>
+</div>

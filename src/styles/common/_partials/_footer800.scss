@@ -1,0 +1,99 @@
+.foot {
+    &Info {
+        width: $_width800;
+    }
+
+    &Notice {
+        width: $_width800;
+
+        p {
+            padding: 0;
+        }
+    }
+}
+
+.corpList {
+    width: $_width800;
+
+    li {
+        padding: 12px 28px 0;
+
+        &:first-child {
+            padding-left: 14px;
+        }
+
+        &:last-child {
+            padding-right: 14px;
+        }
+
+        a {
+            font-size: 13px;
+        }
+    }
+}
+
+.info {
+    &Col {
+        width: 230px;
+        padding-left: 0;
+
+        &:last-child {
+            width: 220px;
+        }
+
+        &:not(:first-child) {
+            .infoContent {
+                padding-right: 0;
+            }
+        }
+    }
+
+    &Content {
+        .telList {
+            li {
+                width: 50%;
+                margin-right: 0;
+
+                &:nth-child(odd):before,
+                &:last-child:before {
+                    display: none;
+                }
+
+                &:nth-child(2n+2) {
+                    @include listBar(-16);
+                }
+
+                &:last-child {
+                    width: 100%;
+                }
+            }
+        }
+
+        .businessList {
+            display: block;
+
+            li {
+                margin-left: 0;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &Title {
+        h2 {
+            font-size: 13px;
+        }
+    }
+}
+
+.award {
+    height: 30px;
+
+    &Wrap {
+        width: $_width800;
+        padding: 0;
+    }
+}

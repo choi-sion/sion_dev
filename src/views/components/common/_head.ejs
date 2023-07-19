@@ -1,0 +1,33 @@
+<%;
+  var headerJS = typeof headerJS === 'undefined' ? false : headerJS;
+%>
+<meta name="service" content="<%= page.metaService %>">
+<meta name="compatibility" content="<%= state === 'nonStandard' ? 'nonStandard' : 'standard' %>">
+<meta name="containerWidth" content="<%= page.pageWidth %>">
+<title><%= (page.title ? page.title + ' - ' : '') + site.siteName %></title>
+<meta charset="<%= page.charset || 'utf-8' %>">
+<meta name="description" content="<%= $.truncate((page.description || site.description), 150) %>">
+<meta name="author" content="INTERPARK">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="service" content="<%= page.metaService ? page.metaService : 'tour' %>">
+<meta name="compatibility" content="<%= page.metaCompatibility ? page.metaCompatibility : 'standard' %>">
+<meta name="containerWidth" content="<%= page.metaContainerWidth ? page.metaContainerWidth : '1280' %>">
+<link rel="shortcut icon" href="/images/icons/favicon.ico">
+<link rel="stylesheet" href="/styles/common/common.css">
+<link rel="stylesheet" href="/styles/common/footer.css">
+<% if (headerJS ==! 'ui_header') { %>
+  <link rel="stylesheet" href="/styles/common/header.css">
+<% } %>
+
+<% if (typeof page.styles !== 'undefined' && page.styles instanceof Array) { %>
+  <% page.styles.forEach(function(cssPath) { %>
+    <link rel="stylesheet" href="<%= cssPath %>">
+  <% }) %>
+<% } %>
+<script src="/scripts/plugins/jquery/jquery-1.12.4.min.js"></script>
+<script src="/scripts/plugins/bxslider/jquery.bxslider.min.js"></script>
+<% if (headerJS ==! 'ui_header') { %>
+  <script src="/scripts/common/header/ui_header.js"></script>
+  <script src="/scripts/components/footer.js"></script>
+<% } %>

@@ -1,0 +1,43 @@
+/* 모듈 공통 */
+.ui-rolling {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    line-height: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+
+    span {
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        line-height: 0;
+    }
+
+    a {
+        display: inline-block;
+        padding: 0 2px;
+        font-size: 0;
+        line-height: 0;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: top;
+
+        &:hover {
+            margin: 0;
+            padding: 0;
+            padding: 0 2px;
+            text-decoration: none;
+            vertical-align: top;
+        }
+    }
+
+    img {
+        vertical-align: top;
+    }
+}

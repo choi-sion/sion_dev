@@ -1,20 +1,4 @@
-@charset "utf-8";
-
-html {
-    height: 100%;
-    text-size-adjust: none;
-    -webkit-touch-callout: none;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    font: normal 62.5% "Helvetica Neue", Helvetica, AppleSDGothicNeo, sans-serif;
-}
-
-body {
-    height: 100%;
-    font-size: 1.3rem;
-    display: block;
-}
-
+// CSS Reset - Richard Clark
 html,
 body,
 div,
@@ -87,7 +71,6 @@ video {
     margin: 0;
     padding: 0;
     border: 0;
-    outline: 0;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
@@ -174,10 +157,6 @@ select {
 input {
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
-}
-
-input[type="checkbox"] {
-    appearance: none;
 }
 
 // Remove "X" button from input field
