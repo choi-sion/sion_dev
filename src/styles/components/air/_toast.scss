@@ -1,0 +1,17 @@
+.toast {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    width: calc(100% - 3rem);
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 1rem 1rem 1.2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .8);
+    box-shadow: 0 .6rem 1rem 0 rgba(0, 0, 0, .2);
+    box-sizing: border-box;
+    transform: translateX(-50%);
+    z-index: 99;
+}

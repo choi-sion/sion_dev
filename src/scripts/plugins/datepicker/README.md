@@ -1,0 +1,3 @@
+- Name: Datepicker
+- Version: v1.0.8
+- Website: https://github.com/fengyuanchen/datepicker

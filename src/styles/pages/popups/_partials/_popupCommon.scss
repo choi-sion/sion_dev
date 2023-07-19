@@ -1,0 +1,70 @@
+@charset "utf-8";
+@import "base/variables";
+@import "base/font-variables";
+
+.commonPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 999;
+
+    &.active {
+        display: block;
+    }
+
+    &::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    &Inner {
+        position: relative;
+        width: 520px;
+        max-height: 90vh;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        background: #fff;
+        border: 1px solid #333;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+        border-radius: 10px;
+        overflow-y: auto;
+        z-index: 10;
+    }
+
+    &Header {
+        position: relative;
+        height: 50px;
+        padding: 0 20px;
+        line-height: 50px;
+        border-bottom: 1px solid #dde4ec;
+
+        h2 {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+
+    &CloseBtn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        border: 0;
+        text-indent: -9999px;
+        background: url("#{$base}/pages/checkinnow/housing/icon_close.svg") no-repeat center center;
+        cursor: pointer;
+    }
+
+    &Contents {
+        padding: 25px 0 30px;
+    }
+}

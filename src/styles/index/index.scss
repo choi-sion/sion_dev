@@ -1,3 +1,5 @@
+@import "base/reset";
+
 html,
 body {
     height: 100%;
@@ -55,7 +57,6 @@ body {
             border-bottom: .1rem solid rgba(0, 0, 0, .1);
             box-shadow: 0 .1rem 1rem rgba(0, 0, 0, .15), inset 0 -.1rem 0 rgba(255, 255, 255, .02);
             font-family: arial, sans-serif;
-            letter-spacing: 0;
             text-shadow: 0 -.1rem 0 rgba(0, 0, 0, .1);
             cursor: default;
 
@@ -508,7 +509,6 @@ body {
                             outline: none;
                             border: .1rem dotted transparent;
                             overflow: hidden;
-                            letter-spacing: -.05em;
                             text-overflow: ellipsis;
                             white-space: nowrap;
                             text-decoration: none;
@@ -694,7 +694,6 @@ body {
                     display: inline-block;
                     padding-left: .4rem;
                     vertical-align: middle;
-                    letter-spacing: -.02em;
                     word-spacing: -.06em;
                     color: #5a5a5a;
 
@@ -722,12 +721,12 @@ body {
                 top: 0;
                 right: 0;
                 bottom: 0;
-                display: table;
                 margin: auto;
                 white-space: nowrap;
 
                 a {
-                    padding-right: 1rem;
+                    display: block;
+                    padding: 1rem;
                     font-size: 1.1rem;
                     color: #999;
 

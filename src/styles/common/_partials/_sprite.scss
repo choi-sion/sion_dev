@@ -1,0 +1,31 @@
+@import "base/variables";
+
+/* sprite */
+.sprite-hd {
+    display: inline-block;
+    background: url("#{$imgPath}/tour_ui/common/gateway/sp_hd.png") no-repeat 0 0;
+
+    @at-root .category_view01_off {
+        width:  98px;
+        height:  40px;
+        background-position: 0 -317px;
+    }
+
+    @at-root .category_view01_on {
+        width:  98px;
+        height:  40px;
+        background-position: 0 -277px;
+    }
+
+    @at-root .category_view02_off {
+        width:  97px;
+        height:  40px;
+        background-position: 0 -235px;
+    }
+
+    @at-root .category_view02_on {
+        width:  97px;
+        height:  40px;
+        background-position: 0 -195px;
+    }
+}

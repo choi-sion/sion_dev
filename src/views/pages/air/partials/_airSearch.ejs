@@ -1,0 +1,144 @@
+
+<div class="airSearchArea">
+  <% if(page.pageId === 'airMain') { %>
+  <div class="airSearchVisual">
+    <div class="searchTxt">
+      <div class="searchNotice">
+        <ul class="slideArea">
+        <%
+          var slideNotice = [
+            {
+              "txt": "[에티하드항공] 시스템 변경 안내 (2023년 3월 30일 부터)"
+            },
+            {
+              "txt": "[공지] 국제선 할인 이벤트"
+            },
+            {
+              "txt": "[공지] 국내선 최저가 할인 이벤트 참여 후 경품 받아가요"
+            },
+            {
+              "txt": "[공지] 국제선 마스크 착용 의무화 시행 안내"
+            }
+          ].forEach(($n, i) => { %>
+          <li><a href="#"><%= $n.txt %></a></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="noticMoreBtn">
+        <a href="#" title="더보기">공지사항 더보기</a>
+      </div>
+    </div>
+  </div>
+  <% } %>
+
+  <div class="airSearchFormWrap">
+    <div class="airSearchForm">
+      <%
+      switch (state) {
+        case 'multi':
+          departure = '출발일';
+          date = '7.21(수)';
+          break;
+        default :
+          departure = '출발일 - 도착일';
+          date = '7.21(수) ~ 7.28(수)';
+      };
+
+      var schAirLine = [
+        {
+          "moreBtn": false,
+          "departure" : ""
+        },
+        {
+          "moreBtn": true,
+          "departure" : ""
+        },
+        {
+          "moreBtn": true,
+          "departure" : ""
+        },
+      ]
+      var multi = state === 'multi';
+      var schAirLineLength = multi ?  schAirLine.length : 1 ;
+      %>
+      <div class="schTabsWrap">
+        <div class="schTabs" role="tabList" aria-label="airSearch">
+          <button type="button" role="tab" aria-controls="return" <% if (!multi) { %>class="selected"<% } %> >왕복</button>
+          <button type="button" role="tab" aria-controls="single">편도</button>
+          <button type="button" role="tab" aria-controls="multi" <% if (multi) { %>class="selected"<% } %> >다구간</button>
+        </div>
+        <div class="row">
+          <span class="chkSpot">
+            <span class="chkBox">
+              <input id="chkBox-1" type="checkbox">
+              <label for="chkBox-1" tabindex="0">직항만 검색</label>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="filterWrap">
+        <form class="schForm">
+          <%- include('/pages/air/popups/_locationSelect', {id: 'locationSelect'}); %>
+          <%- include('/pages/air/popups/_dateSelect', {id: 'dateSelect'}); %>
+          <%- include('/pages/air/popups/_peopAirSelect', {id: 'peopAirSelect'}); %>
+          <fieldset>
+            <legend>항공 검색 조건</legend>
+            <div class="schFlight <% if (multi) { %>multi<% } %>">
+              <div class="colWrap">
+                <% for(var i = 0; i < schAirLineLength; i++) { %>
+                <div class="col schAirLine" aria-selected="true" aria-labelledby="single">
+                  <div class="row flightDes jsFlightPanel">
+                    <div class="flightDesCon">
+                      <div class="rowEl openLayerBtn filBtn" aria-controls="locationSelect" tabindex="0">
+                        <h4>출발</h4>
+                        <input type="text" class="btnDeparture jsBtnDeparture jsSearch active " aria-autocomplete="list" placeholder="인천/김포(SEL)" title="출발지를 검색해 주세요." value="">
+                      </div>
+                      <div class="rowEl">
+                        <button type="button" class="icon iconRound jsIconAnimate">
+                          <i class="icon iconRoundCircle jsIconRoundCircle"></i>
+                          <span>출도착 변경</span>
+                        </button>
+                      </div>
+                      <div class="rowEl openLayerBtn filBtn arr" aria-controls="locationSelect" tabindex="0">
+                        <h4>도착</h4>
+                        <input type="text" class="btnArrival jsBtnArrival jsSearch <% if (state === 'errorCheck') { %>errorCheck<% } %>" tabindex="0" aria-autocomplete="list" placeholder="도시, 공항명 입력"  title="도착지를 검색해 주세요." value="" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row flighDate">
+                    <h4><%= departure %></h4>
+                    <div class="dateWrap">
+                      <input type="text" placeholder="체크인-체크아웃" title="달력에서 체크인, 체크아웃 날짜를 선택해주세요." tabindex="-1" value="<%= date %>">
+                      <button class="openLayerBtn layerBtn filBtn" aria-controls="dateSelect" type="button" title="체크인-체크아웃 날짜 선택">달력보기</button>
+                    </div>
+                  </div>
+
+                  <% if (state === 'multi' && i !== 0) { %>
+                  <button type="button" class="addColBtn" data-method="increase"><span>수량증가</span></button>
+                  <% } %>
+                </div>
+                <% } %>
+              </div>
+              <div class="colWrap peop">
+                <div class="col">
+                  <div class="row peop">
+                    <h4>인원, 좌석등급</h4>
+                    <div class="peopNum">
+                      <input type="text" placeholder="인원/좌석" title="인원 및 좌석을 선택해주세요." tabindex="-1" value="2명, 프리미엄 일반" readonly>
+                      <button class="openLayerBtn layerBtn filBtn" aria-controls="peopAirSelect" type="button" title="인원 및 좌석 선택">인원 및 객실 선택하기</button>
+                    </div>
+                  </div>
+                  <div class="row sehBtn">
+                    <button class="schBtn" type="button">검색하기</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,244 @@
+<% const $header = loadData('/data/texts/components/header.json'); %>
+<header class="tourHeader<%- state === 'layout800' ? ' container800' : '' %>">
+  <%- include('/components/common/_gateway'); %>
+  <div class="headerWrapper">
+    <div class="headerInner">
+      <h1 class="headerLogo">
+        <a href="#">INTERPARK</a>
+      </h1>
+
+      <div class="headerSearch">
+        <form class="searchForm">
+          <fieldset>
+            <legend class="blind">키워드 검색</legend>
+            <div class="searchFormWrap" tabindex="0">
+              <input type="search" class="inputSearch" required="" placeholder="여행할 도시나 상품을 검색해 보세요.">
+              <button type="button" class="serachReset"><span class="blind">검색어 삭제하기</span></button>
+              <button type="button" class="inputSearchBtn">검색</button>
+              <span class="searchAD">그랜드 하얏트 제주 룸 업그레이드!</span>
+            </div>
+          </fieldset>
+        </form>
+        <div class="searchExpandWrap">
+          <div class="searchKeywordWrap">
+            <div class="searchKeyword">
+              <div class="keywordHead">
+                <h2>최근검색어</h2>
+                <button type="button" class="btnRemoveAll">전체삭제</button>
+              </div>
+              <ul class="recentList">
+                <% $header.recently.forEach(item => { %>
+                  <li><a href="#" class="keyword"><%= item %></a></li>
+                <% }); %>
+              </ul>
+            </div>
+            <div class="searchKeyword">
+              <div class="keywordHead">
+                <h2>인기검색어</h2>
+                <span class="baseDate">2022.08.30 14:00 기준</span>
+              </div>
+              <ol class="popularList">
+                <% $header.popular.forEach(p => { %>
+                <li>
+                  <a href="#" class="keyword"><%= p.keyword %></a>
+                  <span class="state">
+                    <i class="rank <%= p.state.class %>"><%= p.state.text %></i>
+                    <% if(p.rank) { %>
+                      <span><%= p.rank %></span>
+                    <% } %>
+                  </span>
+                </li>
+                <% }); %>
+              </ol>
+            </div>
+          </div>
+          <div class="autocompleteWrap">
+            <ul class="autocomplete">
+              <% $header.autocomplete.forEach(a => { %>
+              <li>
+                <a href="#none">
+                  <i class="icon <%= a.type %>"></i>
+                  <p>
+                    <% a.word.split().forEach(function(letter) { %><%- letter.includes('발리') ? letter.split('발리').join('<strong>발리</strong>') : letter %><% }) %>
+                    <% if(a.sub) { %>
+                      <span class="sub"><%= a.sub %></span>
+                    <% } %>
+                  </p>
+                </a>
+              </li>
+              <% }); %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="headerMarketing">
+        <div class="rollingBanner">
+          <ul class="slide">
+            <% for(i=1; i<4; i++) { %>
+              <li class="slideItem">
+                <a href="#">
+                  <img src="/data/images/common/header/top-right-banner<%- i %>.jpg" alt="">
+                </a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navigationWrapper">
+    <div class="navigationInner">
+      <div class="allCategory">
+        <button type="button" class="allCategoryButton">
+          <span>전체 카테고리</span>
+        </button>
+        <div class="allCategoryWrapper">
+          <div class="allCategoryInner">
+            <% $header.allCategory.forEach(function(all) { %>
+            <div class="col">
+              <a href="#" class="categoryLink <%= all.category %>"><%- all.name %></a>
+              <% if (all.subMenu) { %>
+              <ul class="subList">
+                <% all.subMenu.forEach(e => { %>
+                <li>
+                  <a href="#" class="subLink"><%- e %></a>
+                </li>
+                <% }); %>
+              </ul>
+              <% } %>
+            </div>
+            <% }); %>
+            <div class="col strategyBanners">
+              <%
+                const banner = [
+                {
+                  name: 'travel',
+                  text: '여행혜택존'
+                },
+                {
+                  name: 'trophy',
+                  text: '1등특가'
+                }
+              ]
+
+                banner.forEach(function(bList) {
+              %>
+              <a href="#" class="seasonBanner <%= bList.name %>" target="_blank">
+                <span class="menuText"><%= bList.text %></span>
+              </a>
+              <% if (bList.name === 'travel') { %>
+              <ul class="subList">
+                <li>
+                  <a href="#" class="subLink">해외 렌터카</a>
+                </li>
+              </ul>
+              <% } %>
+              <% }); %>
+            </div>
+            <button type="button" class="closeCategoryButton" aria-label="닫기">닫기</button>
+          </div>
+        </div>
+      </div>
+      <div class="localNavigation">
+        <ul>
+          <% $header.gnb.forEach(function(gnb, j) { %>
+          <li class="<%= gnb.category %>">
+            <a href="#" class="tabBtn">
+              <span><%= gnb.name %></span>
+            </a>
+            <% if (gnb.depth2) { %>
+            <div class="subMenuWrapper">
+              <div class="subMenuInner">
+                <ul class="depth2List">
+                  <% gnb.depth2.forEach(function(sub, i) { %>
+                  <li<% if (j === 4 && i === 0) { %> class="active"<% } %>>
+                    <a href="#"><%= sub.subName %></a>
+                    <% if (sub.depth3) { %>
+                    <div class="depth3Wrapper">
+                      <div class="depth3Wrap">
+                      <% sub.depth3.forEach(depth => {%>
+                        <div class="col<%= depth.double ? ' double' : ''%>">
+                        <% if (depth.rowData) { %>
+                          <% depth.rowData.forEach(row => {%>
+                          <div class="row">
+                            <a href="#" class="depth3Title"><%= row.subTitle %></a>
+                            <% if (row.subList) { %>
+                              <ul class="depth3List">
+                                <% row.subList.forEach(t => { %>
+                                <li>
+                                  <a href="#"><%- t %></a>
+                                </li>
+                                <% }); %>
+                              </ul>
+                              <% } %>
+                          </div>
+                          <% }); %>
+                        <% } else { %>
+                          <a href="#" class="depth3Title"><%= depth.subTitle %></a>
+                          <% if (depth.subList) { %>
+                          <ul class="depth3List">
+                            <% depth.subList.forEach(t => { %>
+                            <li>
+                              <a href="#"><%- t %></a>
+                            </li>
+                            <% }); %>
+                          </ul>
+                          <% } %>
+                        <% } %>
+                        </div>
+                      <% }); %>
+                      </div>
+                      <div class="specialThemeWrap">
+                        <div class="themeWrap">
+                          <span class="title">테마</span>
+                          <ul class="themeList">
+                            <% sub.theme.forEach(theme => { %>
+                            <li>
+                              <a href="#">
+                                <%- theme %>
+                              </a>
+                            </li>
+                            <% }); %>
+                            <li class="new">
+                              <a href="#">홈쇼핑 LIVE 특가</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <% if (sub.specialMall) { %>
+                        <div class="specialMallWrap">
+                          <span class="title">전문몰</span>
+                          <ul class="specialMallList">
+                            <% sub.specialMall.forEach(mall => { %>
+                            <li>
+                              <a href="#">
+                                <%- mall %>
+                              </a>
+                            </li>
+                            <% }); %>
+                          </ul>
+                        </div>
+                        <% } %>
+                      </div>
+                    </div>
+                    <% } %>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </div>
+            <% } %>
+          </li>
+          <% }); %>
+        </ul>
+      </div>
+      <div class="seasonNavigation">
+        <% banner.forEach(function(bList, b) { %>
+        <a href="#" class="seasonBanner <%= bList.name %>" target="_blank">
+          <span class="menuText"><%= bList.text %></span>
+        </a>
+        <% }); %>
+      </div>
+    </div>
+  </nav>
+</header>

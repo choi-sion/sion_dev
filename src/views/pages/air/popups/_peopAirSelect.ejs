@@ -1,0 +1,94 @@
+<%
+  var people = [
+    {
+      peop: "성인(만 13세 이상)",
+      subTxt: "탑승일 기준 2009.4.21 이전 출생",
+    },
+    {
+      peop: "소아(만 2세~만 13세 미만)",
+      subTxt: "탑승일 기준 2009.4.22~2019.4.21 출생",
+    },
+    {
+      peop: "유아(24개월 미만)",
+      subTxt: "탑승일 기준 2009.4.22 이후 출생",
+    }
+  ];
+
+  var grade = ["좌석전체", "일반석", "프리미엄 일반석", "비지니스석", "일등석"]
+%>
+
+<div class="popup peopNumSel" id="<%= id %>">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <h2 class="popupTitle">인원, 좌석등급</h2>
+      <button class="popupCloseBtn" type="button" aria-label="닫기">팝업창 닫기</button>
+    </div>
+    <div class="popupContents">
+      <div class="searchLayer" role="group" id="rank" aria-modal="true">
+        <div class="searchLayerInner" aria-labelledby="rank" tabindex="0">
+          <% people.forEach(function($peo) { %>
+          <dl class="searchAirCount">
+            <dt aria-labelledby="rank">
+              <strong><%= $peo.peop %></strong>
+              <span><%= $peo.subTxt %></span>
+            </dt>
+            <dd>
+              <div class="quantitySelector">
+                <button type="button" class="controller minus" data-method="decrease">
+                  <span>수량감소</span>
+                </button>
+                <label class="currentQuantity">
+                  <span class="iText" data-error-msg="">0</span>
+                </label>
+                <button type="button" class="controller plus" data-method="increase">
+                  <span>수량증가</span>
+                </button>
+              </div>
+            </dd>
+          </dl>
+          <% }) %>
+        </div>
+
+        <div class="peopNotice"  >
+          <a href="#layerfunction" role="button" onclick="layerfunction(); return false;" onkeypress="this.onclick;" aria-expanded="true" tabindex="0">아동 및 유아 예약안내
+            <span class="childInfoIcon">안내</span>
+          </a>
+          <div class="childReserveInfo">
+            유아는 좌석을 점유하지 않습니다. 좌석 점유를 원하시는 경우 소아로 예매를 진행해 주시기 바랍니다. 귀국/도착일 기준으로 나이 조건이 변경될 경우 추가요금이 부과될 수 있습니다.<br>
+            (생년월일 확인 가능한 증빙서류 지참)
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popupFooter">
+      <div class="radioWrap">
+        <% for(var i = 0; i < grade.length; i++) { %>
+        <span class="radioItem">
+          <input id="grade<%= i %>" type="radio" name="numberOfGuests" <% if (i === 0) { %> checked=""<% } %>>
+          <label for="grade<%= i %>"><%= grade[i] %></label>
+        </span>
+        <% } %>
+      </div>
+      <div class="confirmBtn">
+        <button type="button" class="popupConfirm">선택완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function layerfunction() {
+    var peopNumSelPopup = $('.childReserveInfo');
+    peopNumSelPopup.toggleClass('current');
+
+    $('.peopNumSel').on('click', function(e){
+      var $tgPoint = $(e.target);
+      var $popCallBtn = $tgPoint.is('a');
+      var $popLayer = peopNumSelPopup.hasClass('current');
+
+      if (!$popCallBtn || ($popCallBtn && !$popLayer)) {
+        peopNumSelPopup.removeClass('current');
+      }
+    });
+  }
+ </script>

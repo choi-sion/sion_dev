@@ -1,0 +1,27 @@
+<div class="popup bannerAllPop" id="<%= id %>">
+  <div class="dimmed">
+    <div class="popupPosition">
+      <div class="popupHeader">
+        <h2 class="popupTitle">프로모션 전체보기</h2>
+        <button class="popupCloseBtn" type="button" aria-label="닫기">팝업창 닫기</button>
+      </div>
+      <div class="popupContents">
+        <div class="bannerAll" role="dialog" aria-modal="true">
+          <div class="bannerAllView">
+            <ul class="partnerBanner">
+                <% data.main.partnerPop.forEach(function($p, idx) { %>
+                <% for(var i = 0; i < $p.img.length; i++) { %>
+                <li class="placePartnerItem">
+                  <a href="#" title="검색결과 다시보기">
+                    <img src="<%= $p.img[i] %>" alt="">
+                  </a>
+                </li>
+                <% } %>
+                <% }) %>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

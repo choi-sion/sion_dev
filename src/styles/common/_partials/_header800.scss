@@ -1,0 +1,135 @@
+.gateway {
+    &Inner {
+        width: $_width800;
+    }
+}
+
+.header {
+    &Inner {
+        justify-content: space-between;
+        width: $_width800;
+    }
+
+    &Search {
+        width: 312px;
+        margin-left: 54px;
+
+        .popularList {
+            li {
+                width: 122px;
+                height: 16px;
+                margin-bottom: 10px;
+                line-height: 16px;
+
+                &:nth-child(5n) {
+                    margin-bottom: 0;
+                }
+
+                &::before {
+                    min-width: 15px;
+                }
+            }
+
+            .keyword {
+                width: 88px;
+            }
+        }
+    }
+
+    &Marketing {
+        .rollingBanner {
+            margin-right: 0;
+        }
+    }
+}
+
+.allCategory {
+    &Inner {
+        flex-wrap: wrap;
+        width: $_width800;
+        padding: 28px 10px 40px;
+
+        .col {
+            margin-right: 0;
+
+            + .col {
+                margin-left: 0;
+            }
+        }
+
+        .categoryLink {
+            display: inline-block;
+            line-height: 20px;
+
+            &::after {
+                vertical-align: top;
+            }
+        }
+
+        .closeCategoryButton {
+            top: 10px;
+            right: 0;
+        }
+    }
+
+    &Button {
+        @include bgi("btn-allCategory");
+        width: 14px;
+        height: 14px;
+        margin-right: 10px;
+        padding: 17px;
+        background-size: 14px auto;
+        background-position: center center;
+
+        span {
+            @include blind;
+        }
+
+        &::after {
+            right: -10px;
+        }
+    }
+}
+
+.navigation {
+    &Inner {
+        width: $_width800;
+    }
+}
+
+.localNavigation {
+    > ul {
+        margin: 0;
+
+        > li {
+            margin: 0 0 0 16px;
+
+            > a {
+                padding: 0;
+
+                span {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .subMenuWrapper {
+        display: none;
+    }
+}
+
+.seasonNavigation {
+    width: 92px;
+    margin-right: 0;
+
+    .seasonBanner {
+        &:not(:last-child) {
+            margin-right: 0;
+        }
+
+        &:not(:first-child) {
+            display: none;
+        }
+    }
+}

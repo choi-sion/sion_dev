@@ -1,0 +1,580 @@
+@import "base/variables";
+
+.asdie-fixed {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    border-left: 1px solid #ddd;
+    background: #f8fafc;
+    z-index: 89;
+
+    h2 {
+        img {
+            display: none;
+            margin-left: 13px;
+        }
+
+        a {
+            display: block;
+            height: 41px;
+            border-bottom: 1px solid #e6e6e6;
+            background: url("#{$imgPath}/tour/main/on_special.gif") no-repeat 1px 2px;
+        }
+    }
+
+    .my-point,
+    .quick-list,
+    .sale-list {
+        display: none;
+    }
+
+    &.on {
+        width: 118px;
+
+        h2 {
+            padding-top: 15px;
+            font-size: 0;
+            line-height: 0;
+            border-top: 1px solid #e6e6e6;
+
+            a {
+                height: auto;
+                border: 0;
+                background: none;
+            }
+
+            img {
+                display: block;
+            }
+        }
+
+        .rolling-banner01,
+        h2,
+        .choice,
+        .my-point,
+        .quick-list,
+        .sale-list {
+            display: block;
+        }
+
+        .open {
+            span {
+                background-position: -9px top;
+            }
+        }
+    }
+
+    .rolling-banner01 {
+        display: none;
+        padding: 10px 0;
+        text-align: center;
+        border-bottom: 1px solid #fff;
+
+        img {
+            display: inline-block;
+            width: 88px;
+            height: 90px;
+        }
+    }
+
+    .login-area {
+        overflow: hidden;
+        position: relative;
+        left: -1px;
+        width: 98px;
+        padding: 25px 11px 13px;
+        background: #ef554d;
+
+        h2 {
+            height: 18px;
+            padding-top: 0;
+            margin: 0 0 14px;
+            border: 0;
+            background: url("#{$imgPath}/tour/common/personal/h3_login.png") no-repeat 50% top;
+        }
+
+        .txt {
+            margin: 0 0 10px 0;
+            text-align: center;
+            color: #fff;
+            line-height: 18px;
+            font-size: 12px;
+            background: none;
+        }
+
+        .point {
+            color: #fae90a;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            height: 25px;
+            background: #be3834;
+            border: 1px solid #af322e;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        &.on {
+            padding-top: 13px;
+
+            h2 {
+                visibility: hidden;
+                overflow: hidden;
+                height: 0;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+
+    .my-point {
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+        background: #fff;
+
+        li {
+            a {
+                display: block;
+                padding-left: 10px;
+                font-size: 12px;
+                line-height: 21px;
+                color: #e83535;
+                background: url("#{$imgPath}/tour/common/personal/icon_arrow-red.png") no-repeat 103px 8px;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .quotationInquiry {
+        display: block;
+        padding: 7px 0;
+        border-bottom: 1px solid #ddd;
+        background-color: #fff;
+
+        a {
+            display: block;
+            padding-left: 10px;
+            font-size: 12px;
+            line-height: 18px;
+            color: #333;
+            background: url("#{$imgPath}/tour/common/personal/icon_arrow-red.png") no-repeat 103px 15px;
+            text-decoration: none;
+
+            strong {
+                color: #e83535;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .quick-list {
+        padding: 5px 0 0;
+
+        li {
+            display: block;
+            vertical-align: top;
+
+            img {
+                display: block;
+            }
+
+            a {
+                display: block;
+                font-size: 11px;
+                padding-left: 10px;
+                line-height: 21px;
+                color: #393939;
+                background: url("#{$imgPath}/tour/common/personal/icon_arrow-gray.png") no-repeat 103px 8px;
+            }
+        }
+    }
+
+    .sale-list {
+        position: relative;
+        display: none;
+        left: -3px;
+        margin-top: 9px;
+
+        %imgCustom1 {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: -3px;
+            margin-left: -3px;
+            border: 3px solid #e25147;
+        }
+
+        %imgCustom2 {
+            display: inline;
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: 0;
+            border: 0;
+        }
+
+        li {
+            margin-bottom: 16px;
+            text-align: center;
+            zoom: 1;
+
+            a {
+                &:hover {
+                    text-decoration: none;
+                    color: #333;
+
+                    img {
+                        @extend %imgCustom1;
+                    }
+                }
+
+                img {
+                    display: block;
+                }
+            }
+
+            span {
+                display: block;
+                position: relative;
+                margin: 0 auto;
+            }
+
+            .photo {
+                width: 88px;
+                height: 66px;
+                width: 82px;
+                height: 60px;
+
+                img {
+                    width: 88px;
+                    height: 66px;
+                }
+            }
+
+            .tit {
+                margin: 15px 0 0 7px;
+                color: #333;
+                height: auto;
+                font-family: $dotum-font;
+                font-size: 12px;
+
+                strong {
+                    display: block;
+                    color: #333;
+                }
+            }
+
+            .data {
+                margin-left: 7px;
+                font-weight: bold;
+                font-size: 12px;
+                font-family: $dotum-font;
+                color: #333;
+            }
+
+            .point01 {
+                color: #e25147;
+            }
+
+            &.on {
+                .photo {
+                    img {
+                        @extend %imgCustom1;
+                    }
+                }
+
+                ul {
+                    display: block;
+                    z-index: 10;
+
+                    li {
+                        display: block;
+                    }
+                }
+
+                li {
+                    .photo {
+                        img {
+                            @extend %imgCustom2;
+                        }
+                    }
+                }
+            }
+
+            ul {
+                display: none;
+                position: absolute;
+                top: -2px;
+                left: -313px;
+                margin: 0;
+                padding: 10px;
+                width: 294px;
+                min-height: 373px;
+                border: 1px solid #e25147;
+                background: #fff;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: -15px;
+                    border: 7px solid transparent;
+                    border-left-color: #e25147;
+                    z-index: 10;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: -15px;
+                    margin-right: 1px;
+                    border: 7px solid transparent;
+                    border-left-color: #fff;
+                    z-index: 10;
+                }
+
+                li {
+                    margin-top: 0;
+                    text-align: left;
+                    vertical-align: top;
+
+                    .flag {
+                        position: absolute;
+                    }
+
+                    .photo {
+                        width: 294px;
+                        height: 221px;
+                        border: 0;
+
+                        img {
+                            width: 294px;
+                            height: 221px;
+                            border: 0;
+                        }
+                    }
+
+                    .tit {
+                        margin: 38px 0 0 7px;
+                        color: #333;
+                    }
+
+                    .con {
+                        margin-left: 7px;
+                        font-size: 16px;
+                        color: #333;
+                        font-weight: bold;
+                        line-height: 28px;
+                    }
+
+                    .data {
+                        margin-left: 7px;
+                        font-size: 14px;
+                        font-weight: bold;
+                        line-height: 18px;
+                        color: #e25147;
+                    }
+                }
+            }
+
+            li {
+                a {
+                    &:hover {
+                        img {
+                            @extend %imgCustom2;
+                        }
+                    }
+                }
+            }
+
+            &.cell-1 {
+                ul {
+                    &:before ,
+                    &:after {
+                        top: 25px;
+                    }
+                }
+            }
+
+            &.cell-2 {
+                ul {
+                    &:before ,
+                    &:after {
+                        top: 130px;
+                    }
+                }
+            }
+
+            &.cell-3 {
+                ul {
+                    &:before ,
+                    &:after {
+                        top: 250px;
+                    }
+                }
+            }
+        }
+    }
+
+    .open {
+        position: absolute;
+        top: 240px;
+        left: -21px;
+        width: 20px;
+        height: 60px;
+        font-family: $dotum-font;
+        line-height: 38px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        border: 1px solid #e0e0e0;
+        border-right: 0;
+        border-radius: 1px 0 0 1px;
+        background: #f8fafc;
+        z-index: 100;
+
+        span {
+            display: inline-block;
+            width: 9px;
+            height: 19px;
+            vertical-align: top;
+            margin-top: 20px;
+            font-size: 0;
+            line-height: 0;
+            background: url("#{$imgPath}/tour/common/personal/icon_arrow-rightBar.png") no-repeat 0 0;
+        }
+    }
+
+    .bottom_goTop {
+        width: 118px;
+        text-align: center;
+        border-top: 1px solid #dbdbdb;
+        position: absolute;
+        bottom: 0;
+        left: 1px;
+        background: #fff;
+
+        .rightbar_gotop {
+            display: block;
+            width: 118px;
+            padding: 17px 0 18px 2px;
+            text-align: center;
+            color: #5c5c5c;
+            font-size: 13px;
+            font-weight: bold;
+            background: #fff url("#{$imgPath}/tour/common/icon/icon_top_go.png") no-repeat 33px 23px;
+        }
+    }
+
+    .choice {
+        display: none;
+        margin-top: 13px;
+        text-align: center;
+
+        a {
+            display: inline-block;
+            width: 42px;
+            height: 18px;
+            text-align: center;
+            background: #c5c5c5;
+
+            &:hover {
+                background: #333;
+            }
+
+            img {
+                display: inline-block;
+                margin-top: 6px;
+                vertical-align: top;
+            }
+        }
+    }
+}
+
+.rollingSliderWrap {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 10px;
+    border-top: 1px solid #e6e6e6;
+
+    .pager {
+        width: 88px;
+        height: 21px;
+        margin: 15px auto 0;
+        text-align: center;
+        font-size: 0;
+
+        span {
+            font-size: 11px;
+            color: #333;
+
+            &.current {
+                font-weight: bold;
+            }
+
+            &.slash {
+                padding: 0 0 0 1px;
+                font-size: 11px;
+            }
+        }
+    }
+
+    .rollingSlider {
+        position: relative;
+        width: 88px;
+        height: 90px;
+        margin: 0 auto;
+
+
+        .sliderWrap {
+            .slider {
+                width: 88px;
+                height: 90px;
+                overflow: hidden;
+
+                a {
+                    display: block;
+                    text-decoration: none;
+                    line-height: 0;
+                }
+            }
+        }
+
+        .bx-controls {
+            .bx-prev,
+            .bx-next {
+                position: absolute;
+                bottom: -31px;
+                width: 21px;
+                height: 21px;
+                margin-top: -10px;
+                text-indent: -9999px;
+                background: url("#{$imgPath}/tour/common/button/btn_slide_arrow.png") no-repeat 0 0;
+            }
+
+            .bx-prev {
+                left: 7px;
+
+                &:hover {
+                    background-position: 0 0;
+                }
+            }
+
+            .bx-next {
+                right: 7px;
+                background-position: 0 -29px;
+
+                &:hover {
+                    background-position: 0 -29px;
+                }
+            }
+        }
+    }
+}

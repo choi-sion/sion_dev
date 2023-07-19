@@ -1,0 +1,34 @@
+<%
+  var name = name === undefined ? '테스트':name;
+  var classname = classname === undefined ? 'select' : classname;
+  var front = front === undefined ? name + ' 0': front;
+  var option = option === undefined ? undefined : option;
+  var length = length === undefined ? 10 : length;
+  var $flight = '';
+  if (typeof flight !== 'undefined') $flight = flight;
+%>
+<a class="<%= classname %>" href="javascript:void(0);" aria-haspopup="listbox">
+  <span class="blind" id="<%= flight %>-menu-button">정렬옵션</span>
+  <span class="viewPoint"><%= front %></span>
+</a>
+<div class="optionList">
+  <ul aria-labelledby="<%= flight %>-menu-button">
+    <% if (option === undefined) { %>
+      <% for (var i = 0; i < length; i++) { %>
+        <li role="option">
+          <a href="javascript:void(0);">
+            <%= name %> <%= i %>
+          </a>
+        </li>
+      <% } %>
+    <% } else { %>
+      <% for (var i = 0; i < option.length; i++) { %>
+        <li role="option">
+          <a href="javascript:void(0);" title="선택">
+            <%= option[i] %>
+          </a>
+        </li>
+      <% } %>
+    <% } %>
+  </ul>
+</div>

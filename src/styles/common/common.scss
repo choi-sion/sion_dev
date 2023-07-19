@@ -1,18 +1,86 @@
 @charset "utf-8";
-
-@import "../base/_reset";
-
-html {
-    height: 100%;
-    text-size-adjust: none;
-    -webkit-touch-callout: none;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    font: normal 62.5% "Helvetica Neue", Helvetica, AppleSDGothicNeo, sans-serif;
-}
+@import "base/reset";
+@import "base/font-variables"; //폰트
+@import "./src/styles/common/_partials/powerLink"; // 파워링크(맞춤검색/검색결과, 상품최종)
+@import "./src/styles/common/_partials/footerBanner"; // 푸터 배너
+@import "./src/styles/common/_partials/sprite"; //sprite-hd, 카테고리에서만 사용중
 
 body {
-    height: 100%;
-    font-size: 1.3rem;
-    display: block;
+    min-width: 980px;
+    font-family: $system-font;
+
+    input,
+    button,
+    select,
+    textarea {
+        font-family: $system-font;
+    }
+}
+
+#container {
+    width: 100%;
+}
+
+.accessibility {
+    width: 100%;
+    margin: 0 auto;
+
+    a {
+        position: absolute;
+        display: block;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+
+        &:focus {
+            width: 150px;
+            height: 30px;
+            background: #000;
+            font-size: 14px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+        }
+    }
+}
+
+#skipContent {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+/*input */
+textarea,
+select,
+input,
+button {
+    border: 0;
+    padding: 0;
+    box-shadow: 0;
+    border-radius: 0;
+    background: #fff;
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button {
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    user-select: none;
+
+    &:active {
+        opacity: .5;
+    }
 }

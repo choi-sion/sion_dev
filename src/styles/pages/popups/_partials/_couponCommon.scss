@@ -1,0 +1,47 @@
+
+// 쿠폰다운, 쿠폰변경 공통
+.couponBtns {
+    text-align: center;
+    font-size: 0;
+
+    a,
+    button {
+        display: inline-block;
+        min-width: 118px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 14px;
+        text-align: center;
+        border-radius: 6px;
+        vertical-align: top;
+    }
+
+    .btnWhite {
+        color: #000;
+        background-color: #fff;
+        border: 1px solid #ccc;
+
+        & ~.btnBlack {
+            margin-left: 10px;
+        }
+    }
+
+    .btnBlack {
+        font-weight: bold;
+        color: #fff;
+        background-color: #333;
+        border: none;
+
+        span {
+            display: block;
+            margin-top: -1px;
+        }
+    }
+}
+
+.couponInfo {
+    padding: 0 5px;
+    color: #666;
+    font-size: 12px;
+    line-height: 18px;
+}

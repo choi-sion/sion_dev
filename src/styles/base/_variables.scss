@@ -1,1 +1,71 @@
+@import "font-variables";
+
 $base: "/images" !default;
+$imgPath: "//openimage.interpark.com/tourpark";
+
+$color-red: #ef3e43;
+$color-orange: #dc941b;
+$color-mint: #1eb19e;
+$subTextColor: #1eb19e;
+
+$normalWeight: normal;
+$boldWeight: bold;
+
+@mixin srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+}
+
+@mixin ellipsis($lines: 1, $lineHeight: auto) {
+    @if ($lines == 1) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    } @else {
+        display: -webkit-box;
+        height: $lines * $lineHeight;
+        overflow: hidden;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        white-space: normal;
+        -webkit-line-clamp: $lines;
+        -webkit-box-orient: vertical;
+        line-height: $lineHeight;
+    }
+}
+
+@mixin line-clamp($val) {
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $val;
+    -webkit-box-orient: vertical;
+}
+
+@mixin blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -.1rem;
+    width: .1rem;
+    height: .1rem;
+}
+
+@mixin scrollbarCustom() {
+    &::-webkit-scrollbar {
+        width: .7rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-clip: padding-box;
+        border: .7rem #c1c1c1 solid;
+        border-radius: 1rem;
+    }
+}
+

@@ -1,0 +1,396 @@
+{
+  "mainCategory": [
+    {
+      "title": "최저가보상제",
+      "icon": "lowestPrice",
+      "label": "차액100%"
+    },
+    {
+      "title": "할인항공",
+      "icon": "air"
+    },
+    {
+      "title": "쎈항공딜",
+      "icon": "hot",
+      "label": "딱!일주일"
+    },
+    {
+      "title": "카드혜택",
+      "icon": "card"
+    },
+    {
+        "title": "일본여행",
+        "icon": "japan"
+    },
+    {
+      "title": "겨울방학특가",
+      "icon": "winter",
+      "label": "매주화요일"
+    },
+    {
+      "title": "비즈니스항공",
+      "icon": "business"
+    },
+    {
+      "title": "국내단독특가",
+      "icon": "coupon"
+    }
+  ],
+  "searchItem": [
+    {
+      "oneWay": "oneWay",
+      "bullet": "편도",
+      "leave": "김포",
+      "leave_air": "(GMP)",
+      "arrive": "제주",
+      "arrive_air": "(CJU)",
+      "travelReserveInfo": [
+        {
+          "data": "1.30(수)"
+        },
+        {
+          "data": "4명"
+        },
+        {
+          "data": "일반석"
+        }
+      ],
+      "travelSchedule": {
+        "class": "price",
+        "price": "29000",
+        "scheduleInfo": [
+          {
+            "data": "1.30(수)"
+          }
+        ]
+      }
+    },
+    {
+      "bullet": "왕복",
+      "leave": "김포",
+      "leave_air": "(GMP)",
+      "arrive": "도쿄 나리타",
+      "arrive_air": "(NRT)",
+      "travelReserveInfo": [
+        {
+          "data": "1.30(수) ~ 2.30(수)"
+        },
+        {
+          "data": "4명"
+        },
+        {
+          "data": "일반석"
+        }
+      ],
+      "travelSchedule": {
+        "class": "price",
+        "price": "29000",
+        "scheduleInfo": [
+          {
+            "data": "경유 2회"
+          },
+          {
+            "data": "1.30(수) ~ 2.4(금)"
+          }
+        ]
+      }
+    },
+    {
+      "oneWay": "oneWay",
+      "bullet": "편도",
+      "leave": "김포",
+      "leave_air": "(GMP)",
+      "arrive": "제주",
+      "arrive_air": "(CJU)",
+      "travelReserveInfo": [
+        {
+          "data": "1.30(수) ~ 2.30(수)"
+        },
+        {
+          "data": "4명"
+        },
+        {
+          "data": "일반석"
+        }
+      ],
+      "travelSchedule": {
+        "class": "price",
+        "price": "29000",
+        "scheduleInfo": [
+          {
+            "data": "1.30(수) ~ 2.4(금)"
+          }
+        ]
+      }
+    },
+    {
+      "bullet": "다구간",
+      "leave": "상하이홍차우상하이(홍차우)",
+      "leave_air": "(SHA)",
+      "arrive": "도쿄 나리타",
+      "arrive_air": "(NRT)",
+      "travelReserveInfo": [
+        {
+          "data": "1.30(수) ~ 2.30(수)"
+        },
+        {
+          "data": "9명"
+        },
+        {
+          "data": "비즈니스석/할인/일반"
+        }
+      ],
+      "travelSchedule": {
+        "class": "price",
+        "price": "234400",
+        "scheduleInfo": [
+          {
+            "data": "직항"
+          },
+          {
+            "data": "1.30(수) ~ 2.4(금)"
+          }
+        ]
+      }
+    },
+    {
+      "oneWay": "oneWay",
+      "bullet": "편도",
+      "leave": "김포",
+      "leave_air": "(GMP)",
+      "arrive": "제주",
+      "arrive_air": "(CJU)",
+      "travelReserveInfo": [
+        {
+          "data": "1.30(수) ~ 2.30(수)"
+        },
+        {
+          "data": "4명"
+        },
+        {
+          "data": "일반석"
+        }
+      ],
+      "travelSchedule": {
+        "class": "price",
+        "price": "1200000",
+        "scheduleInfo": [
+          {
+            "data": "경유 2회"
+          },
+          {
+            "data": "1.30(수) ~ 2.4(금)"
+          }
+        ]
+      }
+    }
+  ],
+  "productItem": [
+    {
+      "img": "/data/images/pages/air/main/place01.jpg",
+      "title": "인천-상하이(푸동)",
+      "bestTitle": "싱가폴",
+      "region": {
+        "departure": "인천",
+        "arrival": "상하이(푸동)"
+      },
+      "domestic": {
+        "air": "편도",
+        "date": "1.30(수) 출발"
+      },
+      "overseas": {
+        "air": "에미레이트항공 ",
+        "date": "11.23(수) ~ 12.25(금)"
+      },
+      "best": {
+        "air": "[직항] 동남아 ",
+        "date": "2021.04.01 - 2021.04.05"
+      },
+      "place": "127700"
+    },
+    {
+      "img": "/data/images/pages/air/main/place02.jpg",
+      "title": "인천-북경",
+      "bestTitle": "싱가폴",
+      "region": {
+        "departure": "인천",
+        "arrival": "북경"
+      },
+      "domestic": {
+        "air": "편도",
+        "date": "1.30(수) 출발"
+      },
+      "overseas": {
+        "air": "아시아나항공 ",
+        "date": "1.23(수) ~ 1.25(금)"
+      },
+      "best": {
+        "air": "[직항] 동남아 ",
+        "date": "2021.04.01 - 2021.04.05"
+      },
+      "place": "125600"
+    },
+    {
+      "img": "/data/images/pages/air/main/place03.jpg",
+      "title": "인천-청도",
+      "bestTitle": "싱가폴",
+      "region": {
+        "departure": "인천",
+        "arrival": "청도"
+      },
+      "domestic": {
+        "air": "편도",
+        "date": "1.30(수) 출발"
+      },
+      "overseas": {
+        "air": "대항항공 ",
+        "date": "1.23(수) ~ 1.25(금)"
+      },
+      "best": {
+        "air": "[직항] 동남아 ",
+        "date": "2021.04.01 - 2021.04.05"
+      },
+      "place": "1003900"
+    },
+    {
+      "img": "/data/images/pages/air/main/place04.jpg",
+      "title": "인천-광저우",
+      "bestTitle": "싱가폴",
+      "region": {
+        "departure": "인천",
+        "arrival": "광저우"
+      },
+      "domestic": {
+        "air": "편도",
+        "date": "1.30(수) 출발"
+      },
+      "overseas": {
+        "air": "대항항공 ",
+        "date": "1.23(수) ~ 1.25(금)"
+      },
+      "best": {
+        "air": "[직항] 동남아 ",
+        "date": "2021.04.01 - 2021.04.05"
+      },
+      "place": "127700"
+    },
+    {
+      "img": "/data/images/pages/air/main/place05.jpg",
+      "title": "인천-파리",
+      "bestTitle": "싱가폴",
+      "region": {
+        "departure": "인천",
+        "arrival": "파리"
+      },
+      "domestic": {
+        "air": "편도",
+        "date": "1.30(수) 출발"
+      },
+      "overseas": {
+        "air": "대항항공 ",
+        "date": "1.23(수) ~ 1.25(금)"
+      },
+      "best": {
+        "air": "[직항] 동남아 ",
+        "date": "2021.04.01 - 2021.04.05"
+      },
+      "place": "127700"
+    }
+  ],
+  "subItemBestType": [
+    {
+      "img": "/data/images/pages/air/main/place01.jpg",
+      "title": "인천-상하이(푸동)",
+      "place": "127700"
+    },
+    {
+      "img": "/data/images/pages/air/main/place02.jpg",
+      "title": "인천-북경",
+      "place": "125600"
+    },
+    {
+      "img": "/data/images/pages/air/main/place03.jpg",
+      "title": "인천-청도",
+      "place": "1003900"
+    }
+  ],
+  "partnerItem": [
+    {
+      "img": "/data/images/pages/air/main/partnerBanner01.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner02.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner01.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner02.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner01.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner02.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner01.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner02.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner01.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner02.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner01.jpg"
+    },
+    {
+      "img": "/data/images/pages/air/main/partnerBanner02.jpg"
+    }
+  ],
+  "partnerPop": [
+    {
+      "img": ["/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg", "/data/images/pages/air/main/partnerBanner01.jpg", "/data/images/pages/air/main/partnerBanner02.jpg"]
+    }
+  ],
+  "eventBn": [
+    {
+      "img": "/data/images/pages/air/main/bigBannerSlider01.png",
+      "alt": "{이벤트이름1}"
+    },
+    {
+      "img": "/data/images/pages/air/main/bigBannerSlider02.png",
+      "alt": "{이벤트이름2}"
+    }
+  ],
+  "benefitItem": [
+    {
+      "category": "결제전용혜택최대글자수는16자",
+      "discountRate": "최대글자수7자",
+      "unit": "",
+      "infoTxt": "상시할인혜택최대글자수는18자이하만"
+    },
+    {
+      "category": "국내항공",
+      "discountRate": "15000",
+      "unit": "원",
+      "infoTxt": "재구매 쿠폰"
+    },
+    {
+      "category": "카드사별",
+      "discountRate": "13",
+      "unit": "%",
+      "infoTxt": "최대 할인"
+    },
+    {
+      "category": "I-POINT",
+      "discountRate": "100",
+      "unit": "%",
+      "infoTxt": "사용가능"
+    }
+  ]
+}

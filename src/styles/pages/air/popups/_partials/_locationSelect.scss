@@ -1,0 +1,204 @@
+.popup.locationSel {
+    left: 0;
+
+    &.arr {
+        left: 305px;
+    }
+
+    button {
+        padding: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+
+    }
+}
+
+.searchLayer {
+    .searchLayerInner {
+        > div {
+            &[data-searched="false"] {
+                width: 390px;
+                display: none;
+
+                &.noSearchResults {
+                    width: 390px;
+                    text-align: center;
+                    font-size: 14px;
+                    color: #999;
+                    padding: 40px 0 75px;
+
+                    strong {
+                        display: block;
+                        font-size: 18px;
+                        color: #000;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            &[data-searched="true"] {
+                width: 976px;
+                margin-top: 0;
+            }
+        }
+
+        &.searched > div {
+            &[data-searched="false"] {
+                display: block;
+            }
+
+            &[data-searched="true"] {
+                display: none;
+            }
+        }
+
+        .airLineWrap {
+            overflow-y: scroll;
+            height: 395px;
+
+            ul {
+                li {
+                    display: block;
+                    border-bottom: 1px solid #eee;
+                    margin-right: 10px;
+                }
+
+                a {
+                    display: block;
+                    cursor: pointer;
+                    padding: 10px 0 10px 35px;
+                    background: transparent url("#{$base}/pages/air/main/icon-city.png") no-repeat left 10px;
+
+                    span {
+                        color: #000;
+
+                        em {
+                            color: #1eb19e;
+                            font-weight: bold;
+                        }
+
+                        &.subInfo {
+                            width: 100%;
+                            display: block;
+                            font-size: 12px;
+                            color: #999;
+                            margin-top: 5px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .latestWrap {
+            display: table;
+            margin-bottom: 25px;
+
+            h5 {
+                padding-left: 5px;
+                display: table-cell;
+                vertical-align: middle;
+                font-size: 14px;
+                color: #999;
+            }
+
+            p {
+                display: table-cell;
+
+                span {
+                    position: relative;
+                    padding: 7px 30px 7px 15px;
+                    border-radius: 15px;
+                    border: 1px solid #ccc;
+                    font-size: 12px;
+                    margin-left: 10px;
+                    float: left;
+
+                    button.itemDel {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        z-index: 1;
+                        background: transparent url("#{$base}/pages/air/main/item-del-btn.png") no-repeat center center;
+                        width: 30px;
+                        height: 30px;
+                        font-size: 0;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+        }
+
+        .travelselectCity {
+            width: 100%;
+            display: table;
+            table-layout: fixed;
+            font-size: 14px;
+
+            dl {
+                position: relative;
+                display: table-cell;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 1px;
+                    background-color: rgba(#b6bdc7, .5);
+                    height: 100%;
+                    right: 0;
+                    top: 0;
+                    display: inline-block;
+                }
+
+                &:first-of-type {
+                    dt {
+                        border-top-left-radius: 6px;
+                        border-bottom-left-radius: 6px;
+                    }
+                }
+
+                &:last-of-type {
+                    dt {
+                        border-top-right-radius: 6px;
+                        border-bottom-right-radius: 6px;
+                    }
+
+                    &:after {
+                        display: none;
+                    }
+                }
+
+                dt {
+                    background-color: #f4f6f9;
+                    text-align: center;
+                    padding: 11px 0;
+                    font-weight: bold;
+                    margin-bottom: 4px;
+                }
+
+                dd {
+                    width: 100%;
+                    padding: 0 10px;
+                    box-sizing: border-box;
+
+                    a {
+                        width: 100%;
+                        box-sizing: border-box;
+                        padding: 8px 10px;
+                        display: block;
+                        color: #000;
+                        cursor: pointer;
+
+                        &[aria-selected="true"],
+                        &:hover {
+                            background-color: #333;
+                            border-radius: 6px;
+                            color: #fff;
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

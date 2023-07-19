@@ -1,0 +1,106 @@
+&.couponDown {
+    h3 {
+        padding: 0 5px;
+        margin-top: 25px;
+        font-size: 15px;
+
+        &:first-child {
+            margin: 0;
+        }
+    }
+
+    .coupon {
+        &Inner {
+            width: calc(100% - 60px);
+            margin: 0 auto;
+            max-height: calc(90vh - 50px - 155px);
+            padding: 0 20px;
+            overflow-y: auto;
+        }
+
+        &List {
+            li {
+                position: relative;
+                width: 100%;
+                margin-top: 10px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                background: #fff;
+                font-size: 0;
+
+                &.soldout {
+                    .couponBtn {
+                        background-color: #ccc;
+                        cursor: default;
+                    }
+                }
+            }
+        }
+
+        &Left {
+            display: inline-block;
+            width: calc(100% - 80px);
+            padding: 16px 20px;
+            box-sizing: border-box;
+        }
+
+        &Title {
+            margin-bottom: 4px;
+            line-height: 22.5px;
+            font-size: 15px;
+            font-weight: bold;
+
+            span {
+                margin-left: 6px;
+                font-size: 15px;
+                color: #dc941b;
+            }
+        }
+
+        &SubTitle {
+            margin-bottom: 2px;
+            font-size: 13px;
+            line-height: 19.5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &Notice {
+            line-height: 18px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        &Btn {
+            position: absolute;
+            right: -1px;
+            bottom: -1px;
+            top: -1px;
+            border-radius: 0 10px 10px 0;
+            width: 80px;
+            text-align: center;
+            background-color: #ef3e43;
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                transform: translateY(-50%);
+                color: #fff;
+                font-weight: bold;
+                font-size: 13px;
+            }
+        }
+
+        &Info {
+            margin-top: 10px;
+        }
+
+        &Btns {
+            margin-top: 53px;
+        }
+    }
+}
+

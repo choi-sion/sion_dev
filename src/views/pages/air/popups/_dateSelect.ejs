@@ -1,0 +1,62 @@
+<div class="popup chkDateSel" id="<%= id %>">
+  <div class="popupPosition">
+    <div class="popupHeader">
+      <h2 class="popupTitle">출발일 - 도착일</h2>
+      <button class="popupCloseBtn" type="button" aria-label="닫기">팝업창 닫기</button>
+    </div>
+    <div class="popupContents">
+      <%- include('/pages/air/popups/_partials/_calendar', {
+        price: true
+      }); %>
+
+      <div class="deteInfo">
+        <div class="holidayNotice">
+          <%
+            var holidays = [
+              {
+                name : "광복절",
+                day: "8.15"
+              },
+              {
+                name : "대체휴무",
+                day: "8.16"
+              }
+            ].forEach(function(s) {
+          %>
+          <dl>
+            <dt><%= s.day %></dt>
+            <dd><%= s.name %></dd>
+          </dl>
+          <% }); %>
+        </div>
+
+        <div class="undetermined">
+          <span class="chkBox unmDate" type="button" aria-expanded="false">
+            귀국일 미정
+          </span>
+          <button class="unmBtn unmDate" type="button" aria-expanded="false">기간</button>
+          <div class="unmList selectDate" role="combobox" tabindex="0" aria-label="정렬" aria-haspopup="listbox" aria-expanded="false">
+            <ul class="list" role="listbox">
+              <%
+              var place = [
+                {"place": "5"},
+                {"place": "7"},
+                {"place": "14"},
+                {"place": "20"},
+                {"place": "30"},
+                {"place": "50"},
+                {"place": "100"},
+                {"place": "120"},
+              ].forEach(($place, i) => {
+                let selected = i === 0 ? true : false;
+                %>
+              <li role="option" aria-selected="<%= selected %>">
+                <%= $place.place%>일</li>
+              <% }) %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

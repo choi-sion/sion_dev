@@ -1,0 +1,16 @@
+@charset "utf-8";
+@import "base/variables";
+//팝업공통
+@import "_partials/_popupCommon";
+
+.commonPopup {
+    //쿠폰다운로드 + 할인쿠폰 변경 공통 style
+    @import "_partials/_couponCommon";
+
+    //쿠폰다운로드
+    @import "_partials/_couponDown";
+
+    //할인쿠폰 변경
+    @import "_partials/_couponChange";
+}
+
